@@ -104,7 +104,8 @@
   /* ===================== CONTENT ELEMENTS ===================== */
   .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
   .c-6{ grid-column:span 6; } .c-12{ grid-column:span 12; }
-  @media (max-width:720px){ .c-6{ grid-column:span 12; } }
+  .c-7{ grid-column:span 7; } .c-5{ grid-column:span 5; }
+  @media (max-width:720px){ .c-6{ grid-column:span 12; } .c-7{ grid-column:span 12; } .c-5{ grid-column:span 12; } }
 
   .sheet-tag{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12.5px; display:inline-block; padding:2px 8px; margin-bottom:10px; border:2px solid var(--accent-dark,var(--ink)); color:var(--accent-dark,var(--ink)); }
   .sheet-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; color:var(--accent-dark,var(--ink)); }
@@ -168,6 +169,21 @@
   .home-hero .eyebrow{ color:#E8A93B; }
   .home-title{ font-size:clamp(2rem,4.6vw,3.1rem); font-weight:700; line-height:1.08; }
   .home-sub{ font-size:16px; color:var(--ink-soft); margin-top:14px; max-width:620px; }
+  .scroll-hint{ text-align:center; margin-top:26px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; color:#8A95A0; }
+
+  .ctrl-table{ display:grid; gap:9px; margin-top:6px; }
+  .ctrl-row{ display:grid; grid-template-columns:84px 1fr; gap:12px; align-items:start; border:2px solid var(--ink); padding:9px 12px; }
+  @media (max-width:560px){ .ctrl-row{ grid-template-columns:1fr; } }
+  .ctrl-key{ background:var(--accent,var(--ink)); color:#fff; font-size:12.5px; font-weight:700; padding:6px 4px; text-align:center; white-space:nowrap; }
+  .ctrl-desc{ font-size:14px; color:var(--ink-soft); line-height:1.55; }
+
+  .legend-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
+  @media (max-width:640px){ .legend-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:400px){ .legend-grid{ grid-template-columns:1fr; } }
+  .legend-chip{ display:flex; align-items:center; gap:10px; border:2px solid var(--ink); padding:9px 11px; }
+  .legend-swatch{ width:18px; height:18px; border:2px solid var(--ink); flex:none; }
+  .legend-no{ font-size:10.5px; color:var(--ink-soft); display:block; }
+  .legend-name{ font-size:13px; font-weight:600; display:block; }
   .day-table{ width:100%; border-collapse:collapse; margin-top:14px; font-size:13.5px; }
   .day-table th, .day-table td{ border:2px solid var(--ink); padding:9px 12px; text-align:left; }
   .day-table th{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; }
@@ -393,22 +409,68 @@ function placeholderPage(item){
 function homePage(){
   return ''
   + '<div class="home-hero">'
-  + '  <div class="sheet-eyebrow home-eyebrow"><span class="en">Amazon Final Loop · Aug 25 – Sep 2</span><span class="jp">Amazon 最終面接・8月25日〜9月2日</span></div>'
-  + '  <h2 class="home-title"><span class="en">Everything for the technical whiteboard round</span><span class="jp">技術ホワイトボード面接のための全体プラン</span></h2>'
-  + '  <p class="home-sub"><span class="en">Part X, distributed build systems, gets front-loaded because you were asked this exact question by Taro Hirose in your phone screen, and there\'s a real chance he brings it back to see how far your answer has grown. Everything else fills in the fundamentals gap behind it.</span>'
-  + '  <span class="jp">Part X（分散ビルドシステム）を最優先にしているのは、電話面接でヒロセ (Taro Hirose) 氏から全く同じ質問をされたためです。最終面接で再びこのテーマが出て、回答がどれだけ深まったかを確認される可能性があります。それ以外のパートは、その背後にある基礎知識のギャップを埋めるものです。</span></p>'
+  + '  <div class="sheet-eyebrow home-eyebrow"><span class="en">Self-Study Reference · Bilingual EN/JP</span><span class="jp">自習用リファレンス・英日バイリンガル</span></div>'
+  + '  <h2 class="home-title"><span class="en">AWS Senior Solutions Architect (Games) — Final Loop Prep</span><span class="jp">AWSシニアソリューションアーキテクト（ゲーム業界）― 最終面接対策</span></h2>'
+  + '  <p class="home-sub"><span class="en">This site is a self-study reference for one specific final-round technical whiteboard interview: designing a distributed build system for a game studio running 6–8 projects on 50 shared servers. That exact question came up in an earlier phone screen with the same interviewer, so it\'s treated here as the flagship topic (Part X) and covered in unusual depth. Everything else on this site is the supporting fundamentals behind it.</span>'
+  + '  <span class="jp">このサイトは、ある特定の最終面接（技術ホワイトボードラウンド）のための自習用リファレンスです。テーマは、6〜8プロジェクトが50台の共有サーバーを利用するゲームスタジオ向けの分散ビルドシステム設計です。この全く同じ質問が、以前の電話面接で同じ面接官から出されたため、ここでは旗艦トピック（Part X）として扱い、通常より深く掘り下げています。それ以外のパートは、その背後にある基礎知識を補うものです。</span></p>'
   + '</div>'
-  + '<div class="grid" style="margin-top:34px;">'
-  + '  <div class="card c-6" style="--accent:#E8A93B">'
-  + '    <h3><span class="en">Use the sidebar</span><span class="jp">サイドバーの使い方</span></h3>'
-  + '    <p><span class="en">Grouped by Part, colored by topic. The flagship Part X carries its own color per sheet, everything else is grey until it\'s built.</span><span class="jp">Partごとにグループ化し、トピックごとに色分けしています。旗艦であるPart Xは各シートごとに固有の色を持ち、それ以外は未作成の間はグレーで表示されます。</span></p>'
+  + '<div class="scroll-hint"><span class="en">▾&nbsp;&nbsp;WHAT THIS IS · HOW IT\'S ORGANIZED · HOW TO USE IT&nbsp;&nbsp;▾</span><span class="jp">▾&nbsp;&nbsp;このサイトについて・構成・使い方&nbsp;&nbsp;▾</span></div>'
+  + '<div class="grid" style="margin-top:22px;">'
+  + '  <div class="card c-7" style="--accent:#E8A93B">'
+  + '    <h3><span class="en">About this handbook</span><span class="jp">このハンドブックについて</span></h3>'
+  + '    <p><span class="en">Built from first principles, deliberately without naming AWS services, since the interview itself doesn\'t require an AWS-shaped answer, only sound reasoning. Each topic is written to be read cold by anyone: a plain-language definition first, then when to use it and when not to, then four deep modules with concrete worked examples, then likely follow-up questions.</span>'
+  + '    <span class="jp">AWSのサービス名を意図的に使わず、基礎概念から構成しています。面接自体がAWS前提の回答を要求しているわけではなく、筋の通った推論力が問われるためです。各トピックは、誰が初めて読んでも理解できるように書かれています。まず平易な定義、次に使うべき場合・見送るべき場合、続いて具体例付きの4つの詳細モジュール、最後に想定される追加質問という順序です。</span></p>'
   + '  </div>'
-  + '  <div class="card c-6" style="--accent:#2E7FC1">'
-  + '    <h3><span class="en">Track your progress</span><span class="jp">進捗の記録</span></h3>'
-  + '    <p><span class="en">The status button in the header cycles not started → studied → mastered for whatever sheet is open, and it\'s saved automatically.</span><span class="jp">ヘッダーのステータスボタンを押すと、開いているシートの状態が「未学習→学習済み→習得済み」と切り替わり、自動的に保存されます。</span></p>'
+  + '  <div class="card c-5" style="--accent:#2E7FC1">'
+  + '    <h3><span class="en">Why Part X comes first</span><span class="jp">Part Xを最優先にする理由</span></h3>'
+  + '    <p><span class="en">The same interviewer, Taro Hirose, is likely to sit in on the final loop. Interviewers who meet a candidate twice often deliberately revisit a topic to see how the answer has grown, so this one gets full flagship treatment rather than a quick pass.</span>'
+  + '    <span class="jp">最終面接には、同じ面接官であるヒロセ（Taro Hirose）氏が同席する可能性が高いです。候補者と2度面接する面接官は、回答がどれだけ深まったかを確認するために、あえて同じテーマを再び持ち出すことがよくあります。そのため、このテーマだけは簡易的にではなく、旗艦として本格的に扱っています。</span></p>'
+  + '  </div>'
+  + '  <div class="card c-6" style="--accent:#7A56C4">'
+  + '    <h3><span class="en">How the sidebar is organized</span><span class="jp">サイドバーの構成</span></h3>'
+  + '    <p><span class="en">Content is grouped by Part, matching a written table of contents. Part X, the flagship, sits at the top with a ★ badge, and each of its sheets carries its own distinct color on purpose: color-coding by topic makes it easier to recall which concept is which under interview pressure. Every other Part stays grey until it\'s actually written, an honest signal of what\'s finished, not a placeholder pretending to be content.</span>'
+  + '    <span class="jp">コンテンツはPartごとにグループ化されており、文書化された目次と対応しています。旗艦であるPart Xは★バッジ付きで最上部にあり、各シートには意図的に固有の色が割り当てられています。トピックごとに色分けすることで、面接本番の緊張下でもどの概念かを思い出しやすくなります。それ以外のPartは、実際に作成されるまでグレーのままです。これは未完成であることを正直に示すサインであり、コンテンツのふりをしたプレースホルダーではありません。</span></p>'
+  + '  </div>'
+  + '  <div class="card c-6" style="--accent:#2FA36B">'
+  + '    <h3><span class="en">Reading a sheet</span><span class="jp">各シートの読み方</span></h3>'
+  + '    <p><span class="en">Every built sheet follows the same order: a dashed "start here" box with a plain definition and when to use it, a diagram where one helps, four modules with a worked example and a one-line mental model each, then follow-up questions styled as expandable cards.</span>'
+  + '    <span class="jp">作成済みの各シートは同じ順序で構成されています。点線枠の「まずはここから」ボックス（平易な定義と使うべき場面）、役立つ場合の図解、具体例と一言の思考モデルを添えた4つのモジュール、そして開閉式カードの想定質問集の順です。</span></p>'
   + '  </div>'
   + '</div>'
-  + '<h3 style="margin-top:44px;font-size:20px;"><span class="en">The 7-day plan</span><span class="jp">7日間プラン</span></h3>'
+  + '<div class="grid" style="margin-top:20px;">'
+  + '  <div class="card c-12" style="--accent:#B23E8C">'
+  + '    <h3><span class="en">Controls</span><span class="jp">操作方法</span></h3>'
+  + '    <div class="ctrl-table">'
+  + [
+      ['○ ◐ ●', 'The status button in the header cycles Not Started → Studied → Mastered for whichever sheet is open, and saves automatically.', 'ヘッダーのステータスボタンは、開いているシートの状態を「未学習→学習済み→習得済み」の順に切り替え、自動的に保存されます。'],
+      ['🔍 / ', 'Click the header\'s Search button, or press the / key, to jump straight to any sheet by its English or Japanese title.', 'ヘッダーの検索ボタンをクリックするか、/キーを押すと、英語または日本語のタイトルで任意のシートに直接ジャンプできます。'],
+      ['EN ⇄ JP', 'The language button top-right swaps the entire page, including headings and diagrams, between English and Japanese.', '右上の言語ボタンで、見出しや図解を含むページ全体を英語⇄日本語に切り替えられます。'],
+      ['← →', 'The left/right arrow keys move to the previous or next sheet in reading order, useful for a straight top-to-bottom read.', '左右の矢印キーで、読み進める順序の前後のシートに移動できます。上から順に読む際に便利です。']
+    ].map(function(r){
+      return '<div class="ctrl-row"><span class="ctrl-key mono">'+r[0]+'</span><span class="ctrl-desc"><span class="en">'+r[1]+'</span><span class="jp">'+r[2]+'</span></span></div>';
+    }).join('')
+  + '    </div>'
+  + '  </div>'
+  + '</div>'
+  + '<div class="grid" style="margin-top:20px;">'
+  + '  <div class="card c-12" style="--accent:#8A95A0">'
+  + '    <h3><span class="en">Color legend — Part X, the flagship</span><span class="jp">色の凡例 ― 旗艦Part X</span></h3>'
+  + '    <p><span class="en">Each of the 9 flagship sheets keeps one color for its entire life, in the sidebar, its diagram, and its shadow. Full color means built and ready to read; a muted swatch below means the sheet is planned but not yet written.</span>'
+  + '    <span class="jp">旗艦の9枚のシートはそれぞれ、サイドバー・図解・影の色に至るまで、常に同じ色を持ちます。彩度の高い色は作成済みで読める状態、下の薄い色見本はまだ作成されていないことを示します。</span></p>'
+  + '    <div class="legend-grid">'
+  + COURSE[0].items.map(function(it){
+      var h = HUES[it.hue];
+      var muted = it.built ? '' : 'opacity:.4;';
+      return '<div class="legend-chip" style="'+muted+'border-color:'+h.d+'">'
+        + '<span class="legend-swatch" style="background:'+h.a+'"></span>'
+        + '<span><span class="legend-no mono">'+it.no+'</span><span class="legend-name en">'+it.en+'</span><span class="legend-name jp">'+it.jp+'</span></span>'
+        + '</div>';
+    }).join('')
+  + '    </div>'
+  + '  </div>'
+  + '</div>'
+  + '<h3 style="margin-top:44px;font-size:20px;"><span class="en">Personal study plan (supplementary)</span><span class="jp">個人の学習計画（補足）</span></h3>'
+  + '<p style="font-size:13.5px;color:var(--ink-soft);max-width:680px;"><span class="en">The 7-day schedule below is one candidate\'s own pacing plan ahead of a specific Aug 25 start date, kept here for reference, not part of the handbook\'s core structure.</span><span class="jp">以下の7日間スケジュールは、8月25日という特定の開始日に向けた、ある候補者個人のペース配分です。ハンドブックの中核構成の一部ではなく、参考として記載しています。</span></p>'
   + '<table class="day-table">'
   + '  <tr><th><span class="en">Day</span><span class="jp">日</span></th><th><span class="en">Focus</span><span class="jp">内容</span></th><th><span class="en">Status</span><span class="jp">状況</span></th></tr>'
   + '  <tr><td>1 · Aug 15</td><td><span class="en">Part X front half — problem framing, graph, caching, scheduling</span><span class="jp">Part X前半 ― 要件、グラフ、キャッシュ、スケジューリング</span></td><td class="done"><span class="en">Done</span><span class="jp">完了</span></td></tr>'
@@ -419,7 +481,7 @@ function homePage(){
   + '  <tr><td>6 · Aug 20</td><td><span class="en">Bridge sheet + condensed AWS reference + first live mock</span><span class="jp">実務接続シート・AWS要約・初回模擬面接</span></td><td>—</td></tr>'
   + '  <tr><td>7 · Aug 21</td><td><span class="en">Flashcard review + timed live mock #2 (spoken practice, not a page)</span><span class="jp">フラッシュカード復習・2回目模擬面接（口頭練習、ページなし）</span></td><td>—</td></tr>'
   + '</table>'
-  + '<p style="margin-top:18px;font-size:13.5px;color:var(--ink-soft);"><span class="en">Aug 22–24 stay open as slack before your first session on the 25th.</span><span class="jp">8月22〜24日は、25日の初回面接前の予備日として空けてあります。</span></p>';
+  + '<p style="margin-top:18px;font-size:13.5px;color:var(--ink-soft);"><span class="en">Aug 22–24 stay open as slack before the first session on the 25th.</span><span class="jp">8月22〜24日は、25日の初回面接前の予備日として空けてあります。</span></p>';
 }
 
 var PAGES = {
@@ -1070,9 +1132,21 @@ function renderSearch(){
   });
   box.innerHTML = html;
 }
+function flatOrder(){
+  var ids = ['home'];
+  COURSE.forEach(function(g){ g.items.forEach(function(it){ ids.push(it.id); }); });
+  return ids;
+}
 document.addEventListener('keydown', function(e){
   if(e.key==='Escape'){ closeSearch(); closeRail(); }
   if(e.key==='/' && document.activeElement.tagName!=='INPUT'){ e.preventDefault(); openSearch(); }
+  if((e.key==='ArrowRight' || e.key==='ArrowLeft') && document.activeElement.tagName!=='INPUT' && !document.getElementById('searchOv').classList.contains('open')){
+    var order = flatOrder();
+    var idx = order.indexOf(currentId);
+    if(idx===-1) return;
+    var nextIdx = e.key==='ArrowRight' ? idx+1 : idx-1;
+    if(nextIdx>=0 && nextIdx<order.length){ navigate(order[nextIdx]); }
+  }
 });
 
 /* ===================== INIT ===================== */
