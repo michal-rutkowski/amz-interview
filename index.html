@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Loop Prep — Distributed Build Systems &amp; Fundamentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6; --ink:#1B2430; --ink-soft:#4A5560; --white:#FFFFFF;
+    --railw:288px;
+    --slate:#8A95A0; --slate-dark:#4A5560; --slate-tint:#E4E9ED;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  html[data-lang="jp"] body{ font-family:'Noto Sans JP', sans-serif; }
+  .headline, h1, h2, h3{ font-family:'Space Grotesk', sans-serif; }
+  html[data-lang="jp"] .headline, html[data-lang="jp"] h1, html[data-lang="jp"] h2, html[data-lang="jp"] h3{ font-family:'Zen Kaku Gothic New', sans-serif; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .en{ display:inline; } .jp{ display:none; }
+  .en.block{ display:block; } .jp.block{ display:none; }
+  html[data-lang="jp"] .en{ display:none; }
+  html[data-lang="jp"] .jp{ display:inline; }
+  html[data-lang="jp"] .jp.block{ display:block; }
+
+  /* ===================== SHELL ===================== */
+  #app{ display:grid; grid-template-columns:var(--railw) minmax(0,1fr); min-height:100vh; }
+
+  .rail{
+    background:var(--ink); color:var(--paper);
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+    padding-bottom:48px; border-right:3px solid var(--ink);
+  }
+  .rail-head{ padding:22px 18px 16px; border-bottom:3px solid var(--paper); }
+  .rail-head .kicker{ font-size:10.5px; letter-spacing:.22em; color:#8E9AA6; font-weight:600; }
+  .rail-head h1{ font-size:21px; margin-top:8px; line-height:1.3; }
+  .rail-head .sub{ font-size:13px; color:#C8D0D8; margin-top:5px; font-family:'IBM Plex Sans',sans-serif; }
+  html[data-lang="jp"] .rail-head .sub{ font-family:'Noto Sans JP',sans-serif; }
+
+  .rail-home{
+    display:flex; align-items:center; gap:10px; width:100%;
+    background:none; border:none; color:var(--paper);
+    padding:14px 18px; font-size:14.5px; font-weight:700;
+    border-bottom:2px solid #3A4552; text-align:left;
+  }
+  .rail-home:hover, .rail-home.active{ background:#2C3641; }
+  .rail-home .dot{ width:22px; height:22px; display:grid; place-items:center; background:var(--paper); color:var(--ink); font-size:12px; font-weight:700; flex:none; }
+
+  .rail-group{ margin-top:14px; }
+  .rail-group-head{ display:flex; align-items:center; gap:9px; padding:0 18px 8px; }
+  .rail-group-head .badge{
+    width:22px; height:22px; display:grid; place-items:center; flex:none;
+    font-size:12px; font-weight:700; color:#fff; background:var(--g-hue,var(--slate));
+    text-shadow:0 1px 1px rgba(0,0,0,.35);
+  }
+  .rail-group-head .name{ font-size:13px; font-weight:700; letter-spacing:.02em; }
+  .rail-group-head .line{ flex:1; height:2px; background:var(--g-hue,var(--slate)); opacity:.5; }
+
+  .rail-item{
+    display:flex; align-items:center; gap:9px; width:100%;
+    background:none; border:none; color:var(--paper); text-align:left;
+    padding:8px 18px 8px 22px; font-size:13.5px;
+  }
+  .rail-item:hover{ background:#2C3641; }
+  .rail-item.active{ background:#2C3641; box-shadow:inset 3px 0 0 var(--it-hue,var(--slate)); }
+  .rail-item .no{ font-size:11px; font-family:'IBM Plex Mono',monospace; opacity:.7; flex:none; width:44px; }
+  .rail-item .label{ flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rail-item .day{ font-size:9.5px; font-family:'IBM Plex Mono',monospace; opacity:.55; flex:none; }
+  .rail-item .statusdot{
+    width:11px; height:11px; border-radius:50%; flex:none;
+    border:2px solid var(--it-hue,var(--slate)); background:transparent;
+  }
+  .rail-item .statusdot.s1{ background:var(--it-hue,var(--slate)); opacity:.5; }
+  .rail-item .statusdot.s2{ background:#2FA36B; border-color:#2FA36B; }
+
+  .rail-scrim{ display:none; }
+  .main{ min-width:0; }
+  .topbar{
+    position:sticky; top:0; z-index:40; display:flex; align-items:center; gap:10px;
+    padding:11px clamp(14px,3vw,30px); background:var(--ink); color:var(--paper);
+    border-bottom:3px solid var(--crumb-hue,var(--slate));
+  }
+  .hamburger{ display:none; background:none; border:2px solid var(--paper); color:var(--paper); width:38px; height:38px; align-items:center; justify-content:center; flex:none; }
+  .crumb{ flex:1; min-width:0; font-size:12px; letter-spacing:.08em; color:#C8D0D8; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .topbtn{
+    display:inline-flex; align-items:center; gap:7px; height:36px; padding:0 12px;
+    background:none; border:2px solid var(--paper); color:var(--paper); font-size:12.5px; font-weight:700; flex:none;
+  }
+  .topbtn .sdot{ width:10px; height:10px; border-radius:50%; border:2px solid currentColor; }
+  .topbtn .sdot.s1{ background:currentColor; opacity:.5; }
+  .topbtn .sdot.s2{ background:#2FA36B; border-color:#2FA36B; }
+
+  #content{ padding:56px clamp(20px,4vw,56px) 90px; max-width:920px; }
+
+  /* ===================== CONTENT ELEMENTS ===================== */
+  .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
+  .c-6{ grid-column:span 6; } .c-12{ grid-column:span 12; }
+  @media (max-width:720px){ .c-6{ grid-column:span 12; } }
+
+  .sheet-tag{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12.5px; display:inline-block; padding:2px 8px; margin-bottom:10px; border:2px solid var(--accent-dark,var(--ink)); color:var(--accent-dark,var(--ink)); }
+  .sheet-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; margin-bottom:14px; color:var(--accent-dark,var(--ink)); }
+  .sheet-eyebrow::before{ content:''; width:10px; height:10px; background:currentColor; display:inline-block; }
+  .sec-headline{ font-size:clamp(1.6rem,3.4vw,2.35rem); font-weight:700; line-height:1.16; max-width:680px; }
+  .sec-intro{ font-size:15.5px; color:var(--ink-soft); max-width:640px; margin-top:14px; }
+
+  .card{ background:var(--white); border:3px solid var(--ink); padding:24px; box-shadow:7px 7px 0 var(--accent,var(--ink)); transition:transform .15s, box-shadow .15s; }
+  .card:hover{ transform:translate(-3px,-3px); box-shadow:10px 10px 0 var(--accent,var(--ink)); }
+  .card h3{ font-size:17.5px; margin-bottom:8px; }
+  .card p{ font-size:14.5px; color:var(--ink-soft); }
+  @media (prefers-reduced-motion:reduce){ .card{ transition:none; } .card:hover{ transform:none; } }
+
+  .module{ background:var(--white); border:3px solid var(--ink); padding:26px 28px; margin-top:20px; box-shadow:7px 7px 0 var(--accent,var(--ink)); }
+  .module-num{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:700; letter-spacing:.14em; color:var(--accent-dark,var(--ink)); }
+  .module h3{ font-size:19px; margin-top:6px; margin-bottom:12px; }
+  .module p{ font-size:14.5px; color:var(--ink-soft); }
+  .module p + p{ margin-top:10px; }
+  .module-example{ margin-top:16px; background:var(--tint,var(--slate-tint)); border-left:5px solid var(--accent-dark,var(--ink)); padding:15px 18px; }
+  .module-example .ex-label{ font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); margin-bottom:7px; }
+  .module-example p{ font-size:13.5px; color:var(--ink); }
+  .module-model{ margin-top:13px; display:flex; align-items:baseline; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600; color:var(--accent-dark,var(--ink)); }
+  .module-model .mm-label{ opacity:.6; font-size:10px; letter-spacing:.1em; }
+
+  .say-out-loud{ margin-top:30px; background:var(--tint,var(--slate-tint)); border:3px solid var(--ink); border-left-width:9px; padding:22px 24px; }
+  .say-out-loud .mono{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); font-weight:700; }
+  .say-out-loud p{ font-family:'Space Grotesk',sans-serif; font-size:16px; margin-top:9px; font-style:italic; }
+  html[data-lang="jp"] .say-out-loud p{ font-family:'Zen Kaku Gothic New',sans-serif; font-style:normal; }
+
+  details.followup{ margin-top:14px; background:var(--white); border:3px solid var(--ink); padding:16px 20px; }
+  details.followup summary{ cursor:pointer; list-style:none; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; color:var(--accent-dark,var(--ink)); display:flex; align-items:center; gap:10px; }
+  details.followup summary::-webkit-details-marker{ display:none; }
+  details.followup summary::before{ content:'?'; width:20px; height:20px; border:2px solid var(--accent-dark,var(--ink)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+  details.followup[open] summary::before{ content:'–'; }
+  details.followup .fu-a{ margin-top:12px; padding-top:12px; border-top:2px dotted #C3C8BF; font-size:14px; color:var(--ink-soft); }
+
+  .diagram{ background:var(--white); border:3px solid var(--ink); box-shadow:7px 7px 0 var(--accent,var(--ink)); padding:16px; margin-top:30px; }
+  .diagram-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); margin-bottom:9px; font-weight:700; }
+
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+  .rail *:focus-visible{ outline-color:var(--paper); }
+
+  /* ===================== HOME PAGE ===================== */
+  .home-hero .eyebrow{ color:#E8A93B; }
+  .home-title{ font-size:clamp(2rem,4.6vw,3.1rem); font-weight:700; line-height:1.08; }
+  .home-sub{ font-size:16px; color:var(--ink-soft); margin-top:14px; max-width:620px; }
+  .day-table{ width:100%; border-collapse:collapse; margin-top:14px; font-size:13.5px; }
+  .day-table th, .day-table td{ border:2px solid var(--ink); padding:9px 12px; text-align:left; }
+  .day-table th{ background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; }
+  .day-table td.done{ color:#0F5C3B; font-weight:600; }
+
+  /* ===================== SEARCH OVERLAY ===================== */
+  .ov{ position:fixed; inset:0; background:rgba(16,22,29,.6); z-index:80; display:none; align-items:flex-start; justify-content:center; padding:9vh 20px; }
+  .ov.open{ display:flex; }
+  .ov-box{ width:100%; max-width:640px; background:var(--paper); border:3px solid var(--ink); box-shadow:12px 12px 0 rgba(16,22,29,.4); max-height:76vh; display:flex; flex-direction:column; overflow:hidden; }
+  .ov-input-row{ display:flex; align-items:center; gap:9px; padding:12px 14px; background:var(--ink); color:var(--paper); }
+  .ov-input-row input{ flex:1; min-width:0; border:none; background:none; font:700 16px/1 'IBM Plex Sans',sans-serif; color:var(--paper); outline:none; }
+  .ov-input-row button{ background:none; border:none; color:var(--paper); font-size:12px; font-family:'IBM Plex Mono',monospace; }
+  .ov-results{ overflow-y:auto; }
+  .ov-row{ display:flex; align-items:center; gap:10px; width:100%; background:none; border:none; border-bottom:2px solid #E4E9ED; padding:12px 16px; text-align:left; }
+  .ov-row:hover{ background:var(--slate-tint); }
+  .ov-row .rowdot{ width:9px; height:9px; border-radius:50%; background:var(--it-hue,var(--slate)); flex:none; }
+  .ov-row .rowgroup{ font-size:10.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.06em; }
+  .ov-empty{ padding:30px 18px; color:var(--ink-soft); font-size:14px; }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:900px){
+    #app{ grid-template-columns:1fr; }
+    .rail{ position:fixed; left:0; top:0; width:min(288px,84vw); transform:translateX(-100%); transition:transform .2s; z-index:70; }
+    .rail.open{ transform:translateX(0); }
+    .hamburger{ display:flex; }
+    .rail-scrim{ display:none; position:fixed; inset:0; background:rgba(16,22,29,.5); z-index:60; }
+    .rail-scrim.open{ display:block; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <nav class="rail" id="rail" aria-label="Course navigation">
+    <div class="rail-head">
+      <div class="kicker mono">AMAZON FINAL LOOP · AUG 25</div>
+      <h1><span class="en">Build Systems &amp; Fundamentals</span><span class="jp">分散ビルドシステムと基礎知識</span></h1>
+      <div class="sub"><span class="en">7-day prep · fundamentals-first, no AWS names required</span><span class="jp">7日間対策・AWSサービス名を使わない基礎重視の構成</span></div>
+    </div>
+    <button class="rail-home" data-id="home" onclick="navigate('home')">
+      <span class="dot">◆</span>
+      <span><span class="en">Home &amp; 7-Day Plan</span><span class="jp">ホーム・7日間プラン</span></span>
+    </button>
+    <div id="railGroups"></div>
+  </nav>
+
+  <div class="rail-scrim" id="railScrim" onclick="closeRail()"></div>
+
+  <div class="main">
+    <header class="topbar" id="topbar">
+      <button class="hamburger" aria-label="Open menu" onclick="openRail()">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <div class="crumb mono" id="crumb">HOME</div>
+      <button class="topbtn" id="statusBtn" onclick="cycleStatus()">
+        <span class="sdot" id="statusDot"></span>
+        <span id="statusLabel">—</span>
+      </button>
+      <button class="topbtn" onclick="toggleLang()"><span class="en">JP</span><span class="jp">EN</span></button>
+      <button class="topbtn" onclick="openSearch()" aria-label="Search sheets">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <span class="en">Search</span><span class="jp">検索</span>
+      </button>
+    </header>
+    <main id="content"></main>
+  </div>
+</div>
+
+<div class="ov" id="searchOv">
+  <div class="ov-box">
+    <div class="ov-input-row">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="searchInput" type="text" autocomplete="off" oninput="renderSearch()" placeholder="Search sheet titles…">
+      <button onclick="closeSearch()"><span class="en">ESC</span><span class="jp">閉じる</span></button>
+    </div>
+    <div class="ov-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script>
+/* ===================== DATA ===================== */
+var HUES = {
+  amber:{a:'#E8A93B',d:'#8A5A0A',t:'#FBEBC9'},
+  blue:{a:'#2E7FC1',d:'#0F4E82',t:'#DCEBF7'},
+  green:{a:'#2FA36B',d:'#0F5C3B',t:'#DBF0E2'},
+  teal:{a:'#1E9E96',d:'#0E5C56',t:'#D8F0EE'},
+  violet:{a:'#7A56C4',d:'#4A2E8A',t:'#E8E1F7'},
+  plum:{a:'#B23E8C',d:'#6E1F57',t:'#F5DFEE'},
+  rose:{a:'#D1476B',d:'#7A1E3A',t:'#F7DCE3'},
+  rust:{a:'#C0631A',d:'#7A3D0C',t:'#F5E2D0'},
+  crimson:{a:'#C0281F',d:'#7A1712',t:'#F5D9D6'},
+  slate:{a:'#8A95A0',d:'#4A5560',t:'#E4E9ED'}
+};
+
+var COURSE = [
+  { id:'g1', hue:'amber', enName:'Part X — Distributed Build Systems', jpName:'Part X ― 分散ビルドシステム', badge:'★', flagship:true, items:[
+    {id:'10-2', no:'10.2', en:'Foundations', jp:'土台', day:1, built:true, hue:'amber'},
+    {id:'10-3', no:'10.3', en:'The Graph', jp:'グラフ', day:1, built:true, hue:'blue'},
+    {id:'10-4', no:'10.4', en:'The Cache', jp:'キャッシュ', day:1, built:true, hue:'green'},
+    {id:'10-5', no:'10.5', en:'Multi-Tier Caching', jp:'多層キャッシュ', day:1, built:false, hue:'teal'},
+    {id:'10-6', no:'10.6', en:'Scheduling', jp:'スケジューリング', day:1, built:false, hue:'violet'},
+    {id:'10-7', no:'10.7', en:'Determinism', jp:'決定性', day:2, built:false, hue:'plum'},
+    {id:'10-89', no:'10.8–9', en:'Fault Tolerance & Observability', jp:'耐障害性と可観測性', day:2, built:false, hue:'rose'},
+    {id:'10-1011', no:'10.10–11', en:'Games-Specific & Capacity Math', jp:'ゲーム特有の事情と容量計算', day:2, built:false, hue:'rust'},
+    {id:'10-1315', no:'10.13/15', en:'Follow-Up Bank & Mock Dialogue', jp:'想定質問集と模擬対話', day:2, built:false, hue:'crimson'}
+  ]},
+  { id:'g2', hue:'slate', enName:'Part VII–VIII — Whiteboard Method', jpName:'Part VII〜VIII ― ホワイトボード面接法', badge:'7', items:[
+    {id:'7-1', no:'7.1', en:'Requirements-Gathering', jp:'要件のヒアリング', day:3, built:false},
+    {id:'7-3', no:'7.3', en:'The Design Arc', jp:'設計の流れ', day:3, built:false},
+    {id:'7-45', no:'7.4–5', en:'Narrating & Handling Unknowns', jp:'説明の仕方と未知の質問', day:3, built:false},
+    {id:'8-2', no:'8.2', en:'Scenario Bank Overview', jp:'想定シナリオ集', day:3, built:false}
+  ]},
+  { id:'g3', hue:'slate', enName:'Part I–III — Fundamentals', jpName:'Part I〜III ― 基礎知識', badge:'1', items:[
+    {id:'I-1', no:'I.1', en:'Client–Server, APIs & Statelessness', jp:'クライアント・サーバーとAPI', day:4, built:false},
+    {id:'I-2', no:'I.2', en:'Async, Queues & Service Boundaries', jp:'非同期処理とキュー', day:4, built:false},
+    {id:'II-1', no:'II.1', en:'Relational Model, ACID & Indexing', jp:'リレーショナルモデルとACID', day:4, built:false},
+    {id:'II-2', no:'II.2', en:'NoSQL, Replication & CAP', jp:'NoSQLとCAP定理', day:5, built:false},
+    {id:'III-1', no:'III.1', en:'Networking Basics & TCP vs UDP', jp:'ネットワークの基礎', day:5, built:false},
+    {id:'III-2', no:'III.2', en:'Scaling, Fault Tolerance & Consistency', jp:'スケーリングと整合性', day:5, built:false}
+  ]},
+  { id:'g4', hue:'slate', enName:'Part IX — Bridging Your Experience', jpName:'Part IX ― 実務経験との接続', badge:'9', items:[
+    {id:'IX-1', no:'IX', en:'Bridging Your Own Experience', jp:'実務経験との接続', day:6, built:false}
+  ]},
+  { id:'g5', hue:'slate', enName:'Part IV–VI — AWS Quick Reference', jpName:'Part IV〜VI ― AWSクイックリファレンス', badge:'4', items:[
+    {id:'IVVI-1', no:'IV–V', en:'AWS Services & Well-Architected', jp:'AWSサービスとWell-Architected', day:6, built:false},
+    {id:'IVVI-2', no:'VI', en:'Game Architecture Patterns', jp:'ゲーム業界アーキテクチャ', day:6, built:false}
+  ]}
+];
+
+var ITEM_INDEX = {};
+COURSE.forEach(function(g){ g.items.forEach(function(it){ it.group=g; ITEM_INDEX[it.id]=it; }); });
+
+var progress = {};
+var currentId = 'home';
+
+/* ===================== STORAGE ===================== */
+async function loadProgress(){
+  try{
+    if(window.storage){
+      var res = await window.storage.get('progress', false);
+      progress = res ? JSON.parse(res.value) : {};
+    }
+  }catch(e){ progress = {}; }
+}
+async function saveProgress(){
+  try{
+    if(window.storage){ await window.storage.set('progress', JSON.stringify(progress), false); }
+  }catch(e){ console.error('progress save failed', e); }
+}
+
+/* ===================== RENDER: SIDEBAR ===================== */
+function renderRail(){
+  var html = '';
+  COURSE.forEach(function(g){
+    var hue = HUES[g.hue];
+    html += '<div class="rail-group" style="--g-hue:'+hue.a+'">';
+    html += '<div class="rail-group-head"><span class="badge">'+g.badge+'</span>';
+    html += '<span class="name en">'+g.enName+'</span><span class="name jp">'+g.jpName+'</span>';
+    html += '<span class="line"></span></div>';
+    g.items.forEach(function(it){
+      var itHue = HUES[it.hue || g.hue];
+      var st = progress[it.id] || 0;
+      var dotClass = st===2 ? 'statusdot s2' : (st===1 ? 'statusdot s1' : 'statusdot');
+      html += '<button class="rail-item" style="--it-hue:'+itHue.a+'" data-id="'+it.id+'" onclick="navigate(\''+it.id+'\')">';
+      html += '<span class="no">'+it.no+'</span>';
+      html += '<span class="label en">'+it.en+'</span><span class="label jp">'+it.jp+'</span>';
+      html += '<span class="day">D'+it.day+'</span>';
+      html += '<span class="'+dotClass+'"></span>';
+      html += '</button>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('railGroups').innerHTML = html;
+  highlightActive();
+}
+
+function highlightActive(){
+  document.querySelectorAll('.rail-item, .rail-home').forEach(function(el){
+    el.classList.toggle('active', el.getAttribute('data-id')===currentId);
+  });
+}
+
+/* ===================== STATUS CYCLE ===================== */
+function cycleStatus(){
+  if(currentId==='home') return;
+  var cur = progress[currentId] || 0;
+  progress[currentId] = (cur+1) % 3;
+  saveProgress();
+  renderRail();
+  renderStatusBtn();
+}
+function renderStatusBtn(){
+  var btn = document.getElementById('statusBtn');
+  var item = ITEM_INDEX[currentId];
+  if(!item){ btn.style.display='none'; return; }
+  btn.style.display='inline-flex';
+  var st = progress[currentId] || 0;
+  var dot = document.getElementById('statusDot');
+  dot.className = 'sdot ' + (st===2?'s2':(st===1?'s1':''));
+  var labels_en = ['Not started','Studied','Mastered'];
+  var labels_jp = ['未学習','学習済み','習得済み'];
+  document.getElementById('statusLabel').innerHTML =
+    '<span class="en">'+labels_en[st]+'</span><span class="jp">'+labels_jp[st]+'</span>';
+}
+
+/* ===================== PAGE CONTENT ===================== */
+function styleFor(hueKey){
+  var h = HUES[hueKey] || HUES.slate;
+  return '--accent:'+h.a+';--accent-dark:'+h.d+';--tint:'+h.t+';';
+}
+
+function placeholderPage(item){
+  var h = styleFor(item.hue || item.group.hue);
+  return '<div style="'+h+'">'
+    + '<div class="sheet-tag mono">'+item.no+'</div>'
+    + '<div class="sheet-eyebrow"><span class="en">'+item.group.enName+'</span><span class="jp">'+item.group.jpName+'</span></div>'
+    + '<h2 class="sec-headline"><span class="en">'+item.en+'</span><span class="jp">'+item.jp+'</span></h2>'
+    + '<p class="sec-intro"><span class="en">This sheet hasn\'t been built yet, it\'s scheduled for Day '+item.day+' of the plan. Say the word and it gets built next.</span>'
+    + '<span class="jp">このシートはまだ作成されていません。プランでは Day '+item.day+' に予定されています。準備ができたらお知らせください。次に作成します。</span></p>'
+    + '</div>';
+}
+
+function homePage(){
+  return ''
+  + '<div class="home-hero">'
+  + '  <div class="sheet-eyebrow home-eyebrow"><span class="en">Amazon Final Loop · Aug 25 – Sep 2</span><span class="jp">Amazon 最終面接・8月25日〜9月2日</span></div>'
+  + '  <h2 class="home-title"><span class="en">Everything for the technical whiteboard round</span><span class="jp">技術ホワイトボード面接のための全体プラン</span></h2>'
+  + '  <p class="home-sub"><span class="en">Part X, distributed build systems, gets front-loaded because you were asked this exact question by Taro Hirose in your phone screen, and there\'s a real chance he brings it back to see how far your answer has grown. Everything else fills in the fundamentals gap behind it.</span>'
+  + '  <span class="jp">Part X（分散ビルドシステム）を最優先にしているのは、電話面接でヒロセ (Taro Hirose) 氏から全く同じ質問をされたためです。最終面接で再びこのテーマが出て、回答がどれだけ深まったかを確認される可能性があります。それ以外のパートは、その背後にある基礎知識のギャップを埋めるものです。</span></p>'
+  + '</div>'
+  + '<div class="grid" style="margin-top:34px;">'
+  + '  <div class="card c-6" style="--accent:#E8A93B">'
+  + '    <h3><span class="en">Use the sidebar</span><span class="jp">サイドバーの使い方</span></h3>'
+  + '    <p><span class="en">Grouped by Part, colored by topic. The flagship Part X carries its own color per sheet, everything else is grey until it\'s built.</span><span class="jp">Partごとにグループ化し、トピックごとに色分けしています。旗艦であるPart Xは各シートごとに固有の色を持ち、それ以外は未作成の間はグレーで表示されます。</span></p>'
+  + '  </div>'
+  + '  <div class="card c-6" style="--accent:#2E7FC1">'
+  + '    <h3><span class="en">Track your progress</span><span class="jp">進捗の記録</span></h3>'
+  + '    <p><span class="en">The status button in the header cycles not started → studied → mastered for whatever sheet is open, and it\'s saved automatically.</span><span class="jp">ヘッダーのステータスボタンを押すと、開いているシートの状態が「未学習→学習済み→習得済み」と切り替わり、自動的に保存されます。</span></p>'
+  + '  </div>'
+  + '</div>'
+  + '<h3 style="margin-top:44px;font-size:20px;"><span class="en">The 7-day plan</span><span class="jp">7日間プラン</span></h3>'
+  + '<table class="day-table">'
+  + '  <tr><th><span class="en">Day</span><span class="jp">日</span></th><th><span class="en">Focus</span><span class="jp">内容</span></th><th><span class="en">Status</span><span class="jp">状況</span></th></tr>'
+  + '  <tr><td>1 · Aug 15</td><td><span class="en">Part X front half — problem framing, graph, caching, scheduling</span><span class="jp">Part X前半 ― 要件、グラフ、キャッシュ、スケジューリング</span></td><td class="done"><span class="en">In progress</span><span class="jp">進行中</span></td></tr>'
+  + '  <tr><td>2 · Aug 16</td><td><span class="en">Part X back half — determinism, fault tolerance, follow-ups, mock dialogue</span><span class="jp">Part X後半 ― 決定性、耐障害性、想定質問、模擬対話</span></td><td>—</td></tr>'
+  + '  <tr><td>3 · Aug 17</td><td><span class="en">Whiteboard methodology + scenario bank</span><span class="jp">ホワイトボード面接法とシナリオ集</span></td><td>—</td></tr>'
+  + '  <tr><td>4 · Aug 18</td><td><span class="en">Backend fundamentals + relational databases</span><span class="jp">バックエンド基礎とリレーショナルDB</span></td><td>—</td></tr>'
+  + '  <tr><td>5 · Aug 19</td><td><span class="en">NoSQL/CAP + networking &amp; scaling</span><span class="jp">NoSQL・CAPとネットワーク・スケーリング</span></td><td>—</td></tr>'
+  + '  <tr><td>6 · Aug 20</td><td><span class="en">Bridge sheet + condensed AWS reference + first live mock</span><span class="jp">実務接続シート・AWS要約・初回模擬面接</span></td><td>—</td></tr>'
+  + '  <tr><td>7 · Aug 21</td><td><span class="en">Flashcard review + timed live mock #2 (spoken practice, not a page)</span><span class="jp">フラッシュカード復習・2回目模擬面接（口頭練習、ページなし）</span></td><td>—</td></tr>'
+  + '</table>'
+  + '<p style="margin-top:18px;font-size:13.5px;color:var(--ink-soft);"><span class="en">Aug 22–24 stay open as slack before your first session on the 25th.</span><span class="jp">8月22〜24日は、25日の初回面接前の予備日として空けてあります。</span></p>';
+}
+
+var PAGES = {
+  '10-2': function(){ return ''
+    + '<div style="'+styleFor('amber')+'">'
+    + '<div class="sheet-tag mono">SHEET 1 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.2 · Foundations</span><span class="jp">10.2・土台</span></div>'
+    + '<h2 class="sec-headline"><span class="en">State the requirements before you draw anything</span><span class="jp">何かを描き始める前に、要件を言葉にする</span></h2>'
+    + '<p class="sec-intro"><span class="en">Before any component gets named, say the constraints out loud. This single habit signals Dive Deep and Are Right, A Lot before you\'ve drawn a single box.</span>'
+    + '<span class="jp">どんなコンポーネント名も出す前に、まず制約条件を声に出して整理する。この一手間だけで、箱を一つも描かないうちからDive DeepとAre Right, A Lotのシグナルを送ることができる。</span></p>'
+    + '<div class="module" style="--accent:#E8A93B;--accent-dark:#8A5A0A;--tint:#FBEBC9">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Throughput vs. latency</span><span class="jp">スループット vs. レイテンシ</span></h3>'
+    + '<p><span class="en">These are two different optimization targets pulling in opposite directions. A programmer iterating on a single shader or gameplay script cares about latency: how fast can I see MY change reflected, ideally under a couple of minutes, or I lose flow. The nightly farm and QA care about throughput: how many total assets and platform packages can get through the pipeline before a fixed deadline, like 6am before the team arrives.</span>'
+    + '<span class="jp">この2つは異なる最適化目標であり、方向性が逆を向いている。1つのシェーダーやゲームプレイスクリプトを反復開発するプログラマーが気にするのはレイテンシである。自分の変更が反映される結果を、理想的には数分以内に確認できるかどうかで、それより遅いと作業の流れが途切れてしまう。一方、夜間ファームやQAが気にするのはスループットである。決まった締め切り、例えば朝6時までに、どれだけ多くのアセットとプラットフォームパッケージをパイプラインに通せるかである。</span></p>'
+    + '<p><span class="en">Route both kinds of work through one FIFO queue and you get the worst of both: a programmer\'s 30-second single-file build sits behind someone else\'s 6-hour platform packaging job, and iteration grinds to a halt. The fix isn\'t "make everything faster," it\'s separating them into different scheduling lanes with different priority rules, so a fast interactive lane always runs alongside or preempts the bulk lane.</span>'
+    + '<span class="jp">この2種類の作業を1本のFIFOキューに流すと、双方にとって最悪の結果になる。プログラマーの30秒で終わる単一ファイルのビルドが、他の誰かの6時間かかるプラットフォームパッケージングの後ろに並んでしまい、反復開発が完全に止まってしまう。解決策は「全体を高速化する」ことではなく、異なるスケジューリングレーンに分離し、優先度ルールを別に設定することである。インタラクティブレーンが常にバルクレーンより優先されるか、並行して実行されるようにする。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A solo change to Grass_Albedo.png should return a cache-verified build result in under 2 minutes on a dedicated interactive lane. That same night, a separate bulk lane is chewing through 40,000 assets across PS5 and Switch 2 targets, taking 5 hours end to end. Both are "correct" outcomes for the same farm, they\'re just not the same problem.</span>'
+    + '<span class="jp">Grass_Albedo.pngへの単独の変更は、専用のインタラクティブレーンで2分以内にキャッシュ検証済みのビルド結果を返すべきである。一方、同じ夜に別のバルクレーンではPS5とSwitch 2向けの4万個のアセットを処理しており、全体で5時間かかっている。どちらも同じファームにとって「正しい」結果だが、同じ種類の問題ではない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Interactive lane = espresso shot. Bulk lane = big batch brew. Don\'t serve them from the same machine.</span>'
+    + '<span class="jp">インタラクティブレーン＝エスプレッソ1杯。バルクレーン＝大量バッチ抽出。同じマシンから提供してはいけない。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8A93B;--accent-dark:#8A5A0A;--tint:#FBEBC9">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Heterogeneous job types</span><span class="jp">ジョブ特性の異質性</span></h3>'
+    + '<p><span class="en">Not all build jobs are the same shape of work. A shader permutation compile is CPU-bound, mostly single-threaded per job, light on memory, finishes in seconds. A texture cook, compressing a full mip chain into BC7 or ASTC, is CPU-and-memory heavy and benefits from multi-threading within the job itself. A full platform package step, assembling everything into a PS5 .pkg or a Switch NSP, is largely I/O-bound: reading gigabytes from cache and writing one large sequential archive, with the CPU mostly idle.</span>'
+    + '<span class="jp">すべてのビルドジョブが同じ形をしているわけではない。シェーダーのパーミュテーションコンパイルはCPUバウンドで、ジョブ単位ではほぼシングルスレッド、メモリも軽く、数秒で終わる。テクスチャクック（ミップチェーン全体をBC7やASTCに圧縮する処理）はCPUとメモリの両方を消費し、ジョブ内でのマルチスレッド化が有効である。フルプラットフォームパッケージ工程（PS5の.pkgやSwitchのNSPにまとめる処理）は主にI/Oバウンドであり、キャッシュから数ギガバイトを読み込み、1つの大きなシーケンシャルなアーカイブを書き出す間、CPUはほぼアイドル状態になる。</span></p>'
+    + '<p><span class="en">A scheduler that treats every job as "one job = one core, one slot" will starve the texture cook of the memory it needs, or tie up a whole worker on a package step that\'s actually waiting on disk, not compute. Job profiles need to inform placement, not just job count.</span>'
+    + '<span class="jp">すべてのジョブを「1ジョブ＝1コア、1スロット」として扱うスケジューラーは、テクスチャクックに必要なメモリを不足させたり、実際はディスク待ちで計算リソースを必要としないパッケージ工程にワーカー全体を占有させてしまう。ジョブ数だけでなく、ジョブの資源特性を配置判断に反映させる必要がある。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If a scheduler assigns a texture-cook job to a worker already running two other memory-heavy cook jobs, all three start swapping to disk and each one gets slower than if only one had run at a time, even though the CPU still shows headroom. Profiling real job resource footprints, not just counting jobs, is what prevents this.</span>'
+    + '<span class="jp">スケジューラーが、他に2つのメモリを多く使うクックジョブを実行中のワーカーにテクスチャクックジョブを割り当てると、3つ全てがディスクへのスワップを始め、CPUに余裕があるように見えても、1つずつ実行した場合より全体として遅くなる。ジョブ数だけでなく実際のリソース使用量をプロファイリングすることが、これを防ぐ。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Bin-packing by job shape, not by job count.</span><span class="jp">ジョブ数ではなく、ジョブの形状に基づいたビンパッキング。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8A93B;--accent-dark:#8A5A0A;--tint:#FBEBC9">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Multi-tenancy across projects</span><span class="jp">プロジェクト間のマルチテナンシー</span></h3>'
+    + '<p><span class="en">With 6–8 projects sharing a fixed pool of 50 workers, resource contention isn\'t an edge case, it\'s the default state of the system. Without an explicit fairness policy, whichever project happens to submit the most jobs at any given moment effectively owns the farm.</span>'
+    + '<span class="jp">6〜8プロジェクトが50台という固定数のワーカーを共有する場合、リソースの奪い合いは例外ではなく、システムの既定状態である。明示的な公平性ポリシーがなければ、ある瞬間に最も多くのジョブを投入したプロジェクトが事実上ファーム全体を占有してしまう。</span></p>'
+    + '<p><span class="en">Fair-share scheduling addresses this directly: each project gets either a guaranteed minimum allocation, say 4–6 workers reserved, or a weighted share of the remaining pool based on priority or backlog size, so no single project\'s crunch week can starve the others\' day-to-day iteration.</span>'
+    + '<span class="jp">公平配分スケジューリングはこれに直接対応する。各プロジェクトに保証された最低割り当て（例えば4〜6台を確保）を与えるか、優先度やバックログ量に基づいて残りのプールを重み付けして配分する。これにより、特定のプロジェクトの繁忙期が他プロジェクトの日常的な反復開発を飢餓状態にすることを防げる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">With 50 workers and 7 active projects, a naive average is about 7 workers each. If Project A enters a milestone crunch and floods the queue with 200 jobs overnight, a plain FIFO queue means Project B\'s single one-line hotfix build sits behind all 200 of Project A\'s jobs the next morning. A fair-share policy, guaranteeing each project at least 4 workers regardless of queue depth, keeps Project B\'s hotfix moving even while Project A is at full throttle.</span>'
+    + '<span class="jp">50台のワーカーと7つの稼働プロジェクトがあるとすると、単純平均では1プロジェクトあたり約7台になる。もしプロジェクトAがマイルストーン前の繁忙期に入り、一晩で200件のジョブをキューに投入した場合、単純なFIFOキューでは、翌朝プロジェクトBの1行だけの緊急修正ビルドが、プロジェクトAの200件全ての後ろに並んでしまう。公平配分ポリシーにより、キューの深さに関わらず各プロジェクトに最低4台を保証すれば、プロジェクトAがフル稼働している間もプロジェクトBの緊急修正は動き続ける。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Public transit lanes, not a single unmanaged highway.</span><span class="jp">管理されていない1本のハイウェイではなく、公共交通の専用レーン。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8A93B;--accent-dark:#8A5A0A;--tint:#FBEBC9">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Access isolation between clients</span><span class="jp">クライアント間のアクセス分離</span></h3>'
+    + '<p><span class="en">At a studio running simultaneous client engagements, not just internal teams, one client\'s build data, source, and even build logs must never be visible to another client\'s project. This is genuinely different from internal multi-tenancy: it\'s not about fairness, it\'s about contractual and legal separation.</span>'
+    + '<span class="jp">社内チームだけでなく複数クライアントの案件を同時に抱えるスタジオでは、あるクライアントのビルドデータ、ソース、さらにはビルドログさえも、別のクライアントの案件から一切見えないようにする必要がある。これは社内のマルチテナンシーとは本質的に異なる制約であり、公平性の問題ではなく、契約上・法律上の分離の問題である。</span></p>'
+    + '<p><span class="en">In practice this means separate storage namespaces or access-controlled prefixes per client, separate credentials, and audit logging on cross-boundary access attempts, enforced structurally, not just by policy or trust.</span>'
+    + '<span class="jp">実務上は、クライアントごとに別々のストレージ名前空間やアクセス制御されたプレフィックス、別々の認証情報、そして境界を越えるアクセス試行の監査ログが必要になる。これはポリシーや信頼ではなく、構造として強制されるべきものである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A studio running simultaneous engagements for multiple external clients, each with their own NDA and IP, needs every client\'s cache namespace, source checkout, and build logs to be structurally invisible to every other client\'s project, enforced by separate storage prefixes and access controls, not just internal policy.</span>'
+    + '<span class="jp">複数の外部クライアントの案件を同時に抱えるスタジオでは、それぞれのクライアントが独自のNDAと知的財産を持つため、各クライアントのキャッシュ名前空間、ソースのチェックアウト、ビルドログさえも、別々のストレージプレフィックスとアクセス制御によって、他のクライアントの案件から構造的に見えないようにする必要がある。単なる社内ポリシーではなく。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Multi-tenant SaaS security thinking, applied to a build farm.</span><span class="jp">マルチテナントSaaSのセキュリティ思考を、ビルドファームに応用する。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">What if a project\'s true peak need is more than its guaranteed minimum?</span><span class="jp">あるプロジェクトの実際のピーク需要が、保証された最低割り当てを超えた場合はどうするのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">The guaranteed minimum is a floor, not a ceiling. Unused capacity from underutilized projects flows into a shared pool allocated by priority or backlog size, so guarantees don\'t waste idle capacity, they just prevent any one project from being starved below a baseline.</span>'
+    + '<span class="jp">保証された最低割り当ては下限であり、上限ではない。使われていないプロジェクトの余剰キャパシティは、優先度やバックログ量に基づいて配分される共有プールに流れ込む。保証があってもアイドルキャパシティが無駄になることはなく、あるプロジェクトが最低基準を下回って飢餓状態になることを防ぐだけである。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"Before I design anything, here are the constraints I\'m assuming: mixed job types with different resource profiles, six to eight tenants that need fair access to fifty workers, and data isolation between at least some of those tenants."</span>'
+    + '<span class="jp">「設計を始める前に、前提とする制約を整理させてください。リソース特性の異なる複数のジョブタイプ、50台のワーカーへの公平なアクセスを必要とする6〜8のテナント、そして少なくとも一部のテナント間でのデータ分離です。」</span></p></div>'
+    + '</div>';
+  },
+  '10-3': function(){ return ''
+    + '<div style="'+styleFor('blue')+'">'
+    + '<div class="sheet-tag mono">SHEET 2 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.3 · The Dependency Graph</span><span class="jp">10.3・依存関係グラフ</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Know exactly what depends on what</span><span class="jp">何が何に依存しているかを正確に把握する</span></h2>'
+    + '<p class="sec-intro"><span class="en">The dependency graph (DAG) is the single most important structural decision in the whole system.</span>'
+    + '<span class="jp">依存関係グラフ(DAG)は、システム全体における最も重要な構造上の意思決定である。</span></p>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">A minimal build DAG</span><span class="jp">最小構成のビルドDAG</span></div>'
+    + '<svg viewBox="0 0 760 220" width="100%" height="auto" role="img" aria-label="Dependency graph diagram">'
+    + '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0F4E82"/></marker></defs>'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="12" font-weight="700">'
+    + '<rect x="20" y="90" width="120" height="42" fill="#DCEBF7" stroke="#1B2430" stroke-width="3"/><text x="80" y="116" text-anchor="middle" fill="#1B2430">source.cpp</text>'
+    + '<rect x="220" y="20" width="120" height="42" fill="#FFFFFF" stroke="#1B2430" stroke-width="3"/><text x="280" y="46" text-anchor="middle" fill="#1B2430">compile A</text>'
+    + '<rect x="220" y="158" width="120" height="42" fill="#FFFFFF" stroke="#1B2430" stroke-width="3"/><text x="280" y="184" text-anchor="middle" fill="#1B2430">compile B</text>'
+    + '<rect x="420" y="90" width="120" height="42" fill="#DCEBF7" stroke="#1B2430" stroke-width="3"/><text x="480" y="116" text-anchor="middle" fill="#1B2430">link</text>'
+    + '<rect x="20" y="10" width="140" height="42" fill="#EDF0F3" stroke="#1B2430" stroke-width="3" stroke-dasharray="5,4"/><text x="90" y="36" text-anchor="middle" fill="#4A5560">texture.png</text>'
+    + '<rect x="620" y="90" width="120" height="42" fill="#0F4E82" stroke="#1B2430" stroke-width="3"/><text x="680" y="116" text-anchor="middle" fill="#FFFFFF">package</text>'
+    + '<rect x="420" y="20" width="120" height="42" fill="#EDF0F3" stroke="#1B2430" stroke-width="3" stroke-dasharray="5,4"/><text x="480" y="46" text-anchor="middle" fill="#4A5560">cook</text>'
+    + '</g>'
+    + '<g stroke="#0F4E82" stroke-width="2.5" fill="none" marker-end="url(#arrow)">'
+    + '<path d="M140,100 L214,52"/><path d="M140,122 L214,178"/><path d="M90,52 L410,42"/><path d="M340,41 L534,101"/><path d="M340,179 L534,113"/><path d="M540,32 L614,101"/><path d="M540,111 L614,111"/>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#2E7FC1;--accent-dark:#0F4E82;--tint:#DCEBF7">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Built from source-control diffs</span><span class="jp">ソース管理の差分から構築する</span></h3>'
+    + '<p><span class="en">Change detection works by comparing two points in version-control history, typically the last successfully built changelist versus the current one, and producing an exact list of files that differ. That file list is the only input the rest of the system needs, everything downstream is derived from it.</span>'
+    + '<span class="jp">変更検知は、バージョン管理履歴上の2時点、通常は「最後にビルドが成功したチェンジリスト」と「現在のチェンジリスト」を比較し、差分となったファイルの正確なリストを生成する処理である。そのファイルリストだけが、以降の処理すべてに必要な唯一の入力となる。</span></p>'
+    + '<p><span class="en">Each changed file maps to one or more graph nodes. A single texture file might map to one texture-cook node directly, but also indirectly mark every material and level that references it as needing re-evaluation, even though those files themselves didn\'t change.</span>'
+    + '<span class="jp">変更された各ファイルは、対応する1つまたは複数のグラフノードにマッピングされる。1つのテクスチャファイルは、それ自体のテクスチャクックノードに直接マッピングされるだけでなく、そのテクスチャを参照するすべてのマテリアルとレベルにも、それら自体は変更されていなくても再評価が必要であるという印を付ける。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Changelist 48213 touches three files: PlayerController.cpp, Grass_Albedo.png, and Level_Forest.umap. PlayerController.cpp marks the GameplayModule compile target dirty. Grass_Albedo.png marks its own texture-cook node dirty, and also marks every material and level node that references that texture as needing re-evaluation, even though Level_Forest.umap is already separately dirty from its own direct edit.</span>'
+    + '<span class="jp">チェンジリスト48213は3つのファイル、PlayerController.cpp、Grass_Albedo.png、Level_Forest.umapに触れている。PlayerController.cppはGameplayModuleコンパイルターゲットを「汚れた」状態にする。Grass_Albedo.pngは自身のテクスチャクックノードを「汚れた」状態にし、さらにそのテクスチャを参照するすべてのマテリアルとレベルノードにも再評価が必要な印を付ける。Level_Forest.umap自体はすでに直接の編集により別途「汚れた」状態になっているにもかかわらず。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2E7FC1;--accent-dark:#0F4E82;--tint:#DCEBF7">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Invalidation and the critical path</span><span class="jp">無効化とクリティカルパス</span></h3>'
+    + '<p><span class="en">A correct graph doesn\'t just tell you what changed, it tells you exactly which downstream targets are invalidated, no more and no less. Over-invalidating wastes farm capacity; under-invalidating produces incorrect builds.</span>'
+    + '<span class="jp">正しいグラフは、何が変更されたかを示すだけでなく、その変更によってどの下流ターゲットが無効化されるかを、過不足なく正確に示す。過剰な無効化（実際には依存していないものまで再ビルドすること）はファームの処理能力を無駄にし、不足した無効化は不正確なビルドを生む。</span></p>'
+    + '<p><span class="en">The critical path is the longest chain of dependent work for a given changelist, and it sets a hard floor on wall-clock time no matter how many workers you have. Scheduling should prioritize it first, even with idle workers elsewhere, because delaying it delays everything that depends on it.</span>'
+    + '<span class="jp">クリティカルパスとは、あるチェンジリストにおけるグラフ内で最も長い依存連鎖であり、ワーカーの台数に関わらず、実時間の下限を決定する。他のワーカーが空いていても、クリティカルパスを最優先でスケジューリングすべきである。それを遅らせることは、それに依存するすべてを遅らせることになるためである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Compiling the core engine takes 40 minutes, and every one of 12 downstream game-module compiles (5–10 minutes each) can\'t start until it finishes, while a completely unrelated texture-cook pipeline takes 15 minutes total. Even with 50 idle workers, the wall-clock floor is roughly 40 plus 10 minutes, about 50 minutes, not 15. Running the 15-minute job first because it was queued first doesn\'t change that floor, but deprioritizing the 40-minute engine compile behind smaller unrelated jobs would actively make it worse.</span>'
+    + '<span class="jp">コアエンジンのコンパイルに40分かかり、下流の12個のゲームモジュールコンパイル（それぞれ5〜10分）はすべて、それが終わるまで開始できないとする。一方、全く無関係なテクスチャクックパイプラインは合計15分で終わる。50台のワーカーが空いていても、このチェンジリストの実時間の下限は約40分＋10分、およそ50分であり、15分ではない。たまたま先にキューに入っていたからといって15分のジョブを先に実行してもこの下限は変わらないが、40分のエンジンコンパイルを無関係な小さなジョブの後ろに回してしまうと、状況はむしろ悪化する。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2E7FC1;--accent-dark:#0F4E82;--tint:#DCEBF7">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Code graph vs. content graph</span><span class="jp">コードグラフ vs. コンテンツグラフ</span></h3>'
+    + '<p><span class="en">Games maintain two structurally different graphs, not one. The code graph covers compilation units and linking, similar in shape to a traditional software build. The content graph covers textures, meshes, levels, shaders, and localization, and in most game pipelines it\'s substantially larger and dominated by I/O rather than CPU time.</span>'
+    + '<span class="jp">ゲームは1つではなく、構造的に異なる2つのグラフを保持している。コードグラフはコンパイル単位とリンクを扱い、従来のソフトウェアビルドと似た形をしている。コンテンツグラフはテクスチャ、メッシュ、レベル、シェーダー、ローカライズを扱い、多くのゲームパイプラインでは、こちらの方が大幅に規模が大きく、CPU時間よりもI/Oが支配的である。</span></p>'
+    + '<p><span class="en">This split matters for scheduling and caching strategy: the code graph benefits from classic build-system techniques like parallel compilation and incremental linking, while the content graph benefits more from aggressive caching and data-locality-aware placement, since the bottleneck is moving bytes, not computing them.</span>'
+    + '<span class="jp">この違いはスケジューリングとキャッシュ戦略の両方に影響する。コードグラフは従来的なビルドシステムの手法（並列コンパイル、インクリメンタルリンク）から恩恵を受けるが、コンテンツグラフはより積極的なキャッシュとデータ局所性を考慮した配置から恩恵を受ける。ボトルネックが計算ではなくバイトの移動だからである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">In an open-world level built on an engine like Hedgehog Engine 2, the content graph for a single level might include a few thousand texture nodes and several hundred mesh nodes, versus a few hundred compilation units in the code graph for the same build. The content graph isn\'t just bigger, it behaves differently: most of its wall-clock time is spent reading and writing data, not computing it.</span>'
+    + '<span class="jp">Hedgehog Engine 2のようなエンジンで構築されたオープンワールドレベルでは、1つのレベルのコンテンツグラフに数千個のテクスチャノードと数百個のメッシュノードが含まれる一方、同じビルド全体のコードグラフのコンパイル単位は数百個程度である。コンテンツグラフは単に大きいだけでなく、振る舞いも異なる。その実時間のほとんどはデータの読み書きに費やされ、計算には費やされない。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2E7FC1;--accent-dark:#0F4E82;--tint:#DCEBF7">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">The asset / build metadata registry</span><span class="jp">アセット・ビルドメタデータレジストリ</span></h3>'
+    + '<p><span class="en">Without a registry, answering "is this texture stale for the PS5 build" means walking the graph, checking every node that could reference it, and comparing hashes along the way. At scale, across 6–8 projects and potentially tens of thousands of assets, that\'s expensive to repeat constantly.</span>'
+    + '<span class="jp">レジストリがなければ、「このテクスチャはPS5ビルドにとって古いか」という問いに答えるには、グラフを辿り、それを参照する可能性のあるすべてのノードを確認し、その過程でハッシュを比較する必要がある。6〜8プロジェクト、数万個規模のアセットという規模では、これを常時繰り返すのはコストが高い。</span></p>'
+    + '<p><span class="en">A registry turns that into a single indexed lookup: asset ID maps directly to its current content hash, its list of dependents, and its per-platform cook status. It also becomes the natural place to detect non-determinism, since it\'s where you\'d notice the same input hash mapping to two different recorded output hashes over time.</span>'
+    + '<span class="jp">レジストリはこれを単一のインデックス検索に変える。アセットIDが、現在のコンテンツハッシュ、依存元のリスト、プラットフォームごとのクック状況に直接マッピングされる。また、同じ入力ハッシュが時間とともに2つの異なる出力ハッシュに対応していることに気づける場所でもあり、非決定性を検知する自然な場所にもなる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A registry entry for Grass_Albedo.png might store its asset ID, its current content hash, a list of the 40 levels and materials that depend on it, and separate cook-status flags for PS5 and Switch 2. Checking staleness becomes one lookup instead of a graph walk touching potentially thousands of nodes.</span>'
+    + '<span class="jp">Grass_Albedo.pngのレジストリエントリには、アセットID、現在のコンテンツハッシュ、それに依存する40個のレベルとマテリアルのリスト、そしてPS5とSwitch 2それぞれのクック状況フラグが保存される。古さの確認は、数千ノードに及ぶ可能性のあるグラフの走査ではなく、1回の検索になる。</span></p></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">Why not just walk the whole graph every time?</span><span class="jp">なぜ毎回グラフ全体を辿らないのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">At 6–8 projects and thousands of assets, a full graph walk is exactly the avoidable I/O cost that I/O-bound game builds punish hardest. The registry turns that into a near-instant lookup.</span>'
+    + '<span class="jp">6〜8プロジェクト・数千アセットの規模では、グラフ全体を毎回辿ることはI/Oが支配的なゲームビルドで最も避けるべきコストである。レジストリがあればほぼ即時のルックアップに置き換えられる。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">What happens if the registry itself gets out of sync with the actual graph?</span><span class="jp">レジストリ自体が実際のグラフとずれてしまった場合はどうするのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">That\'s a real failure mode worth naming proactively: the registry is a cache of graph state, not the source of truth, the graph derived from source control is. Any registry entry that disagrees with a fresh graph walk should be treated as a bug to reconcile, not something to silently trust, with a sample validated periodically against ground truth.</span>'
+    + '<span class="jp">これは実際に起こりうる障害モードであり、自ら先に言及しておく価値がある。レジストリはグラフ状態のキャッシュであって、信頼できる情報源そのものではない。信頼できる情報源はソース管理から導出されるグラフである。最新のグラフ走査と食い違うレジストリエントリは、黙って信頼するのではなく、修正すべきバグとして扱うべきであり、一定のサンプルを定期的に正しい状態と照合して検証する必要がある。</span></div></details>'
+    + '</div>';
+  },
+  '10-4': function(){ return ''
+    + '<div style="'+styleFor('green')+'">'
+    + '<div class="sheet-tag mono">SHEET 3 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.4 · Content-Addressed Caching</span><span class="jp">10.4・コンテンツアドレス方式のキャッシュ</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Never redo identical work, anywhere in the farm</span><span class="jp">同一の作業は、ファーム内のどこであっても二度と行わない</span></h2>'
+    + '<p class="sec-intro"><span class="en">The single biggest lever for 6–8 related projects. Get the cache key right, and identical work never gets redone.</span>'
+    + '<span class="jp">関連し合う6〜8プロジェクトにとって最大の改善レバー。キャッシュキーの設計さえ正しければ、同一の作業は二度と繰り返されない。</span></p>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">Content-addressed lookup</span><span class="jp">コンテンツアドレス方式のルックアップ</span></div>'
+    + '<svg viewBox="0 0 760 170" width="100%" height="auto" role="img" aria-label="Content-addressed caching flow diagram">'
+    + '<defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0F5C3B"/></marker></defs>'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="700">'
+    + '<rect x="10" y="64" width="150" height="46" fill="#DBF0E2" stroke="#1B2430" stroke-width="3"/><text x="85" y="83" text-anchor="middle" fill="#1B2430">source+flags+</text><text x="85" y="98" text-anchor="middle" fill="#1B2430">toolchain+env</text>'
+    + '<circle cx="260" cy="87" r="34" fill="#0F5C3B" stroke="#1B2430" stroke-width="3"/><text x="260" y="93" text-anchor="middle" fill="#FFFFFF" font-size="16">H()</text>'
+    + '<rect x="360" y="64" width="140" height="46" fill="#FFFFFF" stroke="#1B2430" stroke-width="3"/><text x="430" y="90" text-anchor="middle" fill="#1B2430">cache lookup</text>'
+    + '<rect x="580" y="10" width="160" height="44" fill="#2FA36B" stroke="#1B2430" stroke-width="3"/><text x="660" y="37" text-anchor="middle" fill="#FFFFFF">HIT → reuse output</text>'
+    + '<rect x="580" y="118" width="160" height="44" fill="#EDF0F3" stroke="#1B2430" stroke-width="3" stroke-dasharray="5,4"/><text x="660" y="145" text-anchor="middle" fill="#4A5560">MISS → build + store</text>'
+    + '</g>'
+    + '<g stroke="#0F5C3B" stroke-width="2.5" fill="none" marker-end="url(#arrow2)">'
+    + '<path d="M160,87 L222,87"/><path d="M294,87 L356,87"/><path d="M500,80 L574,42"/><path d="M500,94 L574,132"/>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#2FA36B;--accent-dark:#0F5C3B;--tint:#DBF0E2">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">What actually gets hashed</span><span class="jp">実際にハッシュ化される対象</span></h3>'
+    + '<p><span class="en">The cache key has to be a hash of every input that could affect the output: the source file\'s bytes, the exact compiler or cook flags used, the toolchain version, the target platform, and any environment variable that could change the result. Critically, the key is never the target\'s name or path, only what fed into producing it.</span>'
+    + '<span class="jp">キャッシュキーは、出力に影響を与えうるすべての入力、ソースファイルのバイト列、使用したコンパイル/クックフラグの正確な内容、ツールチェーンのバージョン、対象プラットフォーム、結果を左右しうる環境変数のハッシュ値でなければならない。重要なのは、キーが決してターゲットの名前やパスではなく、それを生成するために投入されたものだけである点である。</span></p>'
+    + '<p><span class="en">This is what makes cross-project reuse possible without any special-casing: if Project A and Project B both compile the exact same shared-engine header with identical flags and toolchain, the hash matches automatically. The system doesn\'t need to know these are two different projects, it only needs the hash to match.</span>'
+    + '<span class="jp">これにより、特別な処理なしにプロジェクト間の再利用が可能になる。もしプロジェクトAとプロジェクトBが、共有エンジンの全く同じヘッダーを同一のフラグ・ツールチェーンでコンパイルすれば、ハッシュは自動的に一致する。システムはこれらが異なる2つのプロジェクトであることを知る必要すらなく、ハッシュが一致することだけを必要とする。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">cache_key = hash(source_bytes + compiler_flags + toolchain_version + target_platform + relevant_env_vars). If a shared-engine header is compiled identically by two different consumers of that engine, that single compile\'s result gets reused by both, with zero explicit coordination between them.</span>'
+    + '<span class="jp">cache_key = hash(ソースバイト列 + コンパイルフラグ + ツールチェーンバージョン + 対象プラットフォーム + 関連する環境変数)。共有エンジンの同じヘッダーが2つの異なる利用元によって同一の条件でコンパイルされた場合、その1回のコンパイル結果が両方に再利用され、両者の間に明示的な連携は一切必要ない。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2FA36B;--accent-dark:#0F5C3B;--tint:#DBF0E2">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Why this beats timestamps</span><span class="jp">タイムスタンプ方式より優れている理由</span></h3>'
+    + '<p><span class="en">Timestamp-based invalidation assumes a file\'s modification time reliably reflects whether its content changed. That assumption breaks constantly in real studio workflows: a fresh checkout, a full sync onto a new machine, or just touching a file without editing it all produce a new timestamp on byte-identical content.</span>'
+    + '<span class="jp">タイムスタンプによる無効化判定は、ファイルの更新日時が内容の変更を正しく反映しているという前提に依存する。この前提は実際のスタジオのワークフローでは頻繁に崩れる。新規チェックアウト、新しいマシンへのフルシンク、あるいは内容を変えずにファイルに触れただけでも、バイト単位で同一の内容に対して新しいタイムスタンプが生成されてしまう。</span></p>'
+    + '<p><span class="en">Content hashing sidesteps this entirely by only caring about the actual bytes. It\'s slightly more expensive to compute per file, but it never produces a false invalidation, which matters far more at scale than the small per-file hashing cost.</span>'
+    + '<span class="jp">コンテンツハッシュ方式は、実際のバイト列だけを見ることでこの問題を完全に回避する。ファイルごとの計算コストはわずかに増えるが、誤った無効化を決して起こさない。この点は、大規模になるほど、わずかなハッシュ計算コストよりもはるかに重要になる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A programmer does a full fresh Perforce sync onto a replacement laptop. Every synced file gets a brand-new OS-level timestamp, even though the content is byte-identical to what\'s already cached from their old machine. A timestamp-based system sees "all new files" and triggers a full rebuild, potentially hours long. A content-hash-based system hashes the bytes, finds the existing cache entries immediately, and the sync-triggered build should be nearly instant.</span>'
+    + '<span class="jp">プログラマーが交換用の新しいノートPCにPerforceのフルシンクを行う。同期された全ファイルにOSレベルの新しいタイムスタンプが付与されるが、内容は古いマシンのキャッシュ済みファイルとバイト単位で同一である。タイムスタンプ方式のシステムは「全部新しいファイル」と判断し、数時間かかりうるフルビルドを引き起こす。コンテンツハッシュ方式のシステムはバイト列をハッシュ化し、既存のキャッシュエントリを即座に見つけるため、シンクをきっかけとしたビルドはほぼ瞬時に終わるはずである。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2FA36B;--accent-dark:#0F5C3B;--tint:#DBF0E2">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Correctness and verification</span><span class="jp">正確性と検証</span></h3>'
+    + '<p><span class="en">A cache is only trustworthy if identical inputs always produce byte-identical outputs. When that guarantee silently breaks, non-determinism, embedded timestamps, floating-point drift across hardware, uninitialized memory, the cache doesn\'t fail loudly. It just quietly stops helping, since every "identical" input now hashes its output differently and looks like a fresh miss every time.</span>'
+    + '<span class="jp">キャッシュは、同一の入力から常にバイト単位で同一の出力が得られる場合にのみ信頼できる。この保証が静かに崩れると、非決定性、埋め込まれたタイムスタンプ、ハードウェア間の浮動小数点誤差、未初期化メモリの読み取りなど、キャッシュは派手に失敗するわけではない。ただ静かに役に立たなくなる。すべての「同一」入力が毎回異なる出力ハッシュを生成し、常に新規ミスのように見えてしまうためである。</span></p>'
+    + '<p><span class="en">Verification means periodically rebuilding from the exact same input twice and diffing the resulting output hashes. Any mismatch is treated as a build correctness bug to fix in the toolchain, not something to work around in the cache layer.</span>'
+    + '<span class="jp">検証とは、全く同じ入力から2回ビルドし、得られた出力ハッシュを比較することを定期的に行うことである。不一致が見つかった場合は、キャッシュ層で回避すべき問題としてではなく、ツールチェーン側で修正すべきビルドの正確性のバグとして扱う。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A shader compiler that embeds a wall-clock compile timestamp string into its output binary for debug purposes will produce a different output hash every run, even from byte-identical source. That\'s an invisible cache-hit-rate killer until someone actually diffs two "identical" builds, notices the outputs don\'t match, then patches the toolchain to strip or pin the timestamp.</span>'
+    + '<span class="jp">デバッグ目的で出力バイナリに実時間のコンパイルタイムスタンプ文字列を埋め込むシェーダーコンパイラは、ソースがバイト単位で同一であっても、実行のたびに異なる出力ハッシュを生成してしまう。これは、誰かが実際に2つの「同一」ビルドを比較し、出力が一致しないことに気づき、タイムスタンプを除去または固定するようツールチェーンを修正するまで、目に見えない形でキャッシュヒット率を破壊し続ける。</span></p></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#2FA36B;--accent-dark:#0F5C3B;--tint:#DBF0E2">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Dedup is a side effect, not a system</span><span class="jp">重複排除は仕組みではなく副産物</span></h3>'
+    + '<p><span class="en">Deduplication doesn\'t need its own separate pass if outputs are stored keyed by their own content hash. If two completely different build jobs happen to produce byte-identical output, they collapse to a single physical stored copy automatically, purely as a consequence of how the storage is addressed.</span>'
+    + '<span class="jp">出力がそれ自体のコンテンツハッシュをキーとして保存されていれば、重複排除のために別途専用のパスや基盤を用意する必要はない。全く異なる2つのビルドジョブがたまたまバイト単位で同一の出力を生成した場合、ストレージのアドレス方式そのものの結果として、自動的に1つの物理コピーへ統合される。</span></p>'
+    + '<p><span class="en">Worth stating explicitly in an interview, since it shows you understand dedup isn\'t a separate feature to build, it falls out of the caching design for free.</span>'
+    + '<span class="jp">これは面接で明示的に言及する価値がある。重複排除は別途構築すべき機能ではなく、キャッシュ設計から自然に導かれるものであるという理解を示せるためである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If one texture is referenced identically by 40 different levels across 3 projects that share an engine, all 40 level-cook jobs might each touch that texture, but the processed output only gets stored once, since all 40 results hash to the same value and collapse into a single physical blob. Worth tracking cache hit rate and physical dedup ratio as two separate metrics, since they measure different things.</span>'
+    + '<span class="jp">1つのテクスチャが、エンジンを共有する3つのプロジェクトにまたがる40個の異なるレベルから同一の形で参照されているとする。40個のレベルクックジョブそれぞれがそのテクスチャに触れる可能性があるが、処理済みの実際の出力は1回しか保存されない。40個すべての結果が同じ値にハッシュ化され、1つの物理的なblobに統合されるためである。キャッシュヒット率と物理ストレージの重複排除率は、異なるものを測定しているため、別々の指標として追跡する価値がある。</span></p></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">How do you know your cache is correct?</span><span class="jp">キャッシュが正しいことをどう保証するのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Determinism testing: periodically rebuild from the same inputs and diff the output hashes. Any mismatch is a build bug, not a cache bug.</span>'
+    + '<span class="jp">決定性テストを行う。定期的に同じ入力から再ビルドし、出力ハッシュを比較する。不一致はビルド自体のバグとして扱う。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">Doesn\'t hashing every input add overhead to every build?</span><span class="jp">すべての入力をハッシュ化することは、すべてのビルドにオーバーヘッドを追加してしまわないのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Yes, worth acknowledging that trade-off directly rather than glossing over it. Hashing has a real cost, but it\'s small, especially since I/O-bound systems are usually reading those same bytes anyway, next to the cost of an unnecessary rebuild, which can run minutes to hours. The trade-off only looks bad if you ignore how expensive the alternative failure mode actually is.</span>'
+    + '<span class="jp">その通りであり、この点を曖昧にせず正面から認める価値がある。ハッシュ化には実際のコストがかかるが、それは小さい。特にI/Oが支配的なシステムでは、どのみち同じバイト列を読み込んでいるためである。それに対し、不要な再ビルドのコストは数分から数時間に及ぶ可能性がある。この比較は、代替の失敗モードが実際にどれだけ高コストかを無視した場合にのみ、悪いトレードオフに見える。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"I\'d hash every input, not just the target name, so identical work anywhere in the farm becomes a cache hit. That only pays off if builds stay deterministic, so I\'d treat determinism testing as a first-class requirement, not an afterthought."</span>'
+    + '<span class="jp">「ターゲット名だけでなく、すべての入力をハッシュ化します。これによりファーム内のどこで発生した同一の作業もキャッシュヒットになります。ただしこれはビルドの決定性が保たれている場合に限られるため、決定性テストを最初から必須要件として組み込みます。」</span></p></div>'
+    + '</div>';
+  }
+};
+
+/* ===================== NAVIGATION ===================== */
+function navigate(id){
+  currentId = id;
+  var content = document.getElementById('content');
+  var item = ITEM_INDEX[id];
+  if(id==='home'){
+    content.innerHTML = homePage();
+  } else if(PAGES[id]){
+    content.innerHTML = PAGES[id]();
+  } else if(item){
+    content.innerHTML = placeholderPage(item);
+  }
+  var crumb = document.getElementById('crumb');
+  if(id==='home'){
+    crumb.innerHTML = '<span class="en">HOME</span><span class="jp">ホーム</span>';
+  } else if(item){
+    crumb.innerHTML = item.no+' — <span class="en">'+item.en+'</span><span class="jp">'+item.jp+'</span>';
+  }
+  var hue = item ? HUES[item.hue || item.group.hue] : HUES.amber;
+  document.getElementById('topbar').style.setProperty('--crumb-hue', hue.a);
+  renderStatusBtn();
+  highlightActive();
+  closeRail();
+  window.scrollTo(0,0);
+  content.scrollTop = 0;
+}
+
+/* ===================== LANGUAGE ===================== */
+function toggleLang(){
+  var html = document.documentElement;
+  var next = html.getAttribute('data-lang')==='en' ? 'jp' : 'en';
+  html.setAttribute('data-lang', next);
+  html.setAttribute('lang', next==='jp' ? 'ja' : 'en');
+}
+
+/* ===================== MOBILE RAIL ===================== */
+function openRail(){ document.getElementById('rail').classList.add('open'); document.getElementById('railScrim').classList.add('open'); }
+function closeRail(){ document.getElementById('rail').classList.remove('open'); document.getElementById('railScrim').classList.remove('open'); }
+
+/* ===================== SEARCH ===================== */
+function openSearch(){
+  document.getElementById('searchOv').classList.add('open');
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchInput').focus();
+  renderSearch();
+}
+function closeSearch(){ document.getElementById('searchOv').classList.remove('open'); }
+function renderSearch(){
+  var q = document.getElementById('searchInput').value.trim().toLowerCase();
+  var isJp = document.documentElement.getAttribute('data-lang')==='jp';
+  var results = [];
+  COURSE.forEach(function(g){
+    g.items.forEach(function(it){
+      var hay = (it.en+' '+it.jp+' '+it.no).toLowerCase();
+      if(!q || hay.indexOf(q)>-1){ results.push({item:it, group:g}); }
+    });
+  });
+  var box = document.getElementById('searchResults');
+  if(results.length===0){
+    box.innerHTML = '<div class="ov-empty">'+(isJp?'一致するシートが見つかりません':'No matching sheets')+'</div>';
+    return;
+  }
+  var html='';
+  results.forEach(function(r){
+    var hue = HUES[r.item.hue || r.group.hue];
+    html += '<button class="ov-row" style="--it-hue:'+hue.a+'" onclick="navigate(\''+r.item.id+'\');closeSearch();">'
+      + '<span class="rowdot"></span>'
+      + '<span style="flex:1;min-width:0;">'
+      + '<div class="rowgroup">'+(isJp?r.group.jpName:r.group.enName)+'</div>'
+      + '<div>'+r.item.no+' — '+(isJp?r.item.jp:r.item.en)+'</div>'
+      + '</span></button>';
+  });
+  box.innerHTML = html;
+}
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){ closeSearch(); closeRail(); }
+  if(e.key==='/' && document.activeElement.tagName!=='INPUT'){ e.preventDefault(); openSearch(); }
+});
+
+/* ===================== INIT ===================== */
+(async function init(){
+  await loadProgress();
+  renderRail();
+  navigate('home');
+})();
+</script>
+</body>
+</html>
