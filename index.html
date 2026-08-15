@@ -118,6 +118,23 @@
   .card p{ font-size:14.5px; color:var(--ink-soft); }
   @media (prefers-reduced-motion:reduce){ .card{ transition:none; } .card:hover{ transform:none; } }
 
+  .primer{ margin-top:26px; background:var(--white); border:3px dashed var(--accent-dark,var(--ink)); padding:24px 26px; }
+  .primer-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .primer-label::before{ content:'●'; font-size:8px; }
+  .primer p{ font-size:14.5px; color:var(--ink-soft); }
+  .primer p + p{ margin-top:10px; }
+  .primer p strong{ color:var(--ink); }
+  .primer-when{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  @media (max-width:600px){ .primer-when{ grid-template-columns:1fr; } }
+  .primer-when > div{ padding:14px 16px; border:2px solid var(--ink); }
+  .primer-when .pw-yes{ background:var(--tint,var(--slate-tint)); }
+  .primer-when .pw-no{ background:var(--paper); }
+  .primer-when .pw-label{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:.1em; margin-bottom:8px; }
+  .primer-when .pw-yes .pw-label{ color:var(--accent-dark,var(--ink)); }
+  .primer-when .pw-no .pw-label{ color:#8A95A0; }
+  .primer-when ul{ padding-left:18px; font-size:13px; color:var(--ink-soft); }
+  .primer-when li + li{ margin-top:6px; }
+
   .module{ background:var(--white); border:3px solid var(--ink); padding:26px 28px; margin-top:20px; box-shadow:7px 7px 0 var(--accent,var(--ink)); }
   .module-num{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:700; letter-spacing:.14em; color:var(--accent-dark,var(--ink)); }
   .module h3{ font-size:19px; margin-top:6px; margin-bottom:12px; }
@@ -413,6 +430,25 @@ var PAGES = {
     + '<h2 class="sec-headline"><span class="en">State the requirements before you draw anything</span><span class="jp">何かを描き始める前に、要件を言葉にする</span></h2>'
     + '<p class="sec-intro"><span class="en">Before any component gets named, say the constraints out loud. This single habit signals Dive Deep and Are Right, A Lot before you\'ve drawn a single box.</span>'
     + '<span class="jp">どんなコンポーネント名も出す前に、まず制約条件を声に出して整理する。この一手間だけで、箱を一つも描かないうちからDive DeepとAre Right, A Lotのシグナルを送ることができる。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> A distributed build system takes work that could technically run on one machine, compiling code, processing game assets, and spreads it across many machines (a "farm") so it finishes in minutes instead of hours, while guaranteeing the result is exactly the same as if one machine had done it all sequentially.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>分散ビルドシステムとは、本来は1台のマシンでも実行できるコードのコンパイルやゲームアセットの処理といった作業を、多数のマシン（「ファーム」）に分散させ、1台で順番に処理した場合と全く同じ結果を保証しながら、数時間ではなく数分で完了させる仕組みである。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> Modern open-world titles can involve tens of thousands of assets and take hours to fully rebuild on one machine. Without distribution, programmers wait hours to see their changes, and the studio can\'t ship regular builds to QA or milestone reviewers on schedule.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>現代のオープンワールドタイトルは数万個のアセットを含み、1台のマシンでフルビルドすると数時間かかることもある。分散化なしでは、プログラマーは自分の変更を確認するために何時間も待たされ、スタジオはQAやマイルストーンレビュアーに定期的なビルドをスケジュール通り届けられなくなる。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">A single-machine rebuild takes longer than your team can tolerate for daily iteration</span><span class="jp">1台のマシンでのフルビルドが、日常的な反復開発でチームが許容できる時間を超えている</span></li>'
+    + '<li><span class="en">You have enough concurrent work, multiple projects, platforms, developers, to actually benefit from parallelism</span><span class="jp">複数プロジェクト・複数プラットフォーム・複数の開発者など、並列化の恩恵を受けられるだけの同時作業量がある</span></li>'
+    + '<li><span class="en">You need consistent, reproducible builds across a team, not just one developer\'s machine</span><span class="jp">1人の開発者のローカル環境だけでなく、チーム全体で一貫した再現性のあるビルドが必要</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">SKIP IT WHEN</span><span class="jp">見送るべき場合</span></div><ul>'
+    + '<li><span class="en">A small team or prototype already builds in under a couple of minutes, the farm\'s complexity isn\'t worth it yet</span><span class="jp">小規模チームや試作段階ですでにビルドが数分未満、ファームの複雑さに見合う価値がまだない</span></li>'
+    + '<li><span class="en">The asset pipeline is still changing too fast for a stable dependency graph to be worth investing in</span><span class="jp">アセットパイプラインがまだ頻繁に変化しており、安定した依存グラフへの投資がまだ早い</span></li>'
+    + '<li><span class="en">Builds are already fast, distribution would add coordination overhead without proportional benefit</span><span class="jp">ビルドがすでに高速な場合、分散化は速度向上に見合わない調整コストを追加するだけになる</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
     + '<div class="module" style="--accent:#E8A93B;--accent-dark:#8A5A0A;--tint:#FBEBC9">'
     + '<div class="module-num">01 / 04</div>'
     + '<h3><span class="en">Throughput vs. latency</span><span class="jp">スループット vs. レイテンシ</span></h3>'
@@ -481,6 +517,24 @@ var PAGES = {
     + '<h2 class="sec-headline"><span class="en">Know exactly what depends on what</span><span class="jp">何が何に依存しているかを正確に把握する</span></h2>'
     + '<p class="sec-intro"><span class="en">The dependency graph (DAG) is the single most important structural decision in the whole system.</span>'
     + '<span class="jp">依存関係グラフ(DAG)は、システム全体における最も重要な構造上の意思決定である。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> A dependency graph, specifically a Directed Acyclic Graph or DAG, is a map of every piece of work in your build and exactly what each piece needs to finish before it can start. "Directed" means dependencies point one way (A needs B, never the reverse), and "acyclic" means no circular loops, if there were, nothing could ever finish.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>依存関係グラフ、正確には有向非巡回グラフ（DAG）とは、ビルド内のすべての作業単位と、それぞれが開始する前に完了していなければならない作業を正確に示す地図である。「有向」とは依存関係が一方向であることを意味し（AはBを必要とするが、その逆ではない）、「非巡回」とは循環するループが存在しないことを意味する。もし循環があれば、何も完了できなくなってしまう。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> Without an explicit graph, a build system can only guess what to rebuild, either everything (safe but slow) or too little (fast but risks shipping something broken). The graph is what makes "rebuild only what changed, and only what depends on it" possible at all.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>明示的なグラフがなければ、ビルドシステムは何を再ビルドすべきか推測することしかできない。すべてを再ビルドするか（安全だが遅い）、不足した範囲だけ再ビルドするか（速いが壊れたものを出荷するリスクがある）のどちらかになる。グラフがあってはじめて、「実際に変更されたものと、それに依存するものだけを再ビルドする」ことが可能になる。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">There are more than a handful of interdependent steps, "just rebuild everything" is too slow to be viable</span><span class="jp">相互依存するステップが数個以上あり、「全部再ビルド」では遅すぎて現実的でない</span></li>'
+    + '<li><span class="en">Correctness matters as much as speed, the graph guarantees you never ship a build missing a needed update</span><span class="jp">速度と同じくらい正確性が重要で、必要な更新が漏れたビルドを出荷しないことを保証したい</span></li>'
+    + '<li><span class="en">You need to reason about scheduling priority, since the graph is what makes the critical path computable</span><span class="jp">スケジューリングの優先順位を検討する必要があり、グラフがあってこそクリティカルパスを計算できる</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">SKIP IT WHEN</span><span class="jp">見送るべき場合</span></div><ul>'
+    + '<li><span class="en">A tiny project with a handful of files and no meaningful dependency structure, a full rebuild is already fast</span><span class="jp">ファイル数がごく少なく意味のある依存構造もない小規模プロジェクトで、フルビルドがすでに高速</span></li>'
+    + '<li><span class="en">One-off scripts or throwaway prototypes that won\'t be rebuilt often enough to benefit from incremental tracking</span><span class="jp">頻繁に再ビルドされることがなく、インクリメンタルな追跡の恩恵を受けにくい使い捨てのコード</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
     + '<div class="diagram"><div class="diagram-label"><span class="en">A minimal build DAG</span><span class="jp">最小構成のビルドDAG</span></div>'
     + '<svg viewBox="0 0 760 220" width="100%" height="auto" role="img" aria-label="Dependency graph diagram">'
     + '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0F4E82"/></marker></defs>'
@@ -555,6 +609,24 @@ var PAGES = {
     + '<h2 class="sec-headline"><span class="en">Never redo identical work, anywhere in the farm</span><span class="jp">同一の作業は、ファーム内のどこであっても二度と行わない</span></h2>'
     + '<p class="sec-intro"><span class="en">The single biggest lever for 6–8 related projects. Get the cache key right, and identical work never gets redone.</span>'
     + '<span class="jp">関連し合う6〜8プロジェクトにとって最大の改善レバー。キャッシュキーの設計さえ正しければ、同一の作業は二度と繰り返されない。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> Content-addressed caching means the "address" you use to look up a stored build result is derived directly from the content that produced it, a hash of the inputs, rather than from a name, path, or timestamp. If you\'ve built this exact thing before with these exact inputs, the system finds it by content, not by asking "have I built target X recently."</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>コンテンツアドレス方式のキャッシュとは、保存されたビルド結果を検索するための「アドレス」が、それを生成した入力のハッシュ値、つまり内容そのものから直接導き出される方式であり、名前やパス、タイムスタンプから導き出されるのではない、という考え方である。全く同じ入力で全く同じものを以前ビルドしたことがあれば、「最近ターゲットXをビルドしたか」ではなく、内容そのものによってシステムがそれを見つけ出す。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> This turns a build farm from "a lot of machines doing the same work over and over" into "a lot of machines that never redo identical work." At the scale of a studio with multiple projects sharing an engine, this is usually the single biggest lever for reducing build time, often bigger than adding more workers.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>これによって、ビルドファームは「同じ作業を何度も繰り返す多数のマシン」から「同一の作業を二度と繰り返さない多数のマシン」へと変わる。エンジンを共有する複数プロジェクトを抱えるスタジオの規模では、これは全体のビルド時間を短縮する単一の要因として最大のレバーであることが多く、多くの場合、ワーカーを増やすことよりも効果が大きい。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">Similar work is likely to repeat across developers, CI runs, or related projects sharing code or assets</span><span class="jp">開発者間・CI実行間・コードやアセットを共有する関連プロジェクト間で、類似の作業が繰り返される可能性が高い</span></li>'
+    + '<li><span class="en">Builds can be made deterministic, or nearly so, since identical inputs must produce identical outputs</span><span class="jp">ビルドを決定的（またはほぼ決定的）にできる。同一の入力から同一の出力が得られることが前提になるため</span></li>'
+    + '<li><span class="en">Storage is cheap relative to compute time, almost always true for build farms</span><span class="jp">ストレージが計算時間に比べて安価である。ビルドファームではほぼ常に当てはまる</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">SKIP IT WHEN</span><span class="jp">見送るべき場合</span></div><ul>'
+    + '<li><span class="en">The toolchain is fundamentally non-deterministic and can\'t realistically be fixed, the cache will silently stop paying off</span><span class="jp">ツールチェーンが根本的に非決定的で現実的に修正できない場合、キャッシュは静かに効果を失っていく</span></li>'
+    + '<li><span class="en">Builds are extremely small or one-off, the hashing and cache infrastructure cost more than the time it would save</span><span class="jp">ビルドが極めて小規模または一度きりで、ハッシュ化やキャッシュ基盤のコストが節約時間を上回る</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
     + '<div class="diagram"><div class="diagram-label"><span class="en">Content-addressed lookup</span><span class="jp">コンテンツアドレス方式のルックアップ</span></div>'
     + '<svg viewBox="0 0 760 170" width="100%" height="auto" role="img" aria-label="Content-addressed caching flow diagram">'
     + '<defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#0F5C3B"/></marker></defs>'
