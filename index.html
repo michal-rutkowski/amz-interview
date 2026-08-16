@@ -693,7 +693,8 @@ var PAGES = {
       ['Throughput / スループット','How much total work gets completed across everyone in a given period.','ある期間内に、全員分を合わせてどれだけの総作業量が完了するか。','0-1','0.1'],
       ['CPU-bound / CPUバウンド','Limited by how much calculating a processor has to do.','プロセッサがどれだけ計算しなければならないかによって制限されている状態。','0-1','0.1'],
       ['I/O-bound / I/Oバウンド','Limited by how fast data can be read, written, or transferred, not by calculation.','計算量ではなく、データの読み書き・転送の速さによって制限されている状態。','10-1011','10.10–11'],
-      ['Bottleneck / ボトルネック','Whatever specific resource is actually limiting how fast something can go.','実際に物事の速さを制限している、特定のリソース。','','']
+      ['Bottleneck / ボトルネック','Whatever specific resource is actually limiting how fast something can go.','実際に物事の速さを制限している、特定のリソース。','',''],
+      ['SLA (Service Level Agreement) / SLA（サービスレベルアグリーメント）','A stated target for how well a system should perform, e.g. "builds finish within 20 minutes," used to turn a vague goal like "fast" into something measurable and designable-against.','システムがどれだけうまく機能すべきかについて明示された目標（例：「ビルドは20分以内に完了する」）。「速い」のような曖昧な目標を、測定可能で設計の根拠にできるものに変える。','7-1','7.1']
     ])
     + cat('#2E7FC1','#0F4E82','Data &amp; Storage','データとストレージ',[
       ['Cache / キャッシュ','A stash of already-finished work kept handy so it doesn\'t need to be redone.','やり直す必要がないよう、すぐ使える場所に置かれた、すでに終わった作業の蓄え。','10-4','10.4'],
@@ -707,14 +708,20 @@ var PAGES = {
       ['Scheduler / スケジューラー','The system component deciding which job runs on which worker, and in what order.','どのジョブをどのワーカーで、どの順序で実行するかを決定するシステムの構成要素。','10-6','10.6'],
       ['Fair-share (scheduling) / 公平配分（スケジューリング）','A policy ensuring multiple teams or projects each get a reasonable portion of shared capacity.','複数のチーム・プロジェクトが、共有キャパシティの適切な取り分をそれぞれ得られるようにするポリシー。','10-6','10.6'],
       ['Critical path / クリティカルパス','The longest chain of dependent work in a given job; it sets the fastest possible completion time no matter how many workers are available.','あるジョブにおける、依存関係の中で最も長い連鎖。ワーカーが何台あっても最速の完了時刻を決定する。','10-3','10.3'],
-      ['Multi-tenancy / マルチテナンシー','Multiple independent teams or projects sharing the same pool of resources.','複数の独立したチームやプロジェクトが、同じリソースプールを共有している状態。','10-2','10.2']
+      ['Multi-tenancy / マルチテナンシー','Multiple independent teams or projects sharing the same pool of resources.','複数の独立したチームやプロジェクトが、同じリソースプールを共有している状態。','10-2','10.2'],
+      ['Slack (scheduling) / スラック（スケジューリング）','How much a piece of work could be delayed without affecting the overall completion time; work with zero slack is on the critical path and shouldn\'t be delayed at all.','全体の完了時刻に影響を与えずに、ある作業をどれだけ遅らせられるかを示す度合い。スラックがゼロの作業はクリティカルパス上にあり、全く遅らせるべきではない。','10-6','10.6'],
+      ['Aging (scheduling) / エイジング（スケジューリング）','A safeguard that gradually increases a waiting job\'s priority the longer it sits in the queue, preventing lower-priority work from being starved forever.','キューで待機する時間が長くなるほど、そのジョブの優先度を徐々に引き上げる安全策であり、優先度の低い作業が永久に飢餓状態になることを防ぐ。','10-6','10.6'],
+      ['Bin-packing / ビンパッキング','Fitting items of different sizes into a limited number of containers as efficiently as possible; in scheduling, matching jobs to workers by actual resource needs rather than treating every slot as identical.','異なるサイズの品物を、限られた数のコンテナにできるだけ効率的に詰め込む問題。スケジューリングでは、すべてのスロットを同一のものとして扱うのではなく、実際のリソース需要でジョブをワーカーに一致させることを意味する。','10-6','10.6']
     ])
     + cat('#D1476B','#7A1E3A','Reliability','信頼性',[
       ['Fault tolerance / 耐障害性','Designing a system so individual failures degrade it gracefully instead of breaking everything.','個々の障害が起きても、システム全体が壊れるのではなく優雅に劣化するように設計すること。','10-89','10.8–9'],
       ['Retry (with backoff) / バックオフ付きリトライ','Automatically attempting a failed job again, waiting progressively longer between attempts.','失敗したジョブを、試行のたびに待機時間を徐々に延ばしながら自動的に再試行すること。','10-89','10.8–9'],
       ['Idempotent / 冪等','A job that produces the same safe result even if it\'s accidentally run more than once.','誤って複数回実行されても、同じ安全な結果になるジョブの性質。','10-89','10.8–9'],
       ['Determinism / 決定性','The property that the same inputs always produce exactly the same output, every time, on any machine.','同じ入力からは、どのマシンで、何回実行しても、常に全く同じ出力が得られるという性質。','10-7','10.7'],
-      ['Observability / 可観測性','Having the data needed to tell, at a glance, whether a system is actually healthy.','システムが実際に健全かどうかを一目で把握するために必要なデータを持っていること。','10-89','10.8–9']
+      ['Observability / 可観測性','Having the data needed to tell, at a glance, whether a system is actually healthy.','システムが実際に健全かどうかを一目で把握するために必要なデータを持っていること。','10-89','10.8–9'],
+      ['Straggler / ストラグラー','A job running noticeably slower than equivalent jobs elsewhere in the farm, often due to a flaky machine, worth detecting and mitigating rather than waiting on indefinitely.','ファーム内の同等のジョブに比べて明らかに遅く実行されているジョブ。多くは不安定なマシンが原因であり、無期限に待つのではなく検知して対処する価値がある。','10-89','10.8–9'],
+      ['OOM (Out of Memory) / OOM（メモリ不足）','What happens when a process tries to use more memory than the machine has available; the operating system typically kills the process to protect the rest of the machine, a common cause of a job failing partway through.','プロセスがマシンで利用可能な量を超えるメモリを使おうとした際に起こること。OSは通常、マシンの他の部分を守るためにそのプロセスを強制終了する。ジョブが途中で失敗するよくある原因の1つ。','10-89','10.8–9'],
+      ['Hermetic (build) / ハーメティック（ビルド）','A build sealed off from anything not explicitly declared as an input, so the same declared inputs always produce the same output regardless of which machine ran it.','明示的に入力として宣言されたもの以外のあらゆるものから遮断されたビルド。同じ宣言された入力であれば、どのマシンで実行しても常に同じ出力が得られる。','10-7','10.7']
     ])
     + '</div>';
   },
