@@ -81,6 +81,7 @@
   }
   .rail-item .statusdot.s1{ background:var(--it-hue,var(--slate)); opacity:.5; }
   .rail-item .statusdot.s2{ background:#2FA36B; border-color:#2FA36B; }
+  .rail-item .statusdot.refdot{ border:none; font-size:9px; line-height:1; opacity:.55; background:none; color:var(--it-hue,var(--slate)); }
 
   .rail-scrim{ display:none; }
   .main{ min-width:0; }
@@ -148,6 +149,40 @@
   .module-model .mm-label{ opacity:.6; font-size:10px; letter-spacing:.1em; }
 
   .say-out-loud{ margin-top:30px; background:var(--tint,var(--slate-tint)); border:3px solid var(--ink); border-left-width:9px; padding:22px 24px; }
+
+  .rehearse-note{ margin-top:26px; background:var(--tint,var(--slate-tint)); border:3px solid var(--ink); padding:20px 22px; font-size:14.5px; color:var(--ink-soft); }
+  .fu-bank-group{ margin-top:24px; }
+  .fu-bank-tag{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.1em; margin-bottom:10px; }
+  .fu-bank-tag .dot{ width:10px; height:10px; display:inline-block; }
+  .fu-mini{ margin-top:8px; background:var(--white); border:2px solid var(--ink); padding:12px 16px; }
+  .fu-mini summary{ cursor:pointer; list-style:none; font-size:13.5px; font-weight:600; display:flex; gap:9px; align-items:baseline; }
+  .fu-mini summary::-webkit-details-marker{ display:none; }
+  .fu-mini summary::before{ content:'Q'; font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:11px; flex:none; opacity:.55; }
+  .fu-mini summary:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+  .fu-mini .fu-mini-a{ margin-top:8px; padding-top:8px; border-top:1px dotted #C3C8BF; font-size:13px; color:var(--ink-soft); }
+
+  .dialogue{ margin-top:26px; }
+  .dg-turn{ padding:18px 22px; margin-bottom:14px; border:3px solid var(--ink); }
+  .dg-interviewer{ background:var(--paper); border-style:dashed; }
+  .dg-candidate{ background:var(--white); box-shadow:6px 6px 0 var(--accent,var(--ink)); }
+  .dg-role{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700; letter-spacing:.14em; margin-bottom:9px; }
+  .dg-interviewer .dg-role{ color:var(--ink-soft); }
+  .dg-candidate .dg-role{ color:var(--accent-dark,var(--ink)); }
+  .dg-turn p{ font-size:14.5px; color:var(--ink); line-height:1.75; }
+  .dg-turn p + p{ margin-top:10px; }
+
+  .xlink-note{ margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; gap:12px; background:var(--paper); border:2px dashed var(--accent-dark,var(--ink)); padding:12px 18px; font-size:13.5px; color:var(--ink-soft); }
+  .xlink-note button{ background:var(--accent-dark,var(--ink)); color:#fff; border:none; padding:7px 14px; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.05em; cursor:pointer; white-space:nowrap; }
+  .xlink-note button:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+
+  .gloss-category{ margin-top:30px; }
+  .gloss-cat-title{ font-size:18px; font-weight:700; padding-bottom:8px; border-bottom:3px solid var(--accent,var(--ink)); margin-bottom:6px; }
+  .gloss-entry{ padding:12px 0; border-bottom:1px solid #E4E9ED; }
+  .gloss-term-row{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .gloss-term{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:14px; color:var(--accent-dark,var(--ink)); }
+  .gloss-ref{ font-family:'IBM Plex Mono',monospace; font-size:10px; background:none; border:1px solid var(--ink-soft); color:var(--ink-soft); padding:2px 7px; cursor:pointer; }
+  .gloss-ref:hover{ background:var(--accent-dark,var(--ink)); color:#fff; border-color:var(--accent-dark,var(--ink)); }
+  .gloss-def{ font-size:14px; color:var(--ink-soft); margin-top:6px; line-height:1.6; }
   .say-out-loud .mono{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); font-weight:700; }
   .say-out-loud p{ font-family:'Space Grotesk',sans-serif; font-size:16px; margin-top:9px; font-style:italic; }
   html[data-lang="jp"] .say-out-loud p{ font-family:'Zen Kaku Gothic New',sans-serif; font-style:normal; }
@@ -170,6 +205,9 @@
   .home-title{ font-size:clamp(2rem,4.6vw,3.1rem); font-weight:700; line-height:1.08; }
   .home-sub{ font-size:16px; color:var(--ink-soft); margin-top:14px; max-width:620px; }
   .scroll-hint{ text-align:center; margin-top:26px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em; color:#8A95A0; }
+  .path-card{ cursor:pointer; text-align:left; width:100%; font:inherit; color:inherit; }
+  .path-label{ font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-dark,var(--ink)); margin-bottom:10px; }
+  .path-arrow{ margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700; color:var(--accent-dark,var(--ink)); }
 
   .ctrl-table{ display:grid; gap:9px; margin-top:6px; }
   .ctrl-row{ display:grid; grid-template-columns:84px 1fr; gap:12px; align-items:start; border:2px solid var(--ink); padding:9px 12px; }
@@ -219,7 +257,7 @@
 <div id="app">
   <nav class="rail" id="rail" aria-label="Course navigation">
     <div class="rail-head">
-      <div class="kicker mono">AMAZON FINAL LOOP · AUG 25</div>
+      <div class="kicker mono">SOLUTIONS ARCHITECT (GAMES) · INTERVIEW PREP</div>
       <h1><span class="en">Build Systems &amp; Fundamentals</span><span class="jp">分散ビルドシステムと基礎知識</span></h1>
       <div class="sub"><span class="en">7-day prep · fundamentals-first, no AWS names required</span><span class="jp">7日間対策・AWSサービス名を使わない基礎重視の構成</span></div>
     </div>
@@ -275,10 +313,22 @@ var HUES = {
   rose:{a:'#D1476B',d:'#7A1E3A',t:'#F7DCE3'},
   rust:{a:'#C0631A',d:'#7A3D0C',t:'#F5E2D0'},
   crimson:{a:'#C0281F',d:'#7A1712',t:'#F5D9D6'},
-  slate:{a:'#8A95A0',d:'#4A5560',t:'#E4E9ED'}
+  slate:{a:'#8A95A0',d:'#4A5560',t:'#E4E9ED'},
+  sky:{a:'#2FA8D8',d:'#0F5E7A',t:'#D6EFF7'},
+  espresso:{a:'#8A6A3D',d:'#5C4520',t:'#F0E6D2'},
+  indigo:{a:'#4A5FCC',d:'#2A3480',t:'#DEE1F5'},
+  coral:{a:'#E8633F',d:'#8A3018',t:'#FBE0D6'},
+  olive:{a:'#7A8A3D',d:'#4A5620',t:'#E8EDD4'},
+  steel:{a:'#5B7A94',d:'#33495C',t:'#DDE6EC'}
 };
 
 var COURSE = [
+  { id:'g0', hue:'sky', enName:'Part 0 — Before You Start', jpName:'Part 0 ― まずはここから', badge:'0', items:[
+    {id:'0-1', no:'0.1', en:'The Vocabulary You Need First', jp:'最初に必要な語彙', dayLabel:'PRE', built:true, hue:'sky'}
+  ]},
+  { id:'gRef', hue:'espresso', enName:'Reference — Glossary', jpName:'リファレンス ― 用語集', badge:'R', items:[
+    {id:'gloss', no:'REF', en:'Glossary', jp:'用語集', dayLabel:'REF', built:true, hue:'espresso', ref:true}
+  ]},
   { id:'g1', hue:'amber', enName:'Part X — Distributed Build Systems', jpName:'Part X ― 分散ビルドシステム', badge:'★', flagship:true, items:[
     {id:'10-2', no:'10.2', en:'Foundations', jp:'土台', day:1, built:true, hue:'amber'},
     {id:'10-3', no:'10.3', en:'The Graph', jp:'グラフ', day:1, built:true, hue:'blue'},
@@ -286,15 +336,15 @@ var COURSE = [
     {id:'10-5', no:'10.5', en:'Multi-Tier Caching', jp:'多層キャッシュ', day:1, built:true, hue:'teal'},
     {id:'10-6', no:'10.6', en:'Scheduling', jp:'スケジューリング', day:1, built:true, hue:'violet'},
     {id:'10-7', no:'10.7', en:'Determinism', jp:'決定性', day:2, built:true, hue:'plum'},
-    {id:'10-89', no:'10.8–9', en:'Fault Tolerance & Observability', jp:'耐障害性と可観測性', day:2, built:false, hue:'rose'},
-    {id:'10-1011', no:'10.10–11', en:'Games-Specific & Capacity Math', jp:'ゲーム特有の事情と容量計算', day:2, built:false, hue:'rust'},
-    {id:'10-1315', no:'10.13/15', en:'Follow-Up Bank & Mock Dialogue', jp:'想定質問集と模擬対話', day:2, built:false, hue:'crimson'}
+    {id:'10-89', no:'10.8–9', en:'Fault Tolerance & Observability', jp:'耐障害性と可観測性', day:2, built:true, hue:'rose'},
+    {id:'10-1011', no:'10.10–11', en:'Games-Specific & Capacity Math', jp:'ゲーム特有の事情と容量計算', day:2, built:true, hue:'rust'},
+    {id:'10-1315', no:'10.13/15', en:'Follow-Up Bank & Mock Dialogue', jp:'想定質問集と模擬対話', day:2, built:true, hue:'crimson'}
   ]},
   { id:'g2', hue:'slate', enName:'Part VII–VIII — Whiteboard Method', jpName:'Part VII〜VIII ― ホワイトボード面接法', badge:'7', items:[
-    {id:'7-1', no:'7.1', en:'Requirements-Gathering', jp:'要件のヒアリング', day:3, built:false},
-    {id:'7-3', no:'7.3', en:'The Design Arc', jp:'設計の流れ', day:3, built:false},
-    {id:'7-45', no:'7.4–5', en:'Narrating & Handling Unknowns', jp:'説明の仕方と未知の質問', day:3, built:false},
-    {id:'8-2', no:'8.2', en:'Scenario Bank Overview', jp:'想定シナリオ集', day:3, built:false}
+    {id:'7-1', no:'7.1', en:'Requirements-Gathering', jp:'要件のヒアリング', day:3, built:true, hue:'indigo'},
+    {id:'7-3', no:'7.3', en:'The Design Arc', jp:'設計の流れ', day:3, built:true, hue:'coral'},
+    {id:'7-45', no:'7.4–5', en:'Narrating & Handling Unknowns', jp:'説明の仕方と未知の質問', day:3, built:true, hue:'olive'},
+    {id:'8-2', no:'8.2', en:'Scenario Bank Overview', jp:'想定シナリオ集', day:3, built:true, hue:'steel'}
   ]},
   { id:'g3', hue:'slate', enName:'Part I–III — Fundamentals', jpName:'Part I〜III ― 基礎知識', badge:'1', items:[
     {id:'I-1', no:'I.1', en:'Client–Server, APIs & Statelessness', jp:'クライアント・サーバーとAPI', day:4, built:false},
@@ -345,13 +395,18 @@ function renderRail(){
     html += '<span class="line"></span></div>';
     g.items.forEach(function(it){
       var itHue = HUES[it.hue || g.hue];
-      var st = progress[it.id] || 0;
-      var dotClass = st===2 ? 'statusdot s2' : (st===1 ? 'statusdot s1' : 'statusdot');
+      var dayTag = it.dayLabel || ('D'+it.day);
       html += '<button class="rail-item" style="--it-hue:'+itHue.a+'" data-id="'+it.id+'" onclick="navigate(\''+it.id+'\')">';
       html += '<span class="no">'+it.no+'</span>';
       html += '<span class="label en">'+it.en+'</span><span class="label jp">'+it.jp+'</span>';
-      html += '<span class="day">D'+it.day+'</span>';
-      html += '<span class="'+dotClass+'"></span>';
+      html += '<span class="day">'+dayTag+'</span>';
+      if(it.ref){
+        html += '<span class="statusdot refdot" title="reference, not tracked">&#9679;</span>';
+      } else {
+        var st = progress[it.id] || 0;
+        var dotClass = st===2 ? 'statusdot s2' : (st===1 ? 'statusdot s1' : 'statusdot');
+        html += '<span class="'+dotClass+'"></span>';
+      }
       html += '</button>';
     });
     html += '</div>';
@@ -369,6 +424,8 @@ function highlightActive(){
 /* ===================== STATUS CYCLE ===================== */
 function cycleStatus(){
   if(currentId==='home') return;
+  var item = ITEM_INDEX[currentId];
+  if(item && item.ref) return;
   var cur = progress[currentId] || 0;
   progress[currentId] = (cur+1) % 3;
   saveProgress();
@@ -378,7 +435,7 @@ function cycleStatus(){
 function renderStatusBtn(){
   var btn = document.getElementById('statusBtn');
   var item = ITEM_INDEX[currentId];
-  if(!item){ btn.style.display='none'; return; }
+  if(!item || item.ref){ btn.style.display='none'; return; }
   btn.style.display='inline-flex';
   var st = progress[currentId] || 0;
   var dot = document.getElementById('statusDot');
@@ -411,8 +468,24 @@ function homePage(){
   + '<div class="home-hero">'
   + '  <div class="sheet-eyebrow home-eyebrow"><span class="en">Self-Study Reference · Bilingual EN/JP</span><span class="jp">自習用リファレンス・英日バイリンガル</span></div>'
   + '  <h2 class="home-title"><span class="en">AWS Senior Solutions Architect (Games) — Final Loop Prep</span><span class="jp">AWSシニアソリューションアーキテクト（ゲーム業界）― 最終面接対策</span></h2>'
-  + '  <p class="home-sub"><span class="en">This site is a self-study reference for one specific final-round technical whiteboard interview: designing a distributed build system for a game studio running 6–8 projects on 50 shared servers. That exact question came up in an earlier phone screen with the same interviewer, so it\'s treated here as the flagship topic (Part X) and covered in unusual depth. Everything else on this site is the supporting fundamentals behind it.</span>'
-  + '  <span class="jp">このサイトは、ある特定の最終面接（技術ホワイトボードラウンド）のための自習用リファレンスです。テーマは、6〜8プロジェクトが50台の共有サーバーを利用するゲームスタジオ向けの分散ビルドシステム設計です。この全く同じ質問が、以前の電話面接で同じ面接官から出されたため、ここでは旗艦トピック（Part X）として扱い、通常より深く掘り下げています。それ以外のパートは、その背後にある基礎知識を補うものです。</span></p>'
+  + '  <p class="home-sub"><span class="en">This is a self-study reference for the technical whiteboard round of an AWS Solutions Architect (Games) interview loop. It treats one topic, designing a distributed build system for a game studio running several projects on a shared server pool, as a flagship deep-dive covered in far more depth than a typical interview answer needs, then builds out the supporting fundamentals underneath it.</span>'
+  + '  <span class="jp">これは、AWSソリューションアーキテクト（ゲーム業界）の面接ループにおける、技術ホワイトボードラウンドのための自習用リファレンスです。1つのテーマ、複数プロジェクトが共有サーバープールを利用するゲームスタジオ向けの分散ビルドシステム設計を、通常の面接での回答よりもはるかに深く掘り下げた旗艦トピックとして扱い、その土台となる基礎知識を積み上げていきます。</span></p>'
+  + '</div>'
+  + '<div class="grid" style="margin-top:26px;">'
+  + '  <button class="card path-card c-6" style="--accent:#2FA8D8;--accent-dark:#0F5E7A" onclick="navigate(\'0-1\')">'
+  + '    <div class="path-label"><span class="en">New to this?</span><span class="jp">初めての方へ</span></div>'
+  + '    <h3><span class="en">Start with Part 0</span><span class="jp">Part 0から始める</span></h3>'
+  + '    <p><span class="en">If words like "server," "cache," or "hash" aren\'t already familiar, this is the honest starting point, six short building blocks with everyday analogies, before any of the flagship material.</span>'
+  + '    <span class="jp">「サーバー」「キャッシュ」「ハッシュ」といった言葉に馴染みがなければ、ここが本当の出発点です。日常的なたとえを使った6つの短い基礎ブロックを、旗艦教材より先に用意しています。</span></p>'
+  + '    <div class="path-arrow"><span class="en">0.1 · THE VOCABULARY YOU NEED →</span><span class="jp">0.1・最初に必要な語彙 →</span></div>'
+  + '  </button>'
+  + '  <button class="card path-card c-6" style="--accent:#E8A93B;--accent-dark:#8A5A0A" onclick="navigate(\'10-2\')">'
+  + '    <div class="path-label"><span class="en">Already comfortable with the basics?</span><span class="jp">すでに基礎を理解している方へ</span></div>'
+  + '    <h3><span class="en">Jump straight to Part X</span><span class="jp">Part Xへ直接進む</span></h3>'
+  + '    <p><span class="en">If servers, caching, and hashing are already familiar territory, skip ahead to the flagship deep-dive, the highest-probability topic for the actual interview.</span>'
+  + '    <span class="jp">サーバー・キャッシュ・ハッシュにすでに馴染みがあれば、旗艦の深掘りへ直接進んでください。実際の面接で出る可能性が最も高いトピックです。</span></p>'
+  + '    <div class="path-arrow"><span class="en">10.2 · FOUNDATIONS →</span><span class="jp">10.2・土台 →</span></div>'
+  + '  </button>'
   + '</div>'
   + '<div class="scroll-hint"><span class="en">▾&nbsp;&nbsp;WHAT THIS IS · HOW IT\'S ORGANIZED · HOW TO USE IT&nbsp;&nbsp;▾</span><span class="jp">▾&nbsp;&nbsp;このサイトについて・構成・使い方&nbsp;&nbsp;▾</span></div>'
   + '<div class="grid" style="margin-top:22px;">'
@@ -421,15 +494,16 @@ function homePage(){
   + '    <p><span class="en">Built from first principles, deliberately without naming AWS services, since the interview itself doesn\'t require an AWS-shaped answer, only sound reasoning. Each topic is written to be read cold by anyone: a plain-language definition first, then when to use it and when not to, then four deep modules with concrete worked examples, then likely follow-up questions.</span>'
   + '    <span class="jp">AWSのサービス名を意図的に使わず、基礎概念から構成しています。面接自体がAWS前提の回答を要求しているわけではなく、筋の通った推論力が問われるためです。各トピックは、誰が初めて読んでも理解できるように書かれています。まず平易な定義、次に使うべき場合・見送るべき場合、続いて具体例付きの4つの詳細モジュール、最後に想定される追加質問という順序です。</span></p>'
   + '  </div>'
-  + '  <div class="card c-5" style="--accent:#2E7FC1">'
-  + '    <h3><span class="en">Why Part X comes first</span><span class="jp">Part Xを最優先にする理由</span></h3>'
-  + '    <p><span class="en">The same interviewer, Taro Hirose, is likely to sit in on the final loop. Interviewers who meet a candidate twice often deliberately revisit a topic to see how the answer has grown, so this one gets full flagship treatment rather than a quick pass.</span>'
-  + '    <span class="jp">最終面接には、同じ面接官であるヒロセ（Taro Hirose）氏が同席する可能性が高いです。候補者と2度面接する面接官は、回答がどれだけ深まったかを確認するために、あえて同じテーマを再び持ち出すことがよくあります。そのため、このテーマだけは簡易的にではなく、旗艦として本格的に扱っています。</span></p>'
-  + '  </div>'
+  + '  <button class="card path-card c-5" style="--accent:#2E7FC1;--accent-dark:#0F4E82" onclick="navigate(\'10-2\')">'
+  + '    <h3><span class="en">Why one topic gets this much depth</span><span class="jp">なぜ1つのテーマだけこれほど深掘りするのか</span></h3>'
+  + '    <p><span class="en">Distributed build and CI systems are a common deep-dive system-design topic for this role, since they naturally combine scale, multi-tenancy, caching, and I/O-bound workloads in one problem. Genuine fluency in a single meaty example tends to carry further in an interview than shallow familiarity with many, so this topic gets nine full sheets instead of a quick pass.</span>'
+  + '    <span class="jp">分散ビルド・CIシステムは、この職種の面接でよく出る深掘り型のシステム設計テーマです。規模・マルチテナンシー・キャッシュ・I/Oバウンドな処理が1つの問題の中に自然に組み合わさっているためです。面接では、多くのテーマに浅く詳しいことよりも、1つの本格的な題材を本当に使いこなせることの方が評価されやすいため、このテーマだけは簡易的にではなく9枚のシートを使って本格的に扱っています。</span></p>'
+  + '    <div class="path-arrow"><span class="en">EXPLORE PART X →</span><span class="jp">Part Xを見る →</span></div>'
+  + '  </button>'
   + '  <div class="card c-6" style="--accent:#7A56C4">'
   + '    <h3><span class="en">How the sidebar is organized</span><span class="jp">サイドバーの構成</span></h3>'
-  + '    <p><span class="en">Content is grouped by Part, matching a written table of contents. Part X, the flagship, sits at the top with a ★ badge, and each of its sheets carries its own distinct color on purpose: color-coding by topic makes it easier to recall which concept is which under interview pressure. Every other Part stays grey until it\'s actually written, an honest signal of what\'s finished, not a placeholder pretending to be content.</span>'
-  + '    <span class="jp">コンテンツはPartごとにグループ化されており、文書化された目次と対応しています。旗艦であるPart Xは★バッジ付きで最上部にあり、各シートには意図的に固有の色が割り当てられています。トピックごとに色分けすることで、面接本番の緊張下でもどの概念かを思い出しやすくなります。それ以外のPartは、実際に作成されるまでグレーのままです。これは未完成であることを正直に示すサインであり、コンテンツのふりをしたプレースホルダーではありません。</span></p>'
+  + '    <p><span class="en">Sky blue Part 0 and warm brown Reference sit at the very top on purpose, they\'re the on-ramp and the lookup tool, meant to be read or consulted before anything else. Part X, the flagship, follows with a ★ badge, and each of its sheets carries its own distinct color so it\'s easier to recall which concept is which under interview pressure. Every other Part stays grey until it\'s actually written, an honest signal of what\'s finished, not a placeholder pretending to be content.</span>'
+  + '    <span class="jp">水色のPart 0と茶色のリファレンスは、意図的に最上部に配置しています。これらは導入と検索ツールであり、他の何よりも先に読む・参照することを想定しています。旗艦であるPart Xは★バッジ付きでそれに続き、各シートには固有の色が割り当てられ、面接本番の緊張下でもどの概念かを思い出しやすくしています。それ以外のPartは、実際に作成されるまでグレーのままです。これは未完成であることを正直に示すサインです。</span></p>'
   + '  </div>'
   + '  <div class="card c-6" style="--accent:#2FA36B">'
   + '    <h3><span class="en">Reading a sheet</span><span class="jp">各シートの読み方</span></h3>'
@@ -458,7 +532,7 @@ function homePage(){
   + '    <p><span class="en">Each of the 9 flagship sheets keeps one color for its entire life, in the sidebar, its diagram, and its shadow. Full color means built and ready to read; a muted swatch below means the sheet is planned but not yet written.</span>'
   + '    <span class="jp">旗艦の9枚のシートはそれぞれ、サイドバー・図解・影の色に至るまで、常に同じ色を持ちます。彩度の高い色は作成済みで読める状態、下の薄い色見本はまだ作成されていないことを示します。</span></p>'
   + '    <div class="legend-grid">'
-  + COURSE[0].items.map(function(it){
+  + COURSE.find(function(g){ return g.id==='g1'; }).items.map(function(it){
       var h = HUES[it.hue];
       var muted = it.built ? '' : 'opacity:.4;';
       return '<div class="legend-chip" style="'+muted+'border-color:'+h.d+'">'
@@ -469,29 +543,190 @@ function homePage(){
   + '    </div>'
   + '  </div>'
   + '</div>'
-  + '<h3 style="margin-top:44px;font-size:20px;"><span class="en">Personal study plan (supplementary)</span><span class="jp">個人の学習計画（補足）</span></h3>'
-  + '<p style="font-size:13.5px;color:var(--ink-soft);max-width:680px;"><span class="en">The 7-day schedule below is one candidate\'s own pacing plan ahead of a specific Aug 25 start date, kept here for reference, not part of the handbook\'s core structure.</span><span class="jp">以下の7日間スケジュールは、8月25日という特定の開始日に向けた、ある候補者個人のペース配分です。ハンドブックの中核構成の一部ではなく、参考として記載しています。</span></p>'
+  + '<h3 style="margin-top:44px;font-size:20px;"><span class="en">A suggested 7-day pacing plan</span><span class="jp">7日間の学習ペース案</span></h3>'
+  + '<p style="font-size:13.5px;color:var(--ink-soft);max-width:680px;"><span class="en">One reasonable way to work through this material in about a week, adjust freely to your own timeline. The status column reflects what\'s published on this site right now, not personal progress, use the status button on each sheet for that.</span><span class="jp">この教材をおよそ1週間で進める場合の一例です。ご自身のスケジュールに合わせて自由に調整してください。状況列は個人の学習進捗ではなく、このサイト上で現在公開済みの内容を示しています。個人の進捗は各シートのステータスボタンで管理できます。</span></p>'
   + '<table class="day-table">'
   + '  <tr><th><span class="en">Day</span><span class="jp">日</span></th><th><span class="en">Focus</span><span class="jp">内容</span></th><th><span class="en">Status</span><span class="jp">状況</span></th></tr>'
-  + '  <tr><td>1 · Aug 15</td><td><span class="en">Part X front half — problem framing, graph, caching, scheduling</span><span class="jp">Part X前半 ― 要件、グラフ、キャッシュ、スケジューリング</span></td><td class="done"><span class="en">Done</span><span class="jp">完了</span></td></tr>'
-  + '  <tr><td>2 · Aug 16</td><td><span class="en">Part X back half — determinism, fault tolerance, follow-ups, mock dialogue</span><span class="jp">Part X後半 ― 決定性、耐障害性、想定質問、模擬対話</span></td><td>—</td></tr>'
-  + '  <tr><td>3 · Aug 17</td><td><span class="en">Whiteboard methodology + scenario bank</span><span class="jp">ホワイトボード面接法とシナリオ集</span></td><td>—</td></tr>'
-  + '  <tr><td>4 · Aug 18</td><td><span class="en">Backend fundamentals + relational databases</span><span class="jp">バックエンド基礎とリレーショナルDB</span></td><td>—</td></tr>'
-  + '  <tr><td>5 · Aug 19</td><td><span class="en">NoSQL/CAP + networking &amp; scaling</span><span class="jp">NoSQL・CAPとネットワーク・スケーリング</span></td><td>—</td></tr>'
-  + '  <tr><td>6 · Aug 20</td><td><span class="en">Bridge sheet + condensed AWS reference + first live mock</span><span class="jp">実務接続シート・AWS要約・初回模擬面接</span></td><td>—</td></tr>'
-  + '  <tr><td>7 · Aug 21</td><td><span class="en">Flashcard review + timed live mock #2 (spoken practice, not a page)</span><span class="jp">フラッシュカード復習・2回目模擬面接（口頭練習、ページなし）</span></td><td>—</td></tr>'
+  + '  <tr><td>1</td><td><span class="en">Part X front half — problem framing, graph, caching, scheduling</span><span class="jp">Part X前半 ― 要件、グラフ、キャッシュ、スケジューリング</span></td><td class="done"><span class="en">Published</span><span class="jp">公開済み</span></td></tr>'
+  + '  <tr><td>2</td><td><span class="en">Part X back half — determinism, fault tolerance, follow-ups, mock dialogue</span><span class="jp">Part X後半 ― 決定性、耐障害性、想定質問、模擬対話</span></td><td class="done"><span class="en">Published</span><span class="jp">公開済み</span></td></tr>'
+  + '  <tr><td>3</td><td><span class="en">Whiteboard methodology + scenario bank</span><span class="jp">ホワイトボード面接法とシナリオ集</span></td><td>—</td></tr>'
+  + '  <tr><td>4</td><td><span class="en">Backend fundamentals + relational databases</span><span class="jp">バックエンド基礎とリレーショナルDB</span></td><td>—</td></tr>'
+  + '  <tr><td>5</td><td><span class="en">NoSQL/CAP + networking &amp; scaling</span><span class="jp">NoSQL・CAPとネットワーク・スケーリング</span></td><td>—</td></tr>'
+  + '  <tr><td>6</td><td><span class="en">Bridge sheet + condensed AWS reference + first live mock round</span><span class="jp">実務接続シート・AWS要約・1回目の模擬面接</span></td><td>—</td></tr>'
+  + '  <tr><td>7</td><td><span class="en">Flashcard review + a second timed live mock round (spoken practice, not a page)</span><span class="jp">フラッシュカード復習・2回目の模擬面接（口頭練習、ページなし）</span></td><td>—</td></tr>'
   + '</table>'
-  + '<p style="margin-top:18px;font-size:13.5px;color:var(--ink-soft);"><span class="en">Aug 22–24 stay open as slack before the first session on the 25th.</span><span class="jp">8月22〜24日は、25日の初回面接前の予備日として空けてあります。</span></p>';
+  + '<p style="margin-top:18px;font-size:13.5px;color:var(--ink-soft);"><span class="en">The live mock rounds on Days 6–7 work best as spoken rehearsal with another person, using the follow-up bank on sheet 10.13/15 as the prompt source.</span><span class="jp">6〜7日目の模擬面接は、10.13/15の想定質問集を出題材料として、他の人と口頭で練習するのが最も効果的です。</span></p>';
 }
 
 var PAGES = {
+  '0-1': function(){ return ''
+    + '<div style="'+styleFor('sky')+'">'
+    + '<div class="sheet-tag mono">PART 0 · START HERE</div>'
+    + '<div class="sheet-eyebrow"><span class="en">0.1 · Absolute Basics</span><span class="jp">0.1・基礎の基礎</span></div>'
+    + '<h2 class="sec-headline"><span class="en">The vocabulary you need before anything else</span><span class="jp">何よりも先に必要な語彙</span></h2>'
+    + '<p class="sec-intro"><span class="en">Interview preparation material for technical roles is almost always written by people who already know the field, for readers assumed to know it too, which creates a real gap for anyone approaching distributed build systems without a backend or software engineering background. That gap isn\'t a sign this material is somehow out of reach, it just means a handful of everyday concepts need introducing in plain language first, the same way any specialized field has its own basic vocabulary that has to be learned once before anything else makes sense. This page exists to close exactly that gap, using ordinary, non-technical comparisons before introducing each term, rather than assuming the reader already thinks in software terms. None of the six ideas covered here are actually complicated once explained plainly, they only look intimidating because of the words attached to them. If words like "server," "cache," or "hash" aren\'t already familiar, start here, every later page assumes you understand these first, so this page assumes nothing.</span>'
+    + '<span class="jp">技術職向けの面接対策資料は、ほとんどの場合すでにその分野を知っている人によって、すでに知っていることを前提とされた読者向けに書かれている。これは、バックエンドやソフトウェアエンジニアリングの背景を持たずに分散ビルドシステムのようなテーマに取り組む人にとって、本当のギャップを生む。そのギャップは、この先の教材が手の届かないものであることを意味するわけではなく、ただ、いくつかの日常的な概念を先に平易な言葉で紹介する必要があるというだけである。どんな専門分野にも、他の何より先に一度学ばなければ何も理解できるようにならない基礎語彙があるのと同じことである。このページは、まさにそのギャップを埋めるために存在し、読者がすでにソフトウェア的な考え方をしている前提を置かず、各用語を紹介する前にまず日常的で専門的ではないたとえを使う。ここで扱う6つの考え方はどれも、平易に説明されれば実際には複雑なものではなく、ただそれに付いている言葉のせいで、いかめしく見えているだけである。「サーバー」「キャッシュ」「ハッシュ」といった言葉に馴染みがなければ、ここから始めてほしい。これ以降のすべてのページはこれらの理解を前提にしているため、このページだけは何も前提にしていない。</span></p>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">01 / 06</div>'
+    + '<h3><span class="en">What does it mean to "build" a game?</span><span class="jp">「ビルドする」とはどういうことか？</span></h3>'
+    + '<p><span class="en">When someone writes code, or an artist creates a texture or 3D model, that raw material isn\'t something a game console or PC can actually run or display yet. "Building" (sometimes called "compiling" for code specifically) turns that raw, human-made material into a finished, playable form. It\'s the same idea as turning raw ingredients and a recipe into an actual finished meal, the recipe alone isn\'t dinner.</span>'
+    + '<span class="jp">誰かがコードを書いたり、アーティストがテクスチャや3Dモデルを作成したりしても、その生の素材はまだゲーム機やPCがそのまま実行・表示できる状態ではない。「ビルド」（コードの場合は「コンパイル」とも呼ばれる）とは、そうした生の素材を、実際にプレイできる完成した形に変換する処理のことである。生の材料とレシピを実際の完成した料理に変えることと同じ発想で、レシピだけでは夕食にはならない。</span></p>'
+    + '<p><span class="en">A single change, like one line of code or one texture file, can require re-running parts of this process. Because a modern game can have hundreds of thousands of raw files, a "build" means running this turning-raw-into-finished process across all of them affected by whatever changed.</span>'
+    + '<span class="jp">1行のコードや1枚のテクスチャファイルの変更でも、この処理の一部を再実行する必要があることがある。現代のゲームには数十万個もの生ファイルが存在しうるため、「ビルド」とは、変更の影響を受けたすべてに対してこの処理を実行することを意味する。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A programmer\'s one-line bug fix needs to be turned into machine instructions the console understands, that\'s compiling. An artist\'s slightly brighter texture needs to be turned into the compressed, console-ready image format the game loads at runtime, that\'s called "cooking" an asset. Both are examples of building.</span>'
+    + '<span class="jp">プログラマーの1行のバグ修正は、ゲーム機が理解できる機械命令に変換する必要がある。これがコンパイルである。アーティストが少し明るくしたテクスチャは、ゲームが実行時に読み込む圧縮済みの画像フォーマットに変換する必要がある。これは「クック」と呼ばれる。どちらも「ビルド」の一例である。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Building is turning a recipe and raw ingredients into an actual meal you can eat.</span><span class="jp">ビルドとは、レシピと生の材料を、実際に食べられる料理に変えることである。</span></span></div>'
+    + '</div>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">02 / 06</div>'
+    + '<h3><span class="en">What is a server, and why do we need many of them?</span><span class="jp">サーバーとは何か、なぜ何台も必要なのか？</span></h3>'
+    + '<p><span class="en">A server is just a computer, usually sitting in a data center, that you never see or touch directly, doing computing work on someone\'s behalf. It isn\'t fundamentally different from your own laptop, it just isn\'t on your desk, and it\'s usually left running all the time.</span>'
+    + '<span class="jp">サーバーとは単なるコンピュータであり、通常はどこかのデータセンターにあり、直接目にすることも触ることもない状態で、他の人々のために計算作業を行っている。あなた自身のノートパソコンと根本的に違うわけではない。ただ机の上になく、通常は常に稼働し続けている点が異なる。</span></p>'
+    + '<p><span class="en">One laptop builds a small project fine. But a big studio has dozens of people changing things daily, plus large amounts of art content and needs like "QA needs a fresh build every night." A single computer would take far too long to do all that alone. So studios use many servers (a "farm") working at the same time, this is called "distributed," meaning the work is spread across multiple machines instead of piled onto one.</span>'
+    + '<span class="jp">1台のノートパソコンでも小規模なプロジェクトのビルドは問題ない。しかし大規模なスタジオでは毎日何十人もが変更を加え、大量のアート素材があり、「QAには毎晩新しいビルドが必要」といった要求もある。1台のコンピュータだけでは時間がかかりすぎる。そこでスタジオは多数のサーバー（「ファーム」）を同時に使う。これが「分散」であり、作業を1台に積み上げるのではなく複数のマシンに分散させることを意味する。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If building one game from scratch takes 10 hours on one computer, and 50 computers are available, splitting the independent parts of that work across all 50 could, in the best case, get it done in a fraction of the time. The pages ahead are entirely about how to actually make that split work well.</span>'
+    + '<span class="jp">1台のコンピュータでゲームを一から丸ごとビルドすると10時間かかり、50台のコンピュータが使えるとする。独立した部分を50台に分散すれば、最良の場合、はるかに短い時間で終わらせられる。この先のページはすべて、その分散を実際にうまく機能させる方法についてである。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">A server is a computer working for you that you never see. A farm is a lot of them working together.</span><span class="jp">サーバーとは、目には見えないがあなたのために働いてくれるコンピュータである。ファームとは、それが多数集まって協力している状態である。</span></span></div>'
+    + '</div>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">03 / 06</div>'
+    + '<h3><span class="en">What is a cache? (the single most useful idea here)</span><span class="jp">キャッシュとは何か？（ここで最も役立つ考え方）</span></h3>'
+    + '<p><span class="en">In everyday life, a "cache" is just a stash of something you\'ve already prepared, kept handy so you don\'t redo the work of making it again. If you\'ve already photocopied a document, you don\'t walk back to the copier for another copy, you just grab the one you already have.</span>'
+    + '<span class="jp">日常生活における「キャッシュ」とは、すでに用意したものの蓄えであり、もう一度作り直す手間を省くためにすぐ使える場所に置いてあるものを指す。すでにコピーした書類があれば、わざわざコピー機まで戻ってもう一度コピーを取ったりはせず、すでに持っているものをそのまま使う。</span></p>'
+    + '<p><span class="en">In computing, a cache works the same way: if the system has already done a specific piece of work before, and nothing about the situation has changed, it can hand you the already-finished result instead of redoing the work. This is, by a wide margin, the single most powerful idea for making builds fast, most pages ahead come back to it in one form or another.</span>'
+    + '<span class="jp">コンピュータでもキャッシュは同じように働く。システムが以前に特定の作業をすでに行っており、状況が何も変わっていなければ、その作業をやり直す代わりに、すでに完成している結果を渡すことができる。これはビルドを高速化する考え方の中で群を抜いて最も強力なものであり、この先のページの多くは何らかの形でこの考え方に立ち返る。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If 50 different people on a team all happen to compile the exact same shared piece of code with the exact same settings, a system with a good cache does that work once, and hands out the already-made result to the other 49, instead of redoing identical work 50 separate times.</span>'
+    + '<span class="jp">チームの50人全員が、たまたま全く同じ共有コードを全く同じ設定でコンパイルしたとする。優れたキャッシュを持つシステムであれば、その作業を1回だけ行い、残りの49人にはすでにできあがった結果をそのまま渡す。50回別々にやり直す必要はない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">A cache is a stash of already-finished work, so nobody has to redo what\'s already been done.</span><span class="jp">キャッシュとは、すでに終わった作業の蓄えであり、誰も終わったことをやり直す必要がなくなる。</span></span></div>'
+    + '</div>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">04 / 06</div>'
+    + '<h3><span class="en">What is a hash? (the fingerprint idea)</span><span class="jp">ハッシュとは何か？（指紋という考え方）</span></h3>'
+    + '<p><span class="en">A hash is a short code, usually letters and numbers, calculated from the exact content of a piece of data. The key property: identical content always produces exactly the same hash. If even one byte changes, the hash comes out looking completely different. It works like a fingerprint for data.</span>'
+    + '<span class="jp">ハッシュとは、あるデータの正確な内容から計算される、通常は英数字の短いコードである。重要な性質は、内容が全く同じであれば常に全く同じハッシュが得られるという点である。1バイトでも変われば、ハッシュは全く違うものになる。データの指紋のような働きをする。</span></p>'
+    + '<p><span class="en">This matters enormously for caching: instead of asking "have I built something with this file\'s name recently," a system can ask "have I ever built something from data with this exact fingerprint before," a far more reliable question, since a file\'s name can stay the same even when its content changes.</span>'
+    + '<span class="jp">これはキャッシュにとって非常に重要である。「最近このファイル名のものをビルドしたか」と問う代わりに、「この正確な指紋を持つデータからビルドしたことが以前あるか」と問うことができる。こちらの方がはるかに信頼できる。ファイル名は内容が変わっても同じままでいられるためである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Two files both named report.txt, one on your laptop and one on a colleague\'s, will have different hashes if their content differs even slightly. But if you both happen to have byte-for-byte identical content in files with totally different names, they\'ll produce the exact same hash. The hash cares about content, not names or locations.</span>'
+    + '<span class="jp">report.txtという名前の全く別の2つのファイルが、あなたと同僚のノートパソコンにそれぞれあるとする。内容が少しでも違えばハッシュも異なる。しかし、たとえ全く違う名前のファイルであっても内容がバイト単位で完全に同一であれば、全く同じハッシュが得られる。ハッシュが気にするのは内容であり、名前や場所ではない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">A hash is a fingerprint for data: identical content always gives an identical fingerprint, and nothing else does.</span><span class="jp">ハッシュはデータの指紋である。同じ内容は常に同じ指紋を生み、それ以外からは決して同じ指紋は生まれない。</span></span></div>'
+    + '</div>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">05 / 06</div>'
+    + '<h3><span class="en">CPU-bound vs. I/O-bound (limited by thinking, or by fetching?)</span><span class="jp">CPUバウンドとI/Oバウンド（考えることに制限されるのか、取ってくることに制限されるのか）</span></h3>'
+    + '<p><span class="en">A computer doing work is usually limited by one of two things. "CPU-bound" means the bottleneck is how much calculating the processor has to do, more raw computing power directly speeds things up. "I/O-bound" (I/O means reading and writing data) means the bottleneck is how fast data can be read, written, or sent over a network, more computing power barely helps, since the processor is just waiting for data to arrive.</span>'
+    + '<span class="jp">作業を行うコンピュータは、通常2つのうちどちらかに制限される。「CPUバウンド」とは、ボトルネックがプロセッサの計算量であることを意味し、生の計算能力を上げればそのまま速くなる。「I/Oバウンド」（I/Oとはデータの読み書きのこと）とは、ボトルネックがデータの読み書き・送受信の速さであることを意味し、計算能力を上げてもほとんど助けにならない。プロセッサはただデータが届くのを待っているだけだからである。</span></p>'
+    + '<p><span class="en">Think of a chef: if limited by how fast they can chop and cook, that\'s CPU-bound, a faster chef helps directly. If limited by how fast the delivery truck brings ingredients, that\'s I/O-bound, an even faster chef does nothing if the ingredients haven\'t arrived.</span>'
+    + '<span class="jp">シェフを思い浮かべてほしい。刻んだり調理したりする速さに制限されているなら、それはCPUバウンドであり、速いシェフが直接役立つ。食材を運ぶ配達トラックの速さに制限されているなら、それはI/Oバウンドであり、どれだけ速いシェフでも食材が届いていなければ意味がない。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">This matters a lot for the pages ahead: a lot of work in building game content (moving large texture and model files around) turns out to be much more like "waiting on the delivery truck" than "chef chopping faster."</span>'
+    + '<span class="jp">この先のページにとって重要な点だが、ゲームのコンテンツをビルドする作業の多く（大きなテクスチャやモデルファイルを移動させる作業）は、「配達トラックを待つ」問題にずっと近いことが判明している。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">CPU-bound: a faster chef helps. I/O-bound: a faster delivery truck helps, not a faster chef.</span><span class="jp">CPUバウンド：速いシェフが助けになる。I/Oバウンド：速い配達トラックが助けになる。速いシェフではない。</span></span></div>'
+    + '</div>'
+
+    + '<div class="module" style="--accent:#2FA8D8;--accent-dark:#0F5E7A;--tint:#D6EFF7">'
+    + '<div class="module-num">06 / 06</div>'
+    + '<h3><span class="en">Latency vs. throughput (your order vs. everyone\'s orders)</span><span class="jp">レイテンシとスループット（あなたの注文か、全員の注文か）</span></h3>'
+    + '<p><span class="en">Latency is how long one specific piece of work takes to finish, from your point of view. Throughput is how much total work gets finished across everyone over some period. These aren\'t the same thing, optimizing for one doesn\'t automatically improve the other.</span>'
+    + '<span class="jp">レイテンシとは、あなたから見て1つの特定の作業が終わるまでにかかる時間である。スループットとは、ある期間内に全員分を合わせてどれだけの総作業量が終わるかである。この2つは同じものではなく、一方を最適化しても、もう一方が自動的に良くなるわけではない。</span></p>'
+    + '<p><span class="en">Back to the kitchen: latency is how long you personally wait for your meal. Throughput is how many total meals the kitchen serves over the night. A kitchen could serve an enormous number of meals overall while still making any individual customer wait a long time if orders are handled in big batches.</span>'
+    + '<span class="jp">再びキッチンの例で考える。レイテンシとは、注文してから自分の料理が届くまであなた個人が待つ時間である。スループットとは、その夜キッチン全体が提供した料理の総数である。注文を大きなバッチでまとめて処理すれば、全体としては非常に多くの料理を提供できていても、個々の客は長く待たされることがある。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A programmer who changes one line of code wants a fast answer just for that change, a latency concern. A studio preparing a full nightly build for the whole team cares about getting the maximum total work through by a deadline, a throughput concern. Systems often need to treat these as two different problems, not one.</span>'
+    + '<span class="jp">1行だけコードを変更したプログラマーは、その小さな変更に対する速い回答を求めている。これはレイテンシの問題である。チーム全体のために夜間のフルビルドを準備するスタジオは、締め切りまでの総作業量を最大化することを重視する。これはスループットの問題である。システムはしばしばこの2つを別々の問題として扱う必要がある。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Latency is how long you personally wait. Throughput is how much gets done overall.</span><span class="jp">レイテンシはあなた個人がどれだけ待つか。スループットは全体としてどれだけ終わるかである。</span></span></div>'
+    + '</div>'
+
+    + '<div class="xlink-note"><span class="en">Ready for the real thing? The flagship deep-dive starts at Part X.</span><span class="jp">準備ができたら、旗艦の深掘りであるPart Xへ進もう。</span>'
+    + '<button onclick="navigate(\'10-2\')"><span class="en">GO TO 10.2 →</span><span class="jp">10.2へ進む →</span></button></div>'
+    + '</div>';
+  },
+  'gloss': function(){
+    function cat(hex, dark, enTitle, jpTitle, entries){
+      var html = '<div class="gloss-category"><h3 class="gloss-cat-title" style="border-color:'+hex+'"><span class="en">'+enTitle+'</span><span class="jp">'+jpTitle+'</span></h3>';
+      entries.forEach(function(e){
+        html += '<div class="gloss-entry"><div class="gloss-term-row"><span class="gloss-term" style="color:'+dark+'">'+e[0]+'</span>';
+        if(e[3]){ html += '<button class="gloss-ref" onclick="navigate(\''+e[3]+'\')">→ '+e[4]+'</button>'; }
+        html += '</div><div class="gloss-def"><span class="en">'+e[1]+'</span><span class="jp">'+e[2]+'</span></div></div>';
+      });
+      return html + '</div>';
+    }
+    return ''
+    + '<div style="'+styleFor('espresso')+'">'
+    + '<div class="sheet-tag mono">REFERENCE · NOT TRACKED</div>'
+    + '<div class="sheet-eyebrow"><span class="en">Glossary</span><span class="jp">用語集</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Every term used on this site, in one place</span><span class="jp">このサイトで使われるすべての用語を、1か所に</span></h2>'
+    + '<p class="sec-intro"><span class="en">Technical vocabulary rarely gets learned in one pass, even material written as plainly as possible will use a term on one page that made perfect sense when first introduced, only for it to feel unfamiliar again several pages later once the context has faded. That\'s a completely normal part of learning any new field, not a sign something was read carelessly the first time, and treating it that way tends to slow people down far more than actually looking the word back up would. Rather than forcing a re-read of an entire earlier page just to recover one definition, this page collects every term used anywhere on the site in one place, organized by category, with each entry linking directly to the sheet where that concept is covered in real depth. This page is intentionally different from the others, there\'s nothing to read start to finish here, and no expectation of working through it in order. Not part of the day-by-day plan, this page doesn\'t track progress. Come back to it any time a page ahead uses a word that doesn\'t click yet.</span>'
+    + '<span class="jp">専門用語は一度読んだだけで身につくことはめったにない。どれだけ平易に書かれた教材であっても、あるページで最初に紹介されたときは完璧に理解できた用語が、数ページ後には文脈が薄れて再びなじみのないものに感じられることがある。それは、その分野を新しく学ぶ上でごく普通のことであり、最初に読んだときに不注意だったという印だとは限らない。そしてそう捉えてしまう方が、実際に用語を調べ直すことよりもはるかに学習を遅らせてしまいがちである。1つの定義を取り戻すためだけに前のページ全体を読み返すのではなく、このページはサイト内で使われるすべての用語をカテゴリごとに1か所にまとめ、各項目からその概念が本当に深く扱われているシートへ直接リンクしている。このページは他のページとは意図的に異なり、最初から最後まで通して読むものではなく、順番通りに進める必要もない。7日間プランの一部ではなく、このページは進捗を記録しない。この先のページで意味の分からない言葉が出てきたら、いつでもここに戻ってきてほしい。</span></p>'
+
+    + cat('#2FA8D8','#0F5E7A','Building &amp; Software Basics','ビルドとソフトウェアの基礎',[
+      ['Source code / ソースコード','The human-written instructions that make up a program, before it\'s turned into something a computer can run directly.','プログラムを構成する、人間が書いた命令。コンピュータがそのまま実行できる形になる前の状態。','0-1','0.1'],
+      ['Compile / コンパイル','The specific process of turning source code into machine-runnable instructions.','ソースコードを、コンピュータが実行できる命令に変換する特定の処理。','0-1','0.1'],
+      ['Build / ビルド','The overall process of turning all raw project material, code and assets, into a finished, runnable product.','コードとアセットを含む、プロジェクトの生の素材すべてを完成した実行可能な製品に変える全体の処理。','0-1','0.1'],
+      ['Asset cooking / アセットクック','The build-style process applied to art content rather than code, often involving quality/size trade-offs a compiler doesn\'t have.','コードではなくアート素材に対して行われるビルド的な処理。品質・サイズのトレードオフを伴うことが多い。','10-1011','10.10–11'],
+      ['Dependency / 依存関係','Something one piece of work needs to be finished before it can start.','ある作業が開始する前に完了していなければならない、別の作業や要素。','10-3','10.3'],
+      ['Changelist / チェンジリスト','A named, tracked set of file changes submitted to version control at one time.','ある時点でバージョン管理に投入される、名前付きで追跡されたファイル変更のまとまり。','10-3','10.3']
+    ])
+    + cat('#2FA36B','#0F5C3B','Machines &amp; Infrastructure','マシンとインフラ',[
+      ['Server / サーバー','A computer, usually remote and unseen, doing computing work on someone\'s behalf.','通常は遠隔にあり直接目にすることのない、誰かのために計算作業を行うコンピュータ。','0-1','0.1'],
+      ['Worker / ワーカー','In a build system, a server actively assigned to run build jobs.','ビルドシステムにおいて、ビルドジョブの実行に割り当てられているサーバー。','10-6','10.6'],
+      ['Build farm / ビルドファーム','A pool of many servers working together on build jobs.','ビルドジョブに協力して取り組む、多数のサーバーの集まり。','0-1','0.1'],
+      ['Distributed (system) / 分散（システム）','Work spread across multiple machines instead of piled onto one.','作業が1台に積み上げられるのではなく、複数のマシンに分散されている状態。','0-1','0.1'],
+      ['Job / ジョブ','One discrete unit of build work, e.g. "compile this file" or "cook this texture."','ビルド作業の1つの単位（例：このファイルをコンパイルする、このテクスチャをクックする）。','10-2','10.2']
+    ])
+    + cat('#B23E8C','#6E1F57','Speed &amp; Performance','速度とパフォーマンス',[
+      ['Latency / レイテンシ','How long one specific piece of work takes to finish, from the requester\'s point of view.','依頼した側から見て、1つの特定の作業が終わるまでにかかる時間。','0-1','0.1'],
+      ['Throughput / スループット','How much total work gets completed across everyone in a given period.','ある期間内に、全員分を合わせてどれだけの総作業量が完了するか。','0-1','0.1'],
+      ['CPU-bound / CPUバウンド','Limited by how much calculating a processor has to do.','プロセッサがどれだけ計算しなければならないかによって制限されている状態。','0-1','0.1'],
+      ['I/O-bound / I/Oバウンド','Limited by how fast data can be read, written, or transferred, not by calculation.','計算量ではなく、データの読み書き・転送の速さによって制限されている状態。','10-1011','10.10–11'],
+      ['Bottleneck / ボトルネック','Whatever specific resource is actually limiting how fast something can go.','実際に物事の速さを制限している、特定のリソース。','','']
+    ])
+    + cat('#2E7FC1','#0F4E82','Data &amp; Storage','データとストレージ',[
+      ['Cache / キャッシュ','A stash of already-finished work kept handy so it doesn\'t need to be redone.','やり直す必要がないよう、すぐ使える場所に置かれた、すでに終わった作業の蓄え。','10-4','10.4'],
+      ['Hash / ハッシュ','A short "fingerprint" code calculated from data\'s exact content; identical content always produces an identical hash.','データの正確な内容から計算される短い「指紋」コード。同じ内容は常に同じハッシュを生む。','10-4','10.4'],
+      ['Content-addressed / コンテンツアドレス方式','Looking something up by a hash of its content, rather than by a name or file path.','名前やファイルパスではなく、内容のハッシュによって何かを検索する方式。','10-4','10.4'],
+      ['Cache hit / miss / キャッシュヒット・ミス','A hit means the needed result was already cached and reused; a miss means it had to be built from scratch.','ヒットとは必要な結果がすでにキャッシュされ再利用できたこと、ミスとは一から作り直す必要があったこと。','10-4','10.4'],
+      ['Storage tier / ストレージ層','One "layer" of a multi-level cache, from very fast/small to slow/effectively unlimited.','非常に高速で小容量なものから、低速だが実質無制限なものまでの、多層キャッシュの1つの「層」。','10-5','10.5']
+    ])
+    + cat('#7A56C4','#4A2E8A','Coordination','コーディネーション',[
+      ['Queue / キュー','A waiting line of jobs that haven\'t started running yet.','まだ実行が始まっていない、ジョブの待機列。','',''],
+      ['Scheduler / スケジューラー','The system component deciding which job runs on which worker, and in what order.','どのジョブをどのワーカーで、どの順序で実行するかを決定するシステムの構成要素。','10-6','10.6'],
+      ['Fair-share (scheduling) / 公平配分（スケジューリング）','A policy ensuring multiple teams or projects each get a reasonable portion of shared capacity.','複数のチーム・プロジェクトが、共有キャパシティの適切な取り分をそれぞれ得られるようにするポリシー。','10-6','10.6'],
+      ['Critical path / クリティカルパス','The longest chain of dependent work in a given job; it sets the fastest possible completion time no matter how many workers are available.','あるジョブにおける、依存関係の中で最も長い連鎖。ワーカーが何台あっても最速の完了時刻を決定する。','10-3','10.3'],
+      ['Multi-tenancy / マルチテナンシー','Multiple independent teams or projects sharing the same pool of resources.','複数の独立したチームやプロジェクトが、同じリソースプールを共有している状態。','10-2','10.2']
+    ])
+    + cat('#D1476B','#7A1E3A','Reliability','信頼性',[
+      ['Fault tolerance / 耐障害性','Designing a system so individual failures degrade it gracefully instead of breaking everything.','個々の障害が起きても、システム全体が壊れるのではなく優雅に劣化するように設計すること。','10-89','10.8–9'],
+      ['Retry (with backoff) / バックオフ付きリトライ','Automatically attempting a failed job again, waiting progressively longer between attempts.','失敗したジョブを、試行のたびに待機時間を徐々に延ばしながら自動的に再試行すること。','10-89','10.8–9'],
+      ['Idempotent / 冪等','A job that produces the same safe result even if it\'s accidentally run more than once.','誤って複数回実行されても、同じ安全な結果になるジョブの性質。','10-89','10.8–9'],
+      ['Determinism / 決定性','The property that the same inputs always produce exactly the same output, every time, on any machine.','同じ入力からは、どのマシンで、何回実行しても、常に全く同じ出力が得られるという性質。','10-7','10.7'],
+      ['Observability / 可観測性','Having the data needed to tell, at a glance, whether a system is actually healthy.','システムが実際に健全かどうかを一目で把握するために必要なデータを持っていること。','10-89','10.8–9']
+    ])
+    + '</div>';
+  },
   '10-2': function(){ return ''
     + '<div style="'+styleFor('amber')+'">'
     + '<div class="sheet-tag mono">SHEET 1 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.2 · Foundations</span><span class="jp">10.2・土台</span></div>'
     + '<h2 class="sec-headline"><span class="en">State the requirements before you draw anything</span><span class="jp">何かを描き始める前に、要件を言葉にする</span></h2>'
-    + '<p class="sec-intro"><span class="en">Before any component gets named, say the constraints out loud. This single habit signals Dive Deep and Are Right, A Lot before you\'ve drawn a single box.</span>'
-    + '<span class="jp">どんなコンポーネント名も出す前に、まず制約条件を声に出して整理する。この一手間だけで、箱を一つも描かないうちからDive DeepとAre Right, A Lotのシグナルを送ることができる。</span></p>'
+    + '<p class="sec-intro"><span class="en">Most people asked to design a system like this jump straight to naming components: a queue here, a cache there, a scheduler somewhere else. That instinct is understandable, but it skips the step that actually separates a strong answer from a generic one, stating, out loud, what the real constraints are before proposing anything to solve them. A distributed build system for a game studio isn\'t a blank-slate design problem, it inherits very specific pressures from how studios actually work: multiple teams changing things constantly, wildly different kinds of work competing for the same machines, and business deadlines that don\'t move. Skipping this step tends to produce a design that looks clean on a whiteboard but quietly assumes away the hardest parts of the actual problem. Before any component gets named, say the constraints out loud. This single habit signals Dive Deep and Are Right, A Lot before you\'ve drawn a single box, and it sets up every design choice made on the sheets that follow.</span>'
+    + '<span class="jp">このようなシステムの設計を求められたとき、多くの人はいきなりコンポーネントの名前を挙げ始める。ここにキュー、あそこにキャッシュ、どこかにスケジューラー、といった具合である。この直感は理解できるが、本当に強い回答と平凡な回答を分ける段階を飛ばしてしまっている。それは、何かを提案する前に、実際の制約条件が何であるかを声に出して整理することである。ゲームスタジオ向けの分散ビルドシステムは、白紙から自由に設計できる問題ではなく、スタジオが実際にどう機能しているかから生じる非常に具体的な圧力を受け継いでいる。複数のチームが絶えず変更を加えていること、性質の大きく異なる作業が同じマシンを奪い合っていること、そして動かせないビジネス上の締め切りがあることである。この段階を飛ばすと、ホワイトボード上では綺麗に見えても、実際の問題で最も難しい部分を静かに前提から外してしまった設計になりがちである。どんなコンポーネント名も出す前に、まず制約条件を声に出して整理する。この一手間だけで、箱を一つも描かないうちからDive DeepとAre Right, A Lotのシグナルを送ることができ、この後のすべてのシートでの設計判断の土台にもなる。</span></p>'
+    + '<div class="xlink-note"><span class="en">New to servers, builds, or caching? This page assumes you already know those words.</span><span class="jp">サーバー・ビルド・キャッシュに馴染みがないか？このページはすでにそれらの言葉を知っている前提で書かれている。</span>'
+    + '<button onclick="navigate(\'0-1\')"><span class="en">← START WITH PART 0</span><span class="jp">← Part 0から始める</span></button></div>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> A distributed build system takes work that could technically run on one machine, compiling code, processing game assets, and spreads it across many machines (a "farm") so it finishes in minutes instead of hours, while guaranteeing the result is exactly the same as if one machine had done it all sequentially.</span>'
@@ -577,8 +812,8 @@ var PAGES = {
     + '<div class="sheet-tag mono">SHEET 2 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.3 · The Dependency Graph</span><span class="jp">10.3・依存関係グラフ</span></div>'
     + '<h2 class="sec-headline"><span class="en">Know exactly what depends on what</span><span class="jp">何が何に依存しているかを正確に把握する</span></h2>'
-    + '<p class="sec-intro"><span class="en">The dependency graph (DAG) is the single most important structural decision in the whole system.</span>'
-    + '<span class="jp">依存関係グラフ(DAG)は、システム全体における最も重要な構造上の意思決定である。</span></p>'
+    + '<p class="sec-intro"><span class="en">Every build system, no matter how it\'s implemented, has to answer one question correctly before anything else works: given a change, exactly what needs to be redone, and what can be safely left alone? Get this wrong in one direction and you rebuild everything on every change, which is safe but unbearably slow at any real scale. Get it wrong in the other direction and you under-rebuild, which is fast but risks shipping a build that\'s silently broken because something that should have been updated wasn\'t. The dependency graph is the structure that answers this question correctly, by making every relationship between pieces of work explicit rather than guessed at. It\'s not just a nice-to-have diagram, it\'s the foundation that every other idea on the sheets ahead, caching, scheduling, fault tolerance, is built directly on top of. Get the graph wrong, and nothing downstream can be trusted, no matter how sophisticated it looks.</span>'
+    + '<span class="jp">どんな実装のビルドシステムであっても、他の何よりも先に正しく答えなければならない問いが1つある。ある変更が入ったとき、正確に何を再ビルドする必要があり、何をそのままにしておいて安全なのか、という問いである。これを一方向に間違えると、変更のたびにすべてを再ビルドすることになる。安全ではあるが、実際の規模では耐えられないほど遅くなる。逆方向に間違えると、再ビルドが不足し、速くはなるが、本来更新されるべきだった何かが更新されず、静かに壊れたビルドを出荷してしまうリスクを負う。依存関係グラフとは、作業同士のあらゆる関係を推測ではなく明示的にすることで、この問いに正しく答えるための構造である。これは単なる便利な図解ではなく、この先のシートにある他のあらゆる考え方、キャッシュ、スケジューリング、耐障害性のすべてが、直接その上に築かれる土台である。グラフを間違えれば、どれだけ洗練されて見えても、その下流のものは何一つ信頼できなくなる。</span></p>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> A dependency graph, specifically a Directed Acyclic Graph or DAG, is a map of every piece of work in your build and exactly what each piece needs to finish before it can start. "Directed" means dependencies point one way (A needs B, never the reverse), and "acyclic" means no circular loops, if there were, nothing could ever finish.</span>'
@@ -669,8 +904,8 @@ var PAGES = {
     + '<div class="sheet-tag mono">SHEET 3 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.4 · Content-Addressed Caching</span><span class="jp">10.4・コンテンツアドレス方式のキャッシュ</span></div>'
     + '<h2 class="sec-headline"><span class="en">Never redo identical work, anywhere in the farm</span><span class="jp">同一の作業は、ファーム内のどこであっても二度と行わない</span></h2>'
-    + '<p class="sec-intro"><span class="en">The single biggest lever for 6–8 related projects. Get the cache key right, and identical work never gets redone.</span>'
-    + '<span class="jp">関連し合う6〜8プロジェクトにとって最大の改善レバー。キャッシュキーの設計さえ正しければ、同一の作業は二度と繰り返されない。</span></p>'
+    + '<p class="sec-intro"><span class="en">Once the dependency graph correctly identifies what needs rebuilding, a second question becomes just as important: has this exact piece of work already been done before, anywhere, by anyone? At a single-developer scale this barely matters, but at the scale of a studio running many projects that often share an engine or common libraries, an enormous amount of the total work being done across the whole farm is, in reality, identical work being repeated over and over by people who have no way of knowing someone else already did it. Content-addressed caching is what turns that wasted repetition into free wins: instead of asking whether a specific named target was built recently, it asks whether this exact content has ever produced a result before, a much more powerful question. This is, by a wide margin, the single biggest lever available for a studio running multiple related projects, more impactful than adding raw machine capacity. Get the cache key right, and identical work anywhere in the farm, across any project, never gets redone. Get it wrong, and a studio can end up paying, in wasted compute time, for the same work to be redone thousands of times over.</span>'
+    + '<span class="jp">依存関係グラフが再ビルドすべきものを正しく特定したら、次に同じくらい重要になる問いがある。この全く同じ作業は、どこかで、誰かによって、すでに行われたことがないか、という問いである。開発者1人の規模ではほとんど問題にならないが、エンジンや共通ライブラリを共有する複数プロジェクトを抱えるスタジオの規模では、ファーム全体で行われている総作業量のかなりの部分が、実際には、他の誰かがすでにやったことを知る術がない人によって、何度も繰り返されている同一の作業である。コンテンツアドレス方式のキャッシュは、この無駄な繰り返しを、そのまま得になる形に変える。特定の名前のターゲットが最近ビルドされたかを問う代わりに、この正確な内容が過去に結果を生んだことがあるかを問う、はるかに強力な問いである。これは、複数の関連プロジェクトを抱えるスタジオにとって、生のマシン容量を追加するよりも効果が大きい、群を抜いて最大のレバーである。キャッシュキーの設計さえ正しければ、ファーム内のどこであっても、どのプロジェクトであっても、同一の作業は二度と繰り返されない。これを間違えれば、スタジオは同じ作業が何千回も繰り返される無駄な計算時間の代償を払うことになりかねない。</span></p>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> Content-addressed caching means the "address" you use to look up a stored build result is derived directly from the content that produced it, a hash of the inputs, rather than from a name, path, or timestamp. If you\'ve built this exact thing before with these exact inputs, the system finds it by content, not by asking "have I built target X recently."</span>'
@@ -762,8 +997,8 @@ var PAGES = {
     + '<div class="sheet-tag mono">SHEET 4 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.5 · Multi-Tier Caching</span><span class="jp">10.5・多層キャッシュ</span></div>'
     + '<h2 class="sec-headline"><span class="en">Check fast before you check slow</span><span class="jp">遅いところを確認する前に、速いところを確認する</span></h2>'
-    + '<p class="sec-intro"><span class="en">One cache isn\'t one thing, it\'s a hierarchy, and the order you check it in matters as much as whether you have it at all.</span>'
-    + '<span class="jp">キャッシュは単一のものではなく階層である。どの順序で確認するかは、そもそもキャッシュを持っているかどうかと同じくらい重要である。</span></p>'
+    + '<p class="sec-intro"><span class="en">Once caching is established as the biggest lever available, an easy mistake is to think of "the cache" as a single thing sitting somewhere in the middle of the farm. In practice, a single shared cache creates its own bottleneck: every worker checking it for every piece of work generates enormous network traffic, and even work repeated on the exact same machine still has to round-trip over the network to confirm it. At the same time, keeping every past result available forever, everywhere, isn\'t realistic either, storage has real costs and real limits. The solution studios actually use is a hierarchy of caches, layered from very fast and small to slow and effectively unlimited, checked in a specific order rather than treated as one flat pool. Getting this layering right is what determines whether the caching idea from the previous sheet actually delivers on its promise at real scale, or quietly becomes a new bottleneck of its own. One cache isn\'t one thing, it\'s a hierarchy, and the order you check it in matters as much as whether you have it at all.</span>'
+    + '<span class="jp">キャッシュが利用可能な最大のレバーだと分かると、「キャッシュ」をファームのどこかにある単一のものとして考えてしまいがちである。しかし実際には、単一の共有キャッシュはそれ自体がボトルネックになる。すべてのワーカーがすべての作業についてそれを確認すれば、膨大なネットワークトラフィックが発生し、全く同じマシン上で繰り返される作業でさえ、それを確認するためにネットワークを往復しなければならない。同時に、過去のすべての結果をあらゆる場所に永久に保持しておくことも現実的ではない。ストレージには実際のコストと実際の限界があるためである。スタジオが実際に採用している解決策は、非常に高速で小容量なものから低速だが実質無制限なものまで層になったキャッシュの階層であり、単一のプールとしてではなく、特定の順序で確認する。この階層化を正しく行うことこそが、前のシートで扱ったキャッシュという考え方が実際の規模で本当に約束を果たすのか、それとも静かに新たなボトルネックになってしまうのかを分ける。キャッシュは単一のものではなく階層であり、どの順序で確認するかは、そもそもキャッシュを持っているかどうかと同じくらい重要である。</span></p>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> Multi-tier caching means splitting your cache into layers, from very fast and small (local disk on each worker) to slower and effectively unlimited (a cold archive), checking them in order from fastest to slowest before actually doing the work.</span>'
@@ -869,8 +1104,8 @@ var PAGES = {
     + '<div class="sheet-tag mono">SHEET 5 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.6 · Scheduling</span><span class="jp">10.6・スケジューリング</span></div>'
     + '<h2 class="sec-headline"><span class="en">Turn a pile of jobs into an execution plan</span><span class="jp">ジョブの山を、実際の実行計画に変える</span></h2>'
-    + '<p class="sec-intro"><span class="en">Every earlier design decision, the graph, the cache, fairness, only matters if the scheduler actually enforces it.</span>'
-    + '<span class="jp">これまでのすべての設計判断、グラフ、キャッシュ、公平性は、スケジューラーが実際にそれを実行に反映してはじめて意味を持つ。</span></p>'
+    + '<p class="sec-intro"><span class="en">By this point, the design has a correct dependency graph telling it what needs rebuilding, and a caching system that avoids redoing identical work. But neither of those, on its own, decides which job actually runs on which machine, right now, given everything else competing for the same limited pool of workers. That decision is made continuously, thousands of times a day, by the scheduler, and how well it makes that decision determines whether the theoretical speed of the design shows up as real, felt speed for the people waiting on builds. A scheduler that ignores which work is actually urgent, what resources a job actually needs, or how fairly capacity is shared across teams can waste enormous amounts of otherwise well-designed capacity. This is also where multi-tenancy, the requirement flagged all the way back on the very first sheet, actually gets enforced or fails to be enforced in practice. Every earlier design decision, the graph, the cache, fairness, only matters if the scheduler actually enforces it.</span>'
+    + '<span class="jp">ここまでで、設計には何を再ビルドすべきかを教えてくれる正しい依存関係グラフと、同一の作業をやり直さないキャッシュシステムが備わっている。しかし、そのどちらも、それ単体では、今この瞬間、限られたワーカープールを奪い合う他のすべてを踏まえた上で、どのジョブがどのマシンで実際に動くかを決めてはくれない。その決定は、1日に何千回も継続的にスケジューラーによって下されており、その決定の質が、設計上の理論的な速さが、ビルドを待つ人々にとって実際に体感できる速さとして現れるかどうかを左右する。実際に何が緊急なのか、ジョブが本当に必要としているリソースは何か、チーム間でキャパシティがどれだけ公平に分配されているかを無視するスケジューラーは、せっかく優れた設計のキャパシティを大きく無駄にしてしまう。ここはまた、最初のシートで触れたマルチテナンシーという要件が、実際に実行時に守られるのか、それとも守られないのかが決まる場所でもある。これまでのすべての設計判断、グラフ、キャッシュ、公平性は、スケジューラーが実際にそれを実行に反映してはじめて意味を持つ。</span></p>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> Scheduling is the process of deciding which job runs on which worker, and in what order, given limited capacity and a queue of pending work. It\'s the layer that turns "here\'s a pile of jobs and 50 machines" into an actual execution plan.</span>'
@@ -964,8 +1199,8 @@ var PAGES = {
     + '<div class="sheet-tag mono">SHEET 6 / 9</div>'
     + '<div class="sheet-eyebrow"><span class="en">10.7 · Determinism</span><span class="jp">10.7・決定性</span></div>'
     + '<h2 class="sec-headline"><span class="en">The quiet assumption everything else depends on</span><span class="jp">他のすべてが静かに前提としているもの</span></h2>'
-    + '<p class="sec-intro"><span class="en">Nothing in this system fails loudly when this breaks. It just gets slower, and it\'s hard to tell why.</span>'
-    + '<span class="jp">これが崩れても、このシステムの中で派手に失敗するものは何もない。ただ徐々に遅くなっていくだけで、原因がわかりにくい。</span></p>'
+    + '<p class="sec-intro"><span class="en">Every idea covered so far, the graph correctly identifying what changed, the cache safely reusing past results, quietly rests on one assumption that\'s never been stated out loud until now: that building the same input twice always produces exactly the same output. Most engineers never have to think about this assumption directly, because most everyday software just works this way by default. But a surprising number of common tools and processes, especially in game asset pipelines, don\'t actually guarantee it, for reasons that have nothing to do with bugs in anyone\'s logic. When that assumption quietly breaks, the system doesn\'t crash or throw an error, which is exactly what makes it dangerous. Nothing in this system fails loudly when this breaks. It just gets slower, and it\'s hard to tell why, sometimes for months, while everyone assumes the cache or the hardware is simply inadequate rather than suspecting the real cause.</span>'
+    + '<span class="jp">これまでに扱ったすべての考え方、変更点を正しく特定するグラフ、過去の結果を安全に再利用するキャッシュは、これまで一度も声に出して述べられてこなかった、ある1つの前提の上に静かに成り立っている。それは、同じ入力から2回ビルドすれば、常に全く同じ出力が得られる、という前提である。日常的なソフトウェアの多くはデフォルトでこのように動作するため、たいていのエンジニアはこの前提について直接考える必要はない。しかし、驚くほど多くの一般的なツールや処理は、特にゲームのアセットパイプラインにおいて、誰のロジックのバグとも関係のない理由で、実際にはこれを保証していない。この前提が静かに崩れても、システムはクラッシュもエラーも出さない。まさにそれこそが危険な理由である。これが崩れても、このシステムの中で派手に失敗するものは何もない。ただ徐々に遅くなっていくだけで、原因がわかりにくく、時には数ヶ月もの間、誰もが本当の原因を疑うことなく、単にキャッシュやハードウェアが不十分なのだと思い込んでしまう。</span></p>'
     + '<div class="primer">'
     + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
     + '<p><span class="en"><strong>In plain terms:</strong> Determinism means the same inputs always produce byte-identical outputs, no matter which machine, when, or how many times you run the build. It\'s the property everything else, caching, dedup, correctness, quietly depends on.</span>'
@@ -1054,6 +1289,650 @@ var PAGES = {
     + '<details class="followup"><summary><span class="en">How do you convince a team to invest time in this when it adds no visible feature?</span><span class="jp">目に見える機能を追加しないこの取り組みに、チームを投資させるにはどうすればよいか？</span></summary>'
     + '<div class="fu-a"><span class="en">Frame it in terms of the metric they already care about: cache hit rate and average build time. A 20-point hit-rate drop costing X hours of compute per week is a concrete, quantifiable argument.</span>'
     + '<span class="jp">チームがすでに気にしている指標、キャッシュヒット率と平均ビルド時間に落とし込んで説明する。ヒット率が20ポイント低下すると週にX時間分の計算コストがかかっている、という具体的で数値化された主張である。</span></div></details>'
+    + '</div>';
+  },
+  '10-89': function(){ return ''
+    + '<div style="'+styleFor('rose')+'">'
+    + '<div class="sheet-tag mono">SHEET 7 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.8–9 · Fault Tolerance &amp; Observability</span><span class="jp">10.8–9・耐障害性と可観測性</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Expect failure, and measure everything</span><span class="jp">失敗を前提とし、すべてを計測する</span></h2>'
+    + '<p class="sec-intro"><span class="en">Everything covered up to this point describes how the system should behave when everything is working correctly, the graph, the cache, the scheduler all doing their jobs as designed. But a real farm running continuously across dozens of machines will never actually run in that ideal state for long. Hardware fails, networks blip, disks fill up, and unpredictable interactions between jobs sharing the same machine happen constantly, none of which is a design flaw, it\'s simply the statistical reality of running anything at this scale for long enough. A system that only works when nothing goes wrong isn\'t actually a finished design, it\'s a design with an unstated assumption baked into every earlier decision. A system this large will have workers die mid-job and caches go stale in ways you can\'t predict. What you can control is how gracefully it recovers, and whether you can even tell when something\'s wrong before it becomes an expensive, months-long problem.</span>'
+    + '<span class="jp">ここまで扱ってきたことはすべて、グラフ・キャッシュ・スケジューラーが設計通りにそれぞれの役割を果たしている、すべてが正しく機能している状態でのシステムの振る舞いについてである。しかし、何十台ものマシンで常時稼働する実際のファームが、その理想的な状態を長く保つことは決してない。ハードウェアは故障し、ネットワークは瞬断し、ディスクは満杯になり、同じマシンを共有するジョブ同士の予測できない相互作用が絶えず起こる。これらはどれも設計上の欠陥ではなく、この規模のものを十分長く動かし続ければ必然的に起こる統計的な現実にすぎない。何も問題が起きないときにしか機能しないシステムは、実は完成した設計とは言えず、これまでのすべての判断の中に語られないまま前提として組み込まれてしまっている設計である。これほどの規模のシステムでは、ワーカーがジョブの途中で停止したり、キャッシュが予期せぬ形で古くなったりすることが必ず起こる。制御できるのは、どれだけ優雅に回復できるか、そしてそれが高コストで数ヶ月に及ぶ問題になる前に、そもそも問題に気づけるかどうかである。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> Fault tolerance is designing so individual failures, a dead worker, a corrupted cache entry, a network blip, degrade the system gracefully instead of breaking builds. Observability is having the data to know, at a glance, whether the system is actually healthy, not just hoping it is.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>耐障害性とは、個々の障害（ワーカーの停止、キャッシュエントリの破損、ネットワークの瞬断）が起きても、ビルドが壊れたりせずシステムが優雅に劣化するように設計することである。可観測性とは、システムが実際に健全かどうかを一目で把握できるデータを持つことであり、健全であることをただ願うのではない。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> At 50 machines running continuously, failures aren\'t edge cases, they\'re a statistical certainty on any given day. And every fundamental discussed earlier, cache correctness, determinism, is invisible without observability, you can\'t fix what you can\'t see degrading.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>50台のマシンが常時稼働していれば、障害は例外ではなく、ある日には必ず統計的に発生する。そして、これまで議論したキャッシュの正確性や決定性は、可観測性なしには見えない。劣化していることが見えなければ、修正することもできない。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">A farm runs unattended and continuously, where a single failure shouldn\'t halt everything</span><span class="jp">ファームが無人・常時稼働しており、単一の障害が全体を止めてはならない</span></li>'
+    + '<li><span class="en">Non-obvious degradation needs catching before it becomes a months-long crisis</span><span class="jp">目に見えにくい劣化を、数ヶ月に及ぶ危機になる前に検知する必要がある</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">LESS CRITICAL WHEN</span><span class="jp">重要度が下がる場合</span></div><ul>'
+    + '<li><span class="en">A tiny local build run interactively by one developer, where failure is immediately visible and manually retried</span><span class="jp">1人の開発者が対話的に実行する小規模ビルドで、障害がすぐ見えて手動で再試行できる</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#D1476B;--accent-dark:#7A1E3A;--tint:#F7DCE3">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Retries with backoff</span><span class="jp">バックオフ付きリトライ</span></h3>'
+    + '<p><span class="en">Transient failures, a flaky network blip, a worker briefly starved by a neighboring process, shouldn\'t fail the whole build. Retrying with exponential backoff, waiting longer between each attempt, handles these without hammering an already-struggling resource.</span>'
+    + '<span class="jp">一過性の障害（ネットワークの瞬断、隣接プロセスによる一時的なリソース逼迫など）でビルド全体を失敗させるべきではない。指数バックオフ（試行のたびに待機時間を延ばす）付きのリトライは、すでに逼迫しているリソースをさらに叩くことなく対処できる。</span></p>'
+    + '<p><span class="en">Distinguish transient from permanent failures. A job failing the same way 5 times in a row is likely a real bug, not a flake, cap retries and surface a real failure after a reasonable number of attempts rather than silently retrying forever.</span>'
+    + '<span class="jp">一過性の障害と恒久的な障害を区別する。5回連続で同じ失敗をするジョブは本物のバグである可能性が高い。リトライ回数に上限を設け、一定回数を超えたら本物の失敗として表面化させる。無限に静かにリトライしてはならない。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A worker mid-cook job gets OOM-killed because a neighboring job spiked memory. Retry once immediately, then with backoff if it fails again. If it fails identically 3 times with the same error signature, stop retrying and surface it as a real build failure, not a flake.</span>'
+    + '<span class="jp">隣接するジョブがメモリを急増させたため、ワーカーがクック処理の途中でOOM Killされたとする。まず即座に1回リトライし、それでも失敗すればバックオフを入れて再試行する。同じエラーシグネチャで3回連続失敗した場合はリトライを止め、フレークではなく本物のビルド失敗として表面化させる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Retry the storm, not the wall you keep walking into.</span><span class="jp">嵐はリトライする。何度もぶつかる壁はリトライしない。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#D1476B;--accent-dark:#7A1E3A;--tint:#F7DCE3">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Idempotent job design &amp; speculative re-execution</span><span class="jp">冪等なジョブ設計と投機的再実行</span></h3>'
+    + '<p><span class="en">Idempotent means running a job twice with the same inputs produces the same safe result. Writing to a content-addressed output key is naturally idempotent, a duplicate write just overwrites with an identical value. This matters because retries and speculative execution both mean a job might genuinely run more than once.</span>'
+    + '<span class="jp">冪等とは、同じ入力で同じジョブを2回実行しても同じ安全な結果になることを意味する。コンテンツアドレス方式の出力キーへの書き込みは自然に冪等である。重複した書き込みは同一の値で上書きするだけである。リトライと投機的実行のどちらも、同じジョブが本当に2回実行される可能性があるため、これが重要になる。</span></p>'
+    + '<p><span class="en">Speculative re-execution, a straggler mitigation technique, launches a second copy of a suspiciously slow job on a different worker and takes whichever finishes first, killing the loser. This only works safely if the job is idempotent.</span>'
+    + '<span class="jp">投機的再実行（ストラグラー対策の一種）は、明らかに遅いジョブの2つ目のコピーを別のワーカーで起動し、先に終わった方を採用して負けた方を停止する。これが安全に機能するのは、ジョブが冪等である場合に限られる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">49 of 50 identical texture-cook jobs finish in ~2 minutes, one is stuck at 8 minutes on a worker with a flaky disk. Rather than waiting indefinitely, launch a speculative duplicate on a healthy worker at the 4-minute mark, whichever finishes first wins, since content-addressed writes make both safe to attempt.</span>'
+    + '<span class="jp">同一のテクスチャクックジョブ50件のうち49件は約2分で終わるが、1件だけディスクが不安定なワーカーで8分間停止している。無期限に待つのではなく、4分の時点で健全なワーカー上に投機的な複製を起動する。コンテンツアドレス方式の書き込みは両方とも安全に試行できるため、先に終わった方が採用される。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">If in doubt, run it twice and take whichever wins. Just make sure "twice" can\'t hurt anything.</span><span class="jp">迷ったら2回実行し、勝った方を採用する。ただし「2回」が何も壊さないようにしておく。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#D1476B;--accent-dark:#7A1E3A;--tint:#F7DCE3">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Metrics that actually predict trouble</span><span class="jp">実際にトラブルを予測する指標</span></h3>'
+    + '<p><span class="en">Four metrics worth tracking as first-class signals: cache hit rate per tier and project (a slow decay is a determinism bug per 10.7), queue depth per project (rising depth means the fair-share policy isn\'t keeping up), the gap between critical-path duration and actual wall-clock time (a growing gap means something\'s wasting time off the critical path), and worker failure/retry rate.</span>'
+    + '<span class="jp">第一級のシグナルとして追跡する価値のある4つの指標：層・プロジェクトごとのキャッシュヒット率（緩やかな低下は10.7の決定性バグを示す）、プロジェクトごとのキュー深さ（増加は公平配分ポリシーが需要に追いついていないことを示す）、クリティカルパス時間と実際の実時間の差（差が広がることは何かが時間を浪費していることを示す）、そしてワーカーの障害・リトライ率である。</span></p>'
+    + '<p><span class="en">The goal isn\'t "collect everything," it\'s tracking the handful of numbers that would tell you something\'s wrong before a person notices manually, each metric should map to a specific fundamental discussed earlier, not exist for its own sake.</span>'
+    + '<span class="jp">目標は「すべてを収集する」ことではなく、人が手動で気づく前に問題を教えてくれる一握りの数字を追跡することである。各指標は、それ自体のために存在するのではなく、これまで議論した特定の基本要素に対応しているべきである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A dashboard showing per-project queue depth over the last 24 hours immediately reveals whether Project A\'s crunch-week flood (from 10.6) is actually being contained, versus a raw job-count total that hides which project is affected.</span>'
+    + '<span class="jp">過去24時間のプロジェクトごとのキュー深さを示すダッシュボードは、（10.6の）プロジェクトAの繁忙期の急増が実際に抑え込まれているかを即座に示す。どのプロジェクトが影響を受けているかを隠してしまう単なるジョブ数の合計とは対照的である。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Every metric should answer a question you\'d otherwise have to ask a person.</span><span class="jp">すべての指標は、本来なら人に聞かなければならない質問に答えるべきである。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#D1476B;--accent-dark:#7A1E3A;--tint:#F7DCE3">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Alerting on trend, not just threshold</span><span class="jp">閾値ではなく傾向でアラートする</span></h3>'
+    + '<p><span class="en">A fixed threshold alert catches catastrophic failures but misses the slow 85%→60% decay from 10.7\'s determinism example, which never crosses an obvious hard line until it\'s already been a problem for months. Trend-based alerting catches the slow-burn failures threshold alerts are blind to.</span>'
+    + '<span class="jp">固定閾値のアラートは破滅的な障害は捉えるが、10.7の決定性の例にあった85%→60%への緩やかな低下は見逃してしまう。これは明確な境界線を超えるまで気づかれない。傾向ベースのアラートは、閾値アラートが見逃す緩慢な障害を捉える。</span></p>'
+    + '<p><span class="en">This connects directly to 10.7\'s say-out-loud point: observability is the mechanism that turns a silently degrading hit rate into something someone actually gets paged about before it costs months of wasted compute.</span>'
+    + '<span class="jp">これは10.7の「面接で口に出す一言」に直接つながる。可観測性は、静かに低下し続けるヒット率を、数ヶ月分の計算コストを無駄にする前に誰かが実際に対応するきっかけへと変える仕組みである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A hit-rate alert firing only below a hard 50% floor would have stayed silent through the entire 85%→60% decay. A trend alert on "hit rate dropped more than 5 points over any rolling 2-week window" would have caught it in week 2, not month 3.</span>'
+    + '<span class="jp">50%という固定の下限だけで発火するヒット率アラートは、85%→60%への低下の間ずっと沈黙していたはずである。「任意の2週間のローリングウィンドウでヒット率が5ポイント以上低下した」という傾向アラートであれば、3ヶ月目ではなく2週目にこれを捉えられていた。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Slopes catch what floors miss.</span><span class="jp">傾きは、下限が見逃すものを捉える。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">How many retries is too many?</span><span class="jp">リトライは何回までが妥当か？</span></summary>'
+    + '<div class="fu-a"><span class="en">No universal number, cap it based on job cost. Cheap jobs can afford more retries since the cost of over-retrying is low. Expensive jobs should fail fast and surface for investigation, since retrying a 40-minute job 5 times wastes real capacity chasing what might be a genuine bug.</span>'
+    + '<span class="jp">普遍的な数字は存在しない。ジョブのコストに基づいて上限を設ける。安価なジョブは過剰リトライのコストが低いため多めに許容できる。高コストなジョブは早く失敗させて調査に回すべきである。40分かかるジョブを5回リトライすることは、本物のバグかもしれないものを追いかけて実際のキャパシティを無駄にする。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">Doesn\'t speculative execution waste capacity by running duplicate work?</span><span class="jp">投機的実行は重複作業でキャパシティを無駄にしていないか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Yes, deliberately, and that\'s the trade-off worth naming out loud: it trades a small amount of wasted compute for a much larger amount of saved wall-clock time, almost always a good trade when workers are cheap relative to a developer\'s time.</span>'
+    + '<span class="jp">その通りであり、意図的にそうしている。ここが声に出す価値のあるトレードオフである。わずかな計算の無駄と引き換えに、はるかに大きな実時間の節約を得る。ワーカーが開発者の時間に比べて安価である限り、これはほぼ常に良い取引である。</span></div></details>'
+    + '</div>';
+  },
+  '10-1011': function(){ return ''
+    + '<div style="'+styleFor('rust')+'">'
+    + '<div class="sheet-tag mono">SHEET 8 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.10–11 · Games-Specific Realities &amp; Capacity Math</span><span class="jp">10.10–11・ゲーム特有の事情と容量計算</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Why game builds break generic build-system assumptions</span><span class="jp">なぜゲームビルドは一般的なビルドシステムの前提を崩すのか</span></h2>'
+    + '<p class="sec-intro"><span class="en">Everything covered on the previous sheets, the graph, the cache, the scheduler, fault tolerance, is genuinely general-purpose thinking that applies to distributed build systems for any kind of software. It would be a mistake, though, to treat a games studio\'s build farm as just a generic example of that general thinking, because games break several of its unstated assumptions at once, in ways that change what actually matters in practice. Most conventional build-system thinking was shaped by decades of experience with text-heavy code compilation, where files are small, correctness is mostly binary, and the bottleneck is usually the processor doing the compiling. Game studios deal with an entirely different mix: enormous binary art assets, quality decisions that aren\'t simply right or wrong, and hardware toolchains that fragment the very worker pool the earlier sheets assumed was flexible. Being able to name specifically which of those generic assumptions break, backed by real numbers rather than a vague sense that "games are different," is what separates a memorized answer from real understanding. This sheet is where the general thinking from earlier gets tested against the specific reality of the domain.</span>'
+    + '<span class="jp">これまでのシートで扱ってきたグラフ・キャッシュ・スケジューラー・耐障害性は、どんな種類のソフトウェアの分散ビルドシステムにも当てはまる、本当に汎用的な考え方である。しかし、ゲームスタジオのビルドファームを、その汎用的な考え方の単なる一例として扱ってしまうのは誤りである。ゲームは、実務上何が本当に重要かを変えてしまうような形で、その語られない前提のいくつかを同時に崩すためである。従来のビルドシステムに関する考え方の多くは、ファイルが小さく、正しさがおおむね二値であり、ボトルネックが通常コンパイルを行うプロセッサである、テキスト中心のコードコンパイルの何十年もの経験によって形作られてきた。ゲームスタジオが扱うのは全く異なる組み合わせである。巨大なバイナリのアート素材、単純に正しいか間違っているかでは判断できない品質判断、そして前のシートが柔軟だと前提していたワーカープールそのものを断片化させるハードウェアツールチェーンである。「ゲームは違う」という漠然とした感覚ではなく、実際の数字に裏付けられた形で、その汎用的な前提のどれが具体的に崩れるのかを言えることこそが、暗記した答えと本当の理解を分ける。このシートは、これまでの汎用的な考え方を、この領域特有の現実に照らして検証する場である。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> This sheet covers two closely related things: the specific ways game builds differ structurally from typical software builds, and the back-of-envelope math for reasoning about capacity, how many workers you actually need and how long a queue takes to drain.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>このシートは密接に関連する2つのことを扱う。1つは、ゲームビルドが一般的なソフトウェアビルドと構造的にどう異なるかという点。もう1つは、キャパシティを検討するための概算計算、実際に何台のワーカーが必要か、キューがはけるまでどれくらいかかるかという点である。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> Interviewers, especially one with a data-platform background, will probe whether your reasoning is a generic template or something actually thought through for this domain. Concrete numbers and games-specific detail prove the latter.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>面接官、特にデータ基盤出身の面接官は、あなたの推論が汎用的なテンプレートなのか、この領域について実際に考え抜いたものなのかを見極めようとする。具体的な数字とゲーム特有の詳細こそが、後者であることを証明する。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">Asked to justify design choices with numbers, or "why is this different for games"</span><span class="jp">数字を用いて設計判断を正当化するよう求められた、または「ゲームだと何が違うか」と問われた場合</span></li>'
+    + '<li><span class="en">Queue depth, worker count, or SLA targets come up in discussion</span><span class="jp">キュー深さ・ワーカー台数・SLA目標が議論される場合</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">READ THE ROOM WHEN</span><span class="jp">空気を読むべき場合</span></div><ul>'
+    + '<li><span class="en">The interviewer frames the question as generic/platform-agnostic, forcing unprompted detail can read as narrow rather than adaptable</span><span class="jp">面接官が汎用的な問いとして枠付けした場合、求められていない詳細を押し込むと柔軟性がないと受け取られかねない</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#C0631A;--accent-dark:#7A3D0C;--tint:#F5E2D0">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">I/O-bound, not CPU-bound (the Blizzard case study)</span><span class="jp">I/Oバウンドであり、CPUバウンドではない（Blizzardの事例）</span></h3>'
+    + '<p><span class="en">Most software build systems optimize around CPU-bound compilation, more cores roughly means faster builds. Game builds spend most of their wall-clock time moving data: source textures, cooked output, cache transfers, gigabytes rather than kilobytes per job. This flips the bottleneck analysis: network and disk throughput usually matter more than raw core count.</span>'
+    + '<span class="jp">ほとんどのソフトウェアビルドシステムは、CPUバウンドなコンパイルを中心に最適化されている。おおむねコア数が多いほどビルドは速くなる。ゲームビルドは実時間の大部分をデータ移動に費やす。ソーステクスチャの読み込み、クック済み出力の書き込み、キャッシュ転送であり、1ジョブあたりキロバイトではなくギガバイト規模である。これによりボトルネック分析が逆転する。ネットワークとディスクのスループットの方が、生のコア数よりも重要になることが多い。</span></p>'
+    + '<p><span class="en">This isn\'t hypothetical. Blizzard\'s own internal build system team found exactly this while redesigning StarCraft II\'s build pipeline, taking build time from 6 hours to 30 minutes primarily by redesigning around I/O, not by adding compute.</span>'
+    + '<span class="jp">これは仮説ではない。Blizzard自身の内部ビルドシステムチームは、StarCraft IIのビルドパイプラインを再設計する際にまさにこれを発見した。ビルド時間を6時間から30分へと短縮したのは、主に計算力を追加したことではなく、I/Oを中心に再設計したことによるものである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Doubling CPU cores on a texture-cook-heavy build might improve wall-clock time by only 10–15%, since the cook step is often disk-read-bound. Halving the network round-trip time to the shared cache tier (10.5) could improve it 40%+, since most jobs check cache far more often than they actually compute.</span>'
+    + '<span class="jp">テクスチャクックが多いビルドでCPUコア数を倍にしても、実時間の改善は10〜15%程度にとどまることがある。クック工程はディスク読み込みがボトルネックになっていることが多いためである。一方、共有キャッシュ層（10.5）へのネットワーク往復時間を半分にできれば、40%以上の改善が見込めることもある。ほとんどのジョブは実際に計算しているよりもキャッシュを確認している時間の方が長いためである。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Ask "what\'s it waiting on," not "how many cores does it have."</span><span class="jp">「コア数はいくつか」ではなく「何を待っているのか」を問う。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#C0631A;--accent-dark:#7A3D0C;--tint:#F5E2D0">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Toolchain and platform fragmentation</span><span class="jp">ツールチェーンとプラットフォームの断片化</span></h3>'
+    + '<p><span class="en">Your 50 servers aren\'t 50 interchangeable units. PS5, Switch 2, and mobile toolchains often can\'t coexist cleanly on the same machine, SDK version conflicts, licensing, driver requirements, which means the worker pool is really several smaller pools with hard capability constraints.</span>'
+    + '<span class="jp">50台のサーバーは互換可能な50台の単位ではない。PS5、Switch 2、モバイルのツールチェーンは、同じマシン上で綺麗に共存できないことが多い（SDKバージョンの衝突、ライセンス、ドライバ要件）。つまりワーカープールは、実際には厳格な能力制約を持ついくつかの小さなプールの集まりである。</span></p>'
+    + '<p><span class="en">This directly affects the scheduling and fair-share math from 10.6. If only 15 of 50 workers are PS5-capable and a PS5-heavy project needs more at peak, no amount of scheduling cleverness fixes that, the ceiling is physical or licensing, not a scheduling problem.</span>'
+    + '<span class="jp">これは10.6のスケジューリングと公平配分の計算に直接影響する。もし50台中15台だけがPS5対応で、PS5中心のプロジェクトがピーク時に15台以上を必要とするなら、どれだけ公平配分を工夫してもこれは解決しない。上限は物理的・ライセンス上の制約であり、スケジューリングの問題ではない。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If 6–8 projects split roughly into PS5-focused, Switch-focused, and mobile-focused work, and only 15 of 50 workers carry PS5 devkits, a PS5-heavy milestone crunch can be capacity-constrained even while 20 Switch-capable workers sit idle. A scheduler can\'t route PS5 jobs to Switch-only machines.</span>'
+    + '<span class="jp">6〜8プロジェクトがおおむねPS5中心・Switch中心・モバイル中心に分かれており、50台中15台だけがPS5開発キットを搭載しているとする。PS5中心のマイルストーン繁忙期は、20台のSwitch対応ワーカーがアイドル状態であってもキャパシティ制約を受ける可能性がある。スケジューラーはPS5専用ジョブをSwitch専用マシンに回すことはできない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">50 workers is a number for the org chart. The real constraint is capability-partitioned capacity.</span><span class="jp">50台という数字は組織図のための数字である。実際の制約は能力ごとに分割されたキャパシティである。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#C0631A;--accent-dark:#7A3D0C;--tint:#F5E2D0">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Capacity math: back-of-envelope worked example</span><span class="jp">容量計算：概算の具体例</span></h3>'
+    + '<p><span class="en">Basic queueing intuition: if jobs arrive faster than they\'re completed, the queue grows without bound, no matter how large it currently is. "How many workers do we need" starts from arrival rate vs. service rate, not from a target build time alone.</span>'
+    + '<span class="jp">基本的なキューイングの直感：ジョブが処理されるより速いペースで到着すれば、現在の規模に関わらずキューは際限なく増え続ける。「何台のワーカーが必要か」という問いは、目標ビルド時間だけからではなく、到着率対処理率から始めるべきである。</span></p>'
+    + '<p><span class="en">Worked through: if a changelist generates 400 build jobs averaging 3 minutes of worker time each, and the studio wants it processed within 20 minutes at peak, that\'s 1,200 worker-minutes needing to fit inside a 20-minute window, roughly 60 workers running continuously at that moment, before accounting for queueing overhead or imperfect parallelization.</span>'
+    + '<span class="jp">具体的に計算してみる：あるチェンジリストの投入が平均400件のビルドジョブを生成し、それぞれ平均3分のワーカー時間を要し、スタジオがピーク時に20分以内に処理したいとする。400×3＝1,200ワーカー分の作業を20分の枠に収める必要があり、その瞬間におよそ60台のワーカーが継続稼働する必要がある。これはキューイングのオーバーヘッドや不完全な並列化を考慮する前の数字である。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">With 50 shared workers instead of the ideal 60, expect fair-share/critical-path scheduling (10.6) to absorb the gap during normal load. But a genuinely sustained deficit like this is exactly the kind of number worth surfacing to leadership as "structurally short capacity for our SLA target," not something to solve purely through smarter scheduling.</span>'
+    + '<span class="jp">理想の60台ではなく実際には50台の共有ワーカーしかない場合、通常負荷時は（10.6の）公平配分・クリティカルパススケジューリングでこのギャップをある程度吸収できると想定される。しかし継続的な不足が本当に存在する場合、それは「SLA目標に対して構造的にキャパシティが不足している」として経営層に提起する価値のある数字であり、スケジューリングの巧妙さだけで解決すべき問題ではない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">If arrival rate consistently beats service rate, no scheduling cleverness fixes it, only more capacity does.</span><span class="jp">到着率が処理率を継続的に上回るなら、どんなスケジューリングの工夫も解決しない。解決できるのはキャパシティの追加だけである。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#C0631A;--accent-dark:#7A3D0C;--tint:#F5E2D0">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Asset cooking vs. code compilation as genuinely distinct problems</span><span class="jp">アセットクックとコードコンパイルは本質的に別の問題である</span></h3>'
+    + '<p><span class="en">Recap from 10.3: code compilation is largely deterministic-by-default. Asset cooking often involves lossy, tunable processes, texture compression quality, mesh simplification thresholds, where "correct" isn\'t binary, it\'s a quality/size/performance trade-off decided by an artist, not just a build engineer.</span>'
+    + '<span class="jp">10.3の復習：コードコンパイルは基本的にデフォルトで決定的である。一方アセットクックはしばしば非可逆で調整可能な処理を伴う（テクスチャ圧縮の品質、メッシュ簡略化の閾値）。ここでの「正しさ」は二値ではなく、アーティストが判断する品質・サイズ・パフォーマンスのトレードオフである。ビルドエンジニアだけが判断するものではない。</span></p>'
+    + '<p><span class="en">This means asset-cooking jobs sometimes need a review/approval step code compilation never does, a cooked texture might build successfully but still get rejected on visual quality grounds, a farm consideration a pure code-focused design would never need to handle.</span>'
+    + '<span class="jp">これは、コードコンパイルには決して発生しないレビュー・承認ステップが、アセットクックのジョブには必要になることがあることを意味する。クック済みテクスチャは正常にビルドされても、ビジュアル品質の観点で却下されることがある。純粋にコード中心の設計では扱う必要のないファーム上の考慮事項である。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">A technical artist rejecting a cooked texture\'s compression settings after a successful build is a different kind of "failure" than a compile error, it doesn\'t indicate a malfunction, but the farm\'s tooling still needs to support quickly re-cooking with adjusted settings without a full rebuild of everything downstream.</span>'
+    + '<span class="jp">テクニカルアーティストが、正常にビルドされたテクスチャの圧縮設定を後から却下することは、コンパイルエラーとは異なる種類の「失敗」である。不具合を示すものではないが、ファームのツールは、下流全体をフルリビルドすることなく、調整された設定で素早く再クックできるようサポートする必要がある。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Code either compiles or it doesn\'t. Assets can build successfully and still be wrong.</span><span class="jp">コードはコンパイルが通るか通らないかのどちらかである。アセットは正常にビルドされても間違っていることがある。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">If I/O matters more than CPU, is more cores per worker wasted investment?</span><span class="jp">I/Oの方が重要だとすると、コア数を増やすのは無駄な投資ということか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Not entirely, some steps, shader permutation compilation especially, are genuinely CPU-bound. The honest answer is job-type-dependent: profile which job types are actually CPU-bound vs. I/O-bound before investing in more cores across the board.</span>'
+    + '<span class="jp">必ずしもそうではない。特にシェーダーパーミュテーションコンパイルなど、本当にCPUバウンドな工程もある。誠実な答えはジョブタイプ次第である。全体的にコアを増やす前に、どのジョブタイプが実際にCPUバウンドで、どれがI/Oバウンドかをプロファイリングすべきである。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">How would you actually measure I/O-bound vs. CPU-bound in practice?</span><span class="jp">実際にI/OバウンドかCPUバウンドかをどう測定するのか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Compare average CPU utilization during a job\'s execution against wall-clock duration. If CPU sits well below 100% while the job is still "running," that\'s a strong signal it\'s waiting on I/O, a concrete, measurable claim, not an assumption.</span>'
+    + '<span class="jp">ジョブ実行中の平均CPU使用率を、実時間の長さと比較する。ジョブが「実行中」である時間の大半でCPU使用率が100%を大きく下回っているなら、それはI/O待ちであるという強いシグナルである。述べるだけの仮定ではなく、具体的で測定可能な主張である。</span></div></details>'
+    + '</div>';
+  },
+  '10-1315': function(){ return ''
+    + '<div style="'+styleFor('crimson')+'">'
+    + '<div class="sheet-tag mono">SHEET 9 / 9</div>'
+    + '<div class="sheet-eyebrow"><span class="en">10.13/15 · Follow-Up Bank &amp; Mock Dialogue</span><span class="jp">10.13/15・想定質問集と模擬対話</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Say the whole thing out loud, then defend it</span><span class="jp">全体を声に出して語り、そして守り抜く</span></h2>'
+    + '<p class="sec-intro"><span class="en">Reading through eight sheets covering requirements, the graph, caching, scheduling, determinism, fault tolerance, and games-specific realities builds real understanding, but understanding alone isn\'t the same skill as producing a coherent answer out loud, under time pressure, while someone is actively asking follow-up questions designed to find the edges of what\'s actually understood. That gap between passive comprehension and live, defensible explanation is exactly what a technical interview tests, and it\'s a genuinely different skill that has to be practiced separately, not assumed to follow automatically from reading. Interviewers rarely accept a first answer at face value either, the real test usually happens in the follow-up questions that probe whether a stated design choice was actually reasoned through or just recited. This sheet exists specifically to close that gap: first by collecting the hardest likely follow-up questions from every earlier sheet in one place, and second by walking through a full, worked example of what a complete answer sounds like when someone actually has to say it out loud from start to finish. Everything on the previous eight sheets only matters if it comes out as one coherent answer under pressure, not eight separate memorized facts. This sheet is for rehearsal, not new material.</span>'
+    + '<span class="jp">要件、グラフ、キャッシュ、スケジューリング、決定性、耐障害性、そしてゲーム特有の現実を扱った8枚のシートを読み通すことで、本当の理解が身につく。しかし理解しているということと、時間的なプレッシャーの下で、実際に理解している範囲の境界を探ろうとする追加質問を投げかけられながら、筋の通った回答を口頭で組み立てることとは、同じスキルではない。受動的な理解と、その場で説明し守り抜けることとの間にあるこのギャップこそが、まさに技術面接が試しているものであり、読むだけでは自動的に身につかない、別途練習が必要な本当に異なるスキルである。面接官も最初の回答をそのまま鵜呑みにすることはめったになく、本当の試練は通常、述べた設計判断が実際に考え抜かれたものなのか、それとも暗唱しただけなのかを探る追加質問の中で起こる。このシートは、そのギャップを埋めるために存在する。まず、これまでの各シートから想定される最も難しい追加質問を1か所に集め、次に、誰かが実際に最初から最後まで口に出して語らなければならないとしたら完全な回答がどう聞こえるかの、実際の対話例を通しで示す。これまでの8枚のシートの内容は、暗記した8つの独立した事実としてではなく、プレッシャー下で一つの筋の通った回答として語れてはじめて意味を持つ。このシートは新しい教材ではなく、リハーサルのためのものである。</span></p>'
+    + '<div class="rehearse-note"><span class="en"><strong>How to use this sheet:</strong> read the mock dialogue below cold first, covering the candidate\'s lines, and see how much you can reconstruct from memory alone. Then use the follow-up bank to drill whichever specific questions felt shaky, rather than re-reading everything from the start.</span>'
+    + '<span class="jp"><strong>このシートの使い方：</strong>まず下の模擬対話を、候補者の発言を隠した状態で最初に読み、記憶だけでどれだけ再現できるか試す。その後、最初から全部読み直すのではなく、答えに詰まった特定の質問だけを想定質問集で重点的に練習する。</span></div>'
+
+    + '<h3 style="margin-top:36px;font-size:20px;"><span class="en">The follow-up bank</span><span class="jp">想定質問集</span></h3>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#E8A93B"></span><span class="en">10.2 · Foundations</span><span class="jp">10.2・土台</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">What if a project\'s true peak need is more than its guaranteed minimum?</span><span class="jp">プロジェクトが保証最低限を超えて必要とした場合は？</span></summary><div class="fu-mini-a"><span class="en">Guarantees are a floor, not a ceiling, unused capacity flows to whoever\'s busy right now.</span><span class="jp">保証は下限であり上限ではない。未使用のキャパシティは今必要としている側に流れる。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#2E7FC1"></span><span class="en">10.3 · The Graph</span><span class="jp">10.3・グラフ</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">Why not just walk the whole graph every time?</span><span class="jp">なぜ毎回グラフ全体を辿らないのか？</span></summary><div class="fu-mini-a"><span class="en">Too slow at scale, the registry turns it into one near-instant lookup.</span><span class="jp">規模が大きいと遅すぎる。レジストリが1回のほぼ瞬時のルックアップに変える。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">What if the registry drifts from the real graph?</span><span class="jp">レジストリが実際のグラフとずれたら？</span></summary><div class="fu-mini-a"><span class="en">The registry is a cache of state, not truth, reconcile mismatches as bugs.</span><span class="jp">レジストリは状態のキャッシュであり真実ではない。食い違いはバグとして修正する。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#2FA36B"></span><span class="en">10.4 · The Cache</span><span class="jp">10.4・キャッシュ</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">How do you know your cache is correct?</span><span class="jp">キャッシュが正しいとどう保証するのか？</span></summary><div class="fu-mini-a"><span class="en">Rebuild the same input twice, diff the output hash.</span><span class="jp">同じ入力を2回ビルドし、出力ハッシュを比較する。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">Doesn\'t hashing every input add overhead?</span><span class="jp">すべての入力のハッシュ化はオーバーヘッドにならないか？</span></summary><div class="fu-mini-a"><span class="en">Small, and worth it next to the cost of an unnecessary rebuild.</span><span class="jp">小さく、不要な再ビルドのコストに比べれば十分見合う。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#1E9E96"></span><span class="en">10.5 · Multi-Tier Caching</span><span class="jp">10.5・多層キャッシュ</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">How do you size L1 per worker?</span><span class="jp">ワーカーごとのL1サイズはどう決めるか？</span></summary><div class="fu-mini-a"><span class="en">To one session\'s working set, not the whole farm, tuned from measured usage.</span><span class="jp">ファーム全体ではなく1セッションの作業セットに合わせ、実測から調整する。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">What if L2 goes down?</span><span class="jp">L2がダウンしたら？</span></summary><div class="fu-mini-a"><span class="en">Fall through to L3 or rebuild, never a correctness single point of failure.</span><span class="jp">L3または再ビルドへ移行する。正確性に関して単一障害点になってはならない。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#7A56C4"></span><span class="en">10.6 · Scheduling</span><span class="jp">10.6・スケジューリング</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">Won\'t critical-path-first starve small jobs?</span><span class="jp">クリティカルパス優先は小さなジョブを飢餓状態にしないか？</span></summary><div class="fu-mini-a"><span class="en">Add an aging factor so nothing waits forever.</span><span class="jp">エイジング要素を加え、永久に待たされないようにする。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">Isn\'t perfect bin-packing too expensive to compute?</span><span class="jp">完璧なビンパッキングの計算は高コストすぎないか？</span></summary><div class="fu-mini-a"><span class="en">Use fast heuristics, not exact NP-hard solutions, every time.</span><span class="jp">毎回厳密なNP困難解法ではなく高速なヒューリスティックを使う。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#B23E8C"></span><span class="en">10.7 · Determinism</span><span class="jp">10.7・決定性</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">Can you fully guarantee determinism with third-party tools?</span><span class="jp">サードパーティツールでも決定性を完全に保証できるか？</span></summary><div class="fu-mini-a"><span class="en">Not always, isolate what you can\'t fix from the cache entirely.</span><span class="jp">必ずしもできない。修正できないものはキャッシュから完全に切り離す。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">How do you sell non-visible work like this to a team?</span><span class="jp">目に見えないこの取り組みをチームにどう説得するか？</span></summary><div class="fu-mini-a"><span class="en">Translate it into hit-rate and build-time numbers they already track.</span><span class="jp">すでに追跡しているヒット率とビルド時間の数字に翻訳して説明する。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#D1476B"></span><span class="en">10.8–9 · Fault Tolerance &amp; Observability</span><span class="jp">10.8–9・耐障害性と可観測性</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">How many retries is too many?</span><span class="jp">リトライは何回までが妥当か？</span></summary><div class="fu-mini-a"><span class="en">Cap by job cost, cheap jobs tolerate more, expensive ones fail fast.</span><span class="jp">ジョブのコストで上限を決める。安価なら多めに、高コストなら早く失敗させる。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">Doesn\'t speculative execution waste capacity?</span><span class="jp">投機的実行はキャパシティの無駄では？</span></summary><div class="fu-mini-a"><span class="en">Yes, deliberately, trading a little compute for a lot of wall-clock time.</span><span class="jp">その通り、意図的に。わずかな計算コストと引き換えに大きな実時間を節約する。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#C0631A"></span><span class="en">10.10–11 · Games-Specific &amp; Capacity</span><span class="jp">10.10–11・ゲーム特有の事情と容量</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">Is more cores per worker wasted then?</span><span class="jp">ならコアを増やすのは無駄なのか？</span></summary><div class="fu-mini-a"><span class="en">Depends on job type, profile before assuming one bottleneck fits all.</span><span class="jp">ジョブタイプ次第。単一のボトルネックを仮定する前にプロファイリングする。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">How do you actually measure I/O-bound vs. CPU-bound?</span><span class="jp">I/OバウンドかCPUバウンドかをどう測るか？</span></summary><div class="fu-mini-a"><span class="en">Compare CPU utilization to wall-clock duration during execution.</span><span class="jp">実行中のCPU使用率と実時間を比較する。</span></div></details>'
+    + '</div>'
+
+    + '<div class="fu-bank-group"><div class="fu-bank-tag"><span class="dot" style="background:#C0281F"></span><span class="en">Capstone — connects everything</span><span class="jp">総合 ― 全体をつなぐ</span></div>'
+    + '<details class="fu-mini"><summary><span class="en">If you only had time to build three of these fundamentals, which three?</span><span class="jp">3つしか作る時間がなければ、どれを選ぶか？</span></summary><div class="fu-mini-a"><span class="en">The dependency graph, content-addressed caching, and fair-share scheduling, the highest-ROI core. Caching is unsafe without a correct graph, and scheduling collapses under multi-tenancy without fairness. Determinism, tiering, and observability are refinements once the core is proven.</span><span class="jp">依存関係グラフ、コンテンツアドレス方式キャッシュ、公平配分スケジューリングの3つが最も投資対効果が高い中核である。正しいグラフなしにキャッシュは安全でなく、公平性なしにスケジューリングはマルチテナンシー下で破綻する。決定性・階層化・可観測性は、中核が機能してから加える洗練である。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">How would this change with 3 projects instead of 6–8?</span><span class="jp">6〜8ではなく3プロジェクトならどう変わるか？</span></summary><div class="fu-mini-a"><span class="en">Less pressure on fair-share and isolation policy, fewer larger tenants means simpler rules, but the graph/caching/scheduling core stays identical. Worth naming which decisions scale with tenant count and which don\'t.</span><span class="jp">公平配分やアクセス分離への圧力は下がる。テナントが少なく大きいほどルールは単純になるが、グラフ・キャッシュ・スケジューリングの中核は変わらない。どの判断がテナント数に応じてスケールし、どれがしないかを言えることに価値がある。</span></div></details>'
+    + '<details class="fu-mini"><summary><span class="en">What\'s the single biggest risk in this whole design?</span><span class="jp">この設計全体で最大のリスクは何か？</span></summary><div class="fu-mini-a"><span class="en">Determinism, since it\'s invisible until expensive, and caching, dedup, and tiering all silently depend on it holding.</span><span class="jp">決定性である。高コストになるまで見えず、キャッシュ・重複排除・階層化のすべてが、それが保たれていることに静かに依存しているためである。</span></div></details>'
+    + '</div>'
+
+    + '<h3 style="margin-top:40px;font-size:20px;"><span class="en">The mock dialogue</span><span class="jp">模擬対話</span></h3>'
+    + '<div class="dialogue">'
+    + '<div class="dg-turn dg-interviewer"><div class="dg-role"><span class="en">INTERVIEWER</span><span class="jp">面接官</span></div>'
+    + '<p><span class="en">"Give recommendations to a studio with 6–8 game projects running on a 50 server build system in order to optimize build times."</span>'
+    + '<span class="jp">「6〜8のゲームプロジェクトが50台のサーバーからなるビルドシステムで稼働しているスタジオに対し、ビルド時間を最適化するための提案をしてください。」</span></p></div>'
+
+    + '<div class="dg-turn dg-candidate" style="--accent:#C0281F"><div class="dg-role"><span class="en">CANDIDATE</span><span class="jp">候補者</span></div>'
+    + '<p><span class="en">Before I design anything, I\'d want to state the constraints I\'m assuming: mixed job types with very different resource profiles, six to eight tenants needing fair access to the pool, and likely some access isolation requirement between at least some of them if they\'re separate client engagements.</span>'
+    + '<span class="jp">何かを設計する前に、まず前提とする制約を整理させてください。リソース特性が大きく異なる複数のジョブタイプ、プールへの公平なアクセスを必要とする6〜8のテナント、そしてもし別々のクライアント案件であれば、少なくとも一部のテナント間でのアクセス分離要件が想定されます。</span></p>'
+    + '<p><span class="en">The backbone of the whole system is a dependency graph tracking exactly what depends on what, built from source-control diffs, so I only rebuild what actually changed and what depends on it. Game builds actually carry two graphs, a code graph and a much larger content graph, since textures, meshes, and levels usually dominate.</span>'
+    + '<span class="jp">システム全体の背骨となるのは、何が何に依存しているかを正確に追跡する依存関係グラフです。ソース管理の差分から構築し、実際に変更されたものと、それに依存するものだけを再ビルドします。ゲームビルドには実際には2つのグラフがあり、コードグラフと、はるかに大きなコンテンツグラフです。通常、テクスチャ・メッシュ・レベルが大部分を占めます。</span></p>'
+    + '<p><span class="en">On top of that graph, the single biggest lever for six to eight related projects is content-addressed caching: hash every input, not just the target name, so identical work anywhere in the farm becomes a cache hit, even across projects that share an engine. I\'d back that with a multi-tier cache, local disk on each worker for the fastest hits, a shared cluster cache for cross-project reuse, and a cold archive for anything long-term.</span>'
+    + '<span class="jp">そのグラフの上に、6〜8の関連プロジェクトにとって最大の改善レバーとなるのが、コンテンツアドレス方式のキャッシュです。ターゲット名だけでなくすべての入力をハッシュ化することで、ファーム内のどこで発生した同一の作業も、エンジンを共有するプロジェクト間であってもキャッシュヒットになります。これを多層キャッシュで支えます。最速のヒットのための各ワーカーのローカルディスク、プロジェクト間の再利用のための共有クラスターキャッシュ、そして長期保存のためのコールドアーカイブです。</span></p>'
+    + '<p><span class="en">For scheduling, I\'d prioritize the critical path first, since that sets the wall-clock floor regardless of how many workers sit idle elsewhere, pack jobs onto workers based on actual resource footprint rather than treating every slot as interchangeable, and enforce fair-share across the six to eight projects so one team\'s crunch week doesn\'t starve everyone else.</span>'
+    + '<span class="jp">スケジューリングについては、クリティカルパスを最優先します。他のワーカーが空いていても実時間の下限を決めるためです。すべてのスロットを互換可能なものとして扱うのではなく、実際のリソースフットプリントに基づいてジョブをワーカーに配置し、6〜8プロジェクト間で公平配分を徹底することで、あるチームの繁忙期が他のチームを飢餓状態にしないようにします。</span></p>'
+    + '<p><span class="en">None of this works, though, if the caching is quietly wrong, so I\'d treat determinism as a first-class requirement from day one: pin toolchain versions, strip embedded timestamps, and continuously sample-verify by rebuilding the same input twice and diffing the output hash.</span>'
+    + '<span class="jp">ただし、キャッシュが静かに間違っていればこれらはすべて機能しません。そのため決定性を初日から第一級の要件として扱います。ツールチェーンのバージョンを固定し、埋め込まれたタイムスタンプを除去し、同じ入力を2回ビルドして出力ハッシュを比較することで継続的にサンプル検証します。</span></p>'
+    + '<p><span class="en">And I\'d build in fault tolerance, retries with backoff for transient failures and speculative re-execution for stragglers, plus observability on the handful of metrics that actually predict trouble: cache hit rate, queue depth per project, and the gap between critical-path duration and actual wall-clock time.</span>'
+    + '<span class="jp">さらに耐障害性も組み込みます。一過性の障害に対するバックオフ付きリトライ、ストラグラー対策の投機的再実行、そして実際にトラブルを予測する一握りの指標、キャッシュヒット率、プロジェクトごとのキュー深さ、クリティカルパス時間と実際の実時間の差、に対する可観測性です。</span></p>'
+    + '<p><span class="en">One games-specific point worth naming: this whole system is usually I/O-bound, not CPU-bound, moving gigabytes of texture and mesh data rather than computing on small files, so network and disk throughput to that shared cache tier often matter more than adding raw compute.</span>'
+    + '<span class="jp">ゲーム特有の点として1つ触れておきたいのは、このシステム全体は通常CPUバウンドではなくI/Oバウンドだということです。小さなファイルを計算するのではなく、数ギガバイトのテクスチャやメッシュデータを移動させています。そのため、共有キャッシュ層へのネットワークとディスクのスループットが、生の計算力を追加すること以上に重要になることが多いです。</span></p>'
+    + '</div>'
+
+    + '<div class="dg-turn dg-interviewer"><div class="dg-role"><span class="en">INTERVIEWER</span><span class="jp">面接官</span></div>'
+    + '<p><span class="en">"Why content-hash over just checking timestamps?"</span><span class="jp">「なぜタイムスタンプの確認ではなくコンテンツハッシュを使うのですか？」</span></p></div>'
+    + '<div class="dg-turn dg-candidate" style="--accent:#C0281F"><div class="dg-role"><span class="en">CANDIDATE</span><span class="jp">候補者</span></div>'
+    + '<p><span class="en">Timestamps break the moment a file is freshly checked out or synced onto a new machine, even with byte-identical content, which triggers false rebuilds. Content hashing only reacts to inputs that actually changed.</span>'
+    + '<span class="jp">タイムスタンプは、ファイルが新規チェックアウトされたり新しいマシンにシンクされたりした瞬間に壊れます。内容がバイト単位で同一であってもです。これが誤った再ビルドを引き起こします。コンテンツハッシュは実際に変更された入力にのみ反応します。</span></p></div>'
+
+    + '<div class="dg-turn dg-interviewer"><div class="dg-role"><span class="en">INTERVIEWER</span><span class="jp">面接官</span></div>'
+    + '<p><span class="en">"How do you know your cache is actually correct?"</span><span class="jp">「キャッシュが実際に正しいことをどう確認するのですか？」</span></p></div>'
+    + '<div class="dg-turn dg-candidate" style="--accent:#C0281F"><div class="dg-role"><span class="en">CANDIDATE</span><span class="jp">候補者</span></div>'
+    + '<p><span class="en">Determinism testing, periodically rebuilding from the same input twice and diffing the output hash. Any mismatch is a build bug in the toolchain, not something to patch around in the cache layer.</span>'
+    + '<span class="jp">決定性テストです。定期的に同じ入力から2回ビルドし、出力ハッシュを比較します。不一致があれば、それはキャッシュ層で回避すべき問題ではなく、ツールチェーン側のビルドのバグとして扱います。</span></p></div>'
+
+    + '<div class="dg-turn dg-interviewer"><div class="dg-role"><span class="en">INTERVIEWER</span><span class="jp">面接官</span></div>'
+    + '<p><span class="en">"What if one project\'s crunch week floods the queue?"</span><span class="jp">「あるプロジェクトの繁忙期がキューを溢れさせたらどうしますか？」</span></p></div>'
+    + '<div class="dg-turn dg-candidate" style="--accent:#C0281F"><div class="dg-role"><span class="en">CANDIDATE</span><span class="jp">候補者</span></div>'
+    + '<p><span class="en">That\'s exactly what fair-share scheduling is for: guaranteed minimum workers per project so nobody\'s starved, with any unused reserved capacity flowing to whoever\'s actually busy right now.</span>'
+    + '<span class="jp">それこそが公平配分スケジューリングの目的です。プロジェクトごとに保証された最低ワーカー数を用意し、誰も飢餓状態にならないようにします。使われていない予約キャパシティは、今実際に忙しい側に流れます。</span></p></div>'
+
+    + '<div class="dg-turn dg-interviewer"><div class="dg-role"><span class="en">INTERVIEWER · pushing harder</span><span class="jp">面接官・さらに踏み込む</span></div>'
+    + '<p><span class="en">"You said this is I/O-bound. Convince me that\'s not just something you read somewhere."</span><span class="jp">「I/Oバウンドだとおっしゃいましたが、それがどこかで読んだだけの話ではないと証明してください。」</span></p></div>'
+    + '<div class="dg-turn dg-candidate" style="--accent:#C0281F"><div class="dg-role"><span class="en">CANDIDATE</span><span class="jp">候補者</span></div>'
+    + '<p><span class="en">The concrete test is comparing CPU utilization to wall-clock duration during a job\'s execution. If utilization sits well below 100% while the job is still technically running, it\'s waiting on I/O. Structurally, a texture-cook step often has to read gigabytes from cache before it can even start computing, and that read time alone can dominate a multi-minute job.</span>'
+    + '<span class="jp">具体的な検証方法は、ジョブ実行中のCPU使用率と実時間を比較することです。ジョブが技術的にはまだ「実行中」であるにもかかわらず使用率が100%を大きく下回っているなら、それはI/O待ちです。構造的にも、テクスチャクック工程は計算を始める前にキャッシュから数ギガバイトを読み込む必要があることが多く、その読み込み時間だけで数分規模のジョブの大半を占めることがあります。</span></p></div>'
+    + '</div>'
+    + '</div>';
+  },
+  '7-1': function(){ return ''
+    + '<div style="'+styleFor('indigo')+'">'
+    + '<div class="sheet-tag mono">SHEET 1 / 4</div>'
+    + '<div class="sheet-eyebrow"><span class="en">7.1 · Requirements-Gathering</span><span class="jp">7.1・要件のヒアリング</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Ask before you draw</span><span class="jp">描く前に尋ねる</span></h2>'
+    + '<p class="sec-intro"><span class="en">A whiteboard prompt like "design a build system for a game studio" is deliberately underspecified, not because the interviewer forgot details, but because how a candidate handles that ambiguity is itself part of what\'s being evaluated. Jumping straight into a diagram without asking anything treats the prompt as if it were a complete specification, when it\'s actually closer to an opening line in a conversation. Real Solutions Architects almost never get a fully-specified problem from a client either, gathering the actual constraints before proposing anything is the job, not a preliminary step before the real job starts. Skipping this stage produces answers that are technically competent but solve a problem the interviewer didn\'t actually ask about, which reads as a communication gap rather than a technical one. The good news is that asking sharp questions is a learnable, repeatable skill with a small set of categories to draw from, not a matter of guessing what the interviewer wants to hear. This sheet covers what to ask, how to ask it efficiently, and how to know when it\'s time to stop asking and start drawing.</span>'
+    + '<span class="jp">「ゲームスタジオ向けのビルドシステムを設計してください」のようなホワイトボードのお題は、意図的に情報が不足した状態で出される。面接官が詳細を忘れているからではなく、その曖昧さにどう対応するか自体が評価対象の一部だからである。何も質問せずいきなり図を描き始めることは、そのお題をあたかも完全な仕様であるかのように扱うことになるが、実際にはむしろ会話の第一声に近い。本物のソリューションアーキテクトも、クライアントから完全に仕様化された問題を渡されることはほとんどなく、実際の制約条件を引き出すこと自体が仕事であり、本当の仕事が始まる前の準備段階ではない。この段階を飛ばすと、技術的には的確でも、面接官が実際には尋ねていない問題を解いてしまう回答になり、技術面ではなくコミュニケーション面のギャップとして受け取られてしまう。幸いなことに、鋭い質問をすることは、面接官が何を聞きたいかを推測することではなく、依拠すべき少数のカテゴリーを持つ、学習可能で再現可能なスキルである。このシートでは、何を尋ねるべきか、それをどう効率的に尋ねるか、そしてどの時点で質問をやめて描き始めるべきかを扱う。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> Requirements-gathering is asking targeted clarifying questions at the start of a system design answer, before committing to any specific architecture, so the design that follows actually solves the problem being asked rather than an assumed version of it.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>要件のヒアリングとは、特定のアーキテクチャに踏み込む前に、システム設計の回答の冒頭で的を絞った確認の質問を行うことであり、これにより、想定した問題ではなく実際に問われている問題を解決する設計につながる。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> Interviewers routinely under-specify prompts on purpose, and the questions a candidate chooses reveal whether they think in trade-offs and constraints or jump to a memorized template. Getting this right early saves time later, since redesigning mid-answer after a wrong assumption costs far more than the 2–3 minutes clarifying questions take up front.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>面接官は意図的にお題の情報を不足させることが多く、候補者がどの質問を選ぶかによって、トレードオフや制約条件で考えているのか、暗記したテンプレートに飛びついているのかが分かる。これを最初に押さえておくことは時間の節約にもなる。誤った前提に気づいて途中で設計をやり直すコストは、最初の2〜3分の確認質問よりはるかに大きい。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">The start of literally any open-ended whiteboard prompt, before naming a single component</span><span class="jp">文字通りあらゆる自由記述式のホワイトボードのお題の冒頭、コンポーネントを1つ名付ける前</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">SKIP WHEN</span><span class="jp">省略してよい場合</span></div><ul>'
+    + '<li><span class="en">The prompt is already fully specified with concrete numbers and constraints stated upfront (rare), briefly restating them is enough</span><span class="jp">お題がすでに具体的な数字と制約条件を伴って完全に仕様化されている場合（稀）、簡潔に確認するだけで十分</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">From vague prompt to concrete requirements</span><span class="jp">曖昧なお題から具体的な要件へ</span></div>'
+    + '<svg viewBox="0 0 760 190" width="100%" height="auto" role="img" aria-label="Requirements funnel diagram">'
+    + '<defs><marker id="arrowI" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2A3480"/></marker></defs>'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="700">'
+    + '<rect x="10" y="70" width="150" height="50" fill="#EDF0F3" stroke="#1B2430" stroke-width="3" stroke-dasharray="5,4"/><text x="85" y="90" text-anchor="middle" fill="#4A5560" font-size="10">"optimize</text><text x="85" y="104" text-anchor="middle" fill="#4A5560" font-size="10">build times"</text>'
+    + '<rect x="230" y="10" width="300" height="170" fill="#DEE1F5" stroke="#1B2430" stroke-width="3"/>'
+    + '<text x="380" y="34" text-anchor="middle" fill="#2A3480" font-size="10.5">SCALE?  PERFORMANCE?</text>'
+    + '<text x="380" y="52" text-anchor="middle" fill="#2A3480" font-size="10.5">CONSTRAINTS?  FAILURE</text>'
+    + '<text x="380" y="70" text-anchor="middle" fill="#2A3480" font-size="10.5">TOLERANCE?  PRIORITIES?</text>'
+    + '<line x1="250" y1="90" x2="510" y2="90" stroke="#2A3480" stroke-width="1.5" stroke-dasharray="3,3"/>'
+    + '<text x="380" y="112" text-anchor="middle" fill="#1B2430" font-size="9.5">"6–8 projects, 50 workers,</text>'
+    + '<text x="380" y="128" text-anchor="middle" fill="#1B2430" font-size="9.5">target: 20-min changelist,</text>'
+    + '<text x="380" y="144" text-anchor="middle" fill="#1B2430" font-size="9.5">existing farm, speed &gt; cost"</text>'
+    + '<rect x="600" y="70" width="150" height="50" fill="#2A3480" stroke="#1B2430" stroke-width="3"/><text x="675" y="92" text-anchor="middle" fill="#FFFFFF" font-size="10">READY TO</text><text x="675" y="107" text-anchor="middle" fill="#FFFFFF" font-size="10">DESIGN</text>'
+    + '</g>'
+    + '<g stroke="#2A3480" stroke-width="2.5" fill="none" marker-end="url(#arrowI)">'
+    + '<path d="M160,95 L224,95"/><path d="M534,95 L594,95"/>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#4A5FCC;--accent-dark:#2A3480;--tint:#DEE1F5">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Functional vs. non-functional requirements</span><span class="jp">機能要件と非機能要件</span></h3>'
+    + '<p><span class="en">Functional requirements describe what the system needs to do, rebuild only what changed, support several concurrent projects. Non-functional requirements describe how well it needs to do it, latency targets, availability, cost ceilings, isolation needs. Many candidates only ask about functional scope and forget non-functional targets entirely, which is exactly where senior-level distinctions get made.</span>'
+    + '<span class="jp">機能要件とは、システムが何をする必要があるかを示す（変更されたものだけを再ビルドする、複数プロジェクトを同時にサポートするなど）。非機能要件とは、それをどれだけうまく行う必要があるかを示す（レイテンシ目標、可用性、コストの上限、分離要件など）。多くの候補者は機能的な範囲だけを尋ね、非機能的な目標を完全に忘れてしまうが、まさにそこでシニアレベルかどうかの差が生まれる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Asking "how many projects" (functional scope) is good, but forgetting to ask "what\'s an acceptable wait time for a single-developer build" (a non-functional latency target) means the whole scheduling design later has no actual target to hit.</span>'
+    + '<span class="jp">「プロジェクト数はいくつか」（機能的な範囲）と尋ねるのは良いが、「開発者1人のビルドで許容できる待ち時間はどれくらいか」（非機能的なレイテンシ目標）を尋ね忘れると、後のスケジューリング設計全体が、目指すべき実際の目標を持たないままになってしまう。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Functional is what it does. Non-functional is how well it has to do it. Ask about both.</span><span class="jp">機能要件は何をするか。非機能要件はそれをどれだけうまくやる必要があるか。両方尋ねる。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#4A5FCC;--accent-dark:#2A3480;--tint:#DEE1F5">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">The five question categories worth having ready</span><span class="jp">用意しておくべき5つの質問カテゴリー</span></h3>'
+    + '<p><span class="en">Scale (how many users/projects/requests), performance targets (latency and throughput numbers), existing constraints (what\'s already built, what can\'t change), failure tolerance (how bad is downtime), and priorities (if trade-offs are needed, what matters most: speed, cost, or simplicity). Having these five memorized means never freezing on "what do I even ask."</span>'
+    + '<span class="jp">規模（利用者・プロジェクト・リクエストの数）、性能目標（レイテンシとスループットの数値）、既存の制約（すでに構築済みのもの、変更できないもの）、障害許容度（ダウンタイムはどれだけ深刻か）、優先順位（トレードオフが必要な場合、速度・コスト・シンプルさのどれが最も重要か）。この5つを覚えておけば、「そもそも何を聞けばいいのか」で固まることがなくなる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">For the build-system prompt specifically, useful opening questions include: roughly how many developers and how large is the codebase/asset library, what\'s the current build time and the target, is there an existing farm or is this greenfield, and is cost or speed the bigger priority right now.</span>'
+    + '<span class="jp">ビルドシステムのお題に限って言えば、有効な最初の質問には次のようなものがある。おおよそ何人の開発者がいて、コードベース・アセットライブラリの規模はどれくらいか。現在のビルド時間と目標は何か。既存のファームがあるのか、それともゼロからの構築か。今は速度とコストのどちらがより優先されるか。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Scale, performance, constraints, failure tolerance, priorities: five buckets, never zero questions.</span><span class="jp">規模、性能、制約、障害許容度、優先順位。5つの引き出しがあれば、質問ゼロにはならない。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#4A5FCC;--accent-dark:#2A3480;--tint:#DEE1F5">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Turning a vague prompt into concrete numbers</span><span class="jp">曖昧なお題を具体的な数字に変える</span></h3>'
+    + '<p><span class="en">The goal of asking isn\'t just to seem thorough, it\'s to convert an underspecified prompt into actual numbers that later design decisions can be justified against. A design that says "we prioritize the critical path" is much stronger when it can add "because the target is a 20-minute changelist turnaround."</span>'
+    + '<span class="jp">質問する目的は単に丁寧に見せることではなく、情報の足りないお題を、後の設計判断の根拠にできる実際の数字に変換することである。「クリティカルパスを優先します」という設計は、「目標がチェンジリストの20分ターンアラウンドだから」と付け加えられるとき、はるかに説得力が増す。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If the interviewer doesn\'t have a specific number ready, it\'s fine to propose one and state it as an assumption: "I\'ll assume a target of about 20 minutes for a full changelist unless you\'d like a different number," this keeps momentum going without waiting on every detail.</span>'
+    + '<span class="jp">面接官が具体的な数字を用意していない場合、自分で妥当な数字を提案し、前提として明示すればよい。「別の数字をご希望でなければ、フルチェンジリストの目標をおよそ20分と仮定します」。これにより、すべての詳細を待たずに勢いを保てる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Every requirement should end up as a number you can design against, not a vague adjective like "fast."</span><span class="jp">すべての要件は、「速い」といった曖昧な形容詞ではなく、それに向けて設計できる数字に落とし込む。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#4A5FCC;--accent-dark:#2A3480;--tint:#DEE1F5">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Knowing when to stop asking and start drawing</span><span class="jp">質問をやめて描き始めるタイミングを知る</span></h3>'
+    + '<p><span class="en">Asking too few questions looks careless; asking too many looks like stalling or an inability to make decisions with incomplete information, itself a real-world skill being tested. A good rule: once the major functional scope and the one or two most important non-functional targets are known, move to drawing and state remaining assumptions explicitly as you go.</span>'
+    + '<span class="jp">質問が少なすぎると不注意に見え、多すぎると足踏みしている、あるいは不完全な情報で判断を下せないように見える。これ自体、実務で試されているスキルである。良い目安は、主要な機能的範囲と最も重要な非機能的目標が1〜2個分かった時点で、描き始めに移り、残りの詳細は明示的な前提として進めることである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">After 3–4 sharp questions establishing rough scale, a latency target, and whether this is greenfield, it\'s reasonable to say "okay, I think I have enough to start, I\'ll assume X for anything I haven\'t confirmed" and begin the high-level design.</span>'
+    + '<span class="jp">おおよその規模、レイテンシ目標、ゼロからの構築かどうかを確認する3〜4個の鋭い質問の後、「では、始めるのに十分な情報が揃ったと思います。確認していない点はXと仮定します」と言い、高レベルな設計を始めるのが妥当である。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">A handful of sharp questions, then move. Unresolved details become stated assumptions, not blockers.</span><span class="jp">少数の鋭い質問をしたら前進する。未解決の詳細は、行く手を阻むものではなく明示的な前提になる。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">What if the interviewer won\'t give specific numbers?</span><span class="jp">面接官が具体的な数字をくれない場合は？</span></summary>'
+    + '<div class="fu-a"><span class="en">Propose a reasonable number, state it as an assumption, and keep moving, this demonstrates judgment rather than dependency on being handed every detail.</span>'
+    + '<span class="jp">妥当な数字を自分で提案し、前提として明示して先に進む。これは、すべての詳細を与えられることへの依存ではなく、判断力を示すことになる。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">Isn\'t asking too many questions a bad sign?</span><span class="jp">質問しすぎるのは悪い兆候ではないか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Past a point, yes, quality over quantity: 3–5 sharp, well-chosen questions signal more competence than 10 scattered ones. Knowing the five categories keeps questions targeted, not exploratory.</span>'
+    + '<span class="jp">ある程度を超えるとそうなる。量より質であり、3〜5個の鋭く厳選された質問の方が、10個の散漫な質問より高い能力を示す。5つのカテゴリーを知っていれば、質問は探り探りではなく的が絞られる。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"Before I sketch anything, I\'d like to confirm a few things: roughly what scale are we talking about, is there a specific latency or turnaround target, and is this greenfield or are there existing constraints I should design around?"</span>'
+    + '<span class="jp">「何かをスケッチする前に、いくつか確認させてください。おおよそどれくらいの規模を想定しているか、具体的なレイテンシやターンアラウンドの目標はあるか、そしてこれはゼロからの構築か、それとも設計上考慮すべき既存の制約があるか、という点です。」</span></p></div>'
+    + '</div>';
+  },
+  '7-3': function(){ return ''
+    + '<div style="'+styleFor('coral')+'">'
+    + '<div class="sheet-tag mono">SHEET 2 / 4</div>'
+    + '<div class="sheet-eyebrow"><span class="en">7.3 · The Design Arc</span><span class="jp">7.3・設計の流れ</span></div>'
+    + '<h2 class="sec-headline"><span class="en">High-level first, depth on request</span><span class="jp">まず全体像、深掘りは求められてから</span></h2>'
+    + '<p class="sec-intro"><span class="en">Once requirements are clear, a natural instinct for a technically strong candidate is to immediately dive into the most interesting or well-understood part of the system and explain it in full detail. That instinct, while understandable, tends to backfire in an interview setting for a specific reason: the interviewer is trying to evaluate breadth of judgment across an entire system, not depth in one corner of it picked by the candidate rather than by them. A strong answer follows a recognizable arc instead, moving from a high-level sketch of the whole system, through a request-driven deep dive into whichever part actually matters most, and finishing with an explicit discussion of trade-offs and alternatives. This structure also happens to be forgiving of time pressure: a candidate who runs out of time after covering the high-level picture and one deep dive still looks organized, while a candidate who spent the first ten minutes deep in one component with no map of the whole system looks lost regardless of how correct that one component was. Interviewers frequently interrupt with directional follow-ups specifically to see whether a candidate can flex between altitude levels on demand, staying only at ground level or only at 30,000 feet both read as a gap. This sheet covers how to move through that arc deliberately rather than accidentally.</span>'
+    + '<span class="jp">要件が明確になると、技術的に強い候補者にとって自然な衝動は、最も興味深い、あるいは最もよく理解している部分にすぐさま飛び込み、それを詳細に説明することである。その衝動は理解できるが、面接という場ではある特定の理由で裏目に出やすい。面接官が評価しようとしているのは、システム全体にわたる判断の幅であり、候補者自身が選んだ一角における深さではないからである。強い回答はそうではなく、認識しやすい流れをたどる。システム全体の高レベルなスケッチから始まり、実際に最も重要な部分への、求めに応じた深掘りへと進み、最後にトレードオフと代替案についての明示的な議論で締めくくる。この構成は時間的なプレッシャーにも寛容である。高レベルな全体像と1つの深掘りをカバーした後で時間切れになった候補者は、依然として整理されているように見える一方、システム全体の見取り図もないまま最初の10分間を1つのコンポーネントの深掘りに費やした候補者は、その1つのコンポーネントがどれだけ正しくても迷子のように見えてしまう。面接官が意図的に方向性の異なるフォローアップを挟んでくることも多いが、これは候補者が高度を自在に切り替えられるかを確認するためであり、地上レベルだけ、あるいは3万フィート上空だけにとどまることは、どちらもギャップとして受け取られる。このシートでは、この流れを偶然ではなく意図的に進める方法を扱う。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> The design arc is the standard three-phase shape of a strong system-design answer: a high-level overview first, then a deep dive into the one or two parts that matter most, then an explicit close on trade-offs and alternatives.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>設計の流れとは、強いシステム設計の回答が持つ標準的な3段階の構成である。まず高レベルな概観、次に最も重要な1〜2箇所への深掘り、最後にトレードオフと代替案についての明示的な締めくくりである。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> This structure lets an interviewer evaluate both breadth (can this candidate see the whole system) and depth (can they reason rigorously about one part of it) within a fixed time window. Skipping either phase leaves one of those two questions unanswered.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>この構成があるからこそ、面接官は限られた時間の中で、幅（システム全体を見渡せるか）と深さ（1つの部分について厳密に推論できるか）の両方を評価できる。どちらかの段階を飛ばすと、これら2つの問いのどちらかが未回答のままになる。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">Any open-ended system design prompt with more than a few components</span><span class="jp">コンポーネントが数個を超える、自由記述式のシステム設計のお題</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">ADAPT WHEN</span><span class="jp">調整すべき場合</span></div><ul>'
+    + '<li><span class="en">The interviewer explicitly asks to go deep on one specific thing from the start, the high-level phase can shrink to a single sentence</span><span class="jp">面接官が最初から特定の1点について深掘りするよう明示的に求めた場合、高レベルの段階は一文に短縮してよい</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">The three-phase arc</span><span class="jp">3段階の流れ</span></div>'
+    + '<svg viewBox="0 0 760 150" width="100%" height="auto" role="img" aria-label="Design arc diagram">'
+    + '<defs><marker id="arrowC" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8A3018"/></marker></defs>'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700">'
+    + '<rect x="10" y="30" width="220" height="60" fill="#FBE0D6" stroke="#1B2430" stroke-width="3"/><text x="120" y="55" text-anchor="middle" fill="#8A3018">1. HIGH-LEVEL</text><text x="120" y="72" text-anchor="middle" fill="#8A3018">SKETCH</text>'
+    + '<rect x="270" y="30" width="220" height="60" fill="#FFFFFF" stroke="#1B2430" stroke-width="3"/><text x="380" y="52" text-anchor="middle" fill="#1B2430">2. REQUESTED</text><text x="380" y="68" text-anchor="middle" fill="#1B2430">DEEP DIVE</text><text x="380" y="83" text-anchor="middle" fill="#8A95A0" font-size="9">steered by interviewer</text>'
+    + '<rect x="530" y="30" width="220" height="60" fill="#8A3018" stroke="#1B2430" stroke-width="3"/><text x="640" y="52" text-anchor="middle" fill="#FFFFFF">3. TRADE-OFFS &amp;</text><text x="640" y="68" text-anchor="middle" fill="#FFFFFF">ALTERNATIVES</text>'
+    + '</g>'
+    + '<g stroke="#8A3018" stroke-width="2.5" fill="none" marker-end="url(#arrowC)">'
+    + '<path d="M234,60 L264,60"/><path d="M494,60 L524,60"/>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#E8633F;--accent-dark:#8A3018;--tint:#FBE0D6">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Start high-level, resist over-detailing immediately</span><span class="jp">まず高レベルに、いきなり詳細化しすぎない</span></h3>'
+    + '<p><span class="en">The first pass should be a simple sketch: the main pieces and how work flows between them, described in a sentence or two each, not their internals. This gives the interviewer a map to follow and gives the candidate a chance to catch a structural mistake before investing time in details built on a shaky foundation.</span>'
+    + '<span class="jp">最初のパスはシンプルなスケッチであるべきである。主要な要素と、それらの間で作業がどう流れるかを、それぞれ一文か二文で説明し、内部の詳細には踏み込まない。これにより面接官には辿るべき地図が与えられ、候補者は、不安定な土台の上に詳細を積み上げてしまう前に、構造上の誤りに気づく機会を得られる。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">For the build system prompt, a high-level pass might be: "changes come in from source control, get mapped onto a dependency graph, jobs get scheduled onto workers with caching checked first, and results get reported back", five components, no internals yet.</span>'
+    + '<span class="jp">ビルドシステムのお題であれば、高レベルなパスはこうなるかもしれない。「変更はソース管理から入ってきて、依存関係グラフにマッピングされ、まずキャッシュが確認された上でジョブがワーカーにスケジューリングされ、結果が報告される」。5つの要素、内部の詳細はまだなし。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Draw the map before the street-level photos.</span><span class="jp">街路レベルの写真を撮る前に、地図を描く。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8633F;--accent-dark:#8A3018;--tint:#FBE0D6">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Signal the transition between phases explicitly</span><span class="jp">段階の移行を明示的にシグナルする</span></h3>'
+    + '<p><span class="en">Saying out loud "let me start with the high-level flow, then I\'ll go deeper into scheduling since that\'s probably the most interesting part here" does real work: it tells the interviewer what to expect, makes the structure legible even if they\'re half-listening while taking notes, and makes it easy for them to redirect if their priorities differ from the candidate\'s guess.</span>'
+    + '<span class="jp">「まず高レベルな流れから始め、その後、おそらくここで最も興味深い部分であるスケジューリングを深掘りします」と声に出すことには実際の効果がある。面接官に何を期待すべきかを伝え、メモを取りながら半分しか聞いていなくても構成を分かりやすくし、面接官の優先事項が候補者の推測と異なる場合に方向転換させやすくする。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Explicitly narrating "that\'s the high-level picture, now I want to zoom into two parts I think are most interesting: the cache and the scheduler" gives the interviewer a natural, low-friction moment to redirect toward whatever they actually want to probe.</span>'
+    + '<span class="jp">「これが高レベルな全体像です。次に、最も興味深いと思う2つの部分、キャッシュとスケジューラーにズームインしたいと思います」と明示的に説明することで、面接官が実際に探りたいことへ自然に、無理なく方向転換できる瞬間が生まれる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Narrate the structure of your answer, not just its content.</span><span class="jp">回答の内容だけでなく、回答の構造そのものを説明する。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8633F;--accent-dark:#8A3018;--tint:#FBE0D6">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Choosing what to deep-dive into</span><span class="jp">何を深掘りするか選ぶ</span></h3>'
+    + '<p><span class="en">Absent a specific steer from the interviewer, the best default is picking the part with the most genuine trade-offs, not necessarily the part that\'s most technically flashy. A component is a good deep-dive candidate if there were multiple real options and a real reason one was chosen.</span>'
+    + '<span class="jp">面接官からの具体的な誘導がない場合、最良のデフォルトは、必ずしも技術的に最も派手な部分ではなく、本物のトレードオフが最も多い部分を選ぶことである。複数の実際の選択肢があり、そのうち1つが選ばれた実際の理由がある部分は、深掘りの候補として適している。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">For this system, content-addressed caching or fair-share scheduling are strong deep-dive choices, since both involve real design trade-offs worth explaining, versus something like "how do you compile code," which doesn\'t have much of a trade-off to discuss.</span>'
+    + '<span class="jp">このシステムでは、コンテンツアドレス方式のキャッシュや公平配分スケジューリングが強い深掘りの選択肢になる。どちらも説明する価値のある実際の設計トレードオフを伴うためである。一方、「コードをどうコンパイルするか」のようなものには、議論すべきトレードオフがあまりない。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Deep-dive into decisions, not into the most impressive-sounding component.</span><span class="jp">最も印象的に聞こえるコンポーネントではなく、判断そのものを深掘りする。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#E8633F;--accent-dark:#8A3018;--tint:#FBE0D6">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Closing on trade-offs and alternatives</span><span class="jp">トレードオフと代替案で締めくくる</span></h3>'
+    + '<p><span class="en">A strong answer doesn\'t just present one design as if it were the only option, it explicitly names at least one alternative that was considered and rejected, and why. This is often what separates "correct" from "senior": showing the space of options weighed, not just the final pick.</span>'
+    + '<span class="jp">強い回答は、1つの設計をあたかも唯一の選択肢であるかのように提示するのではなく、検討して却下した代替案を少なくとも1つ、その理由とともに明示的に挙げる。これはしばしば、「正しい」と「シニアらしい」を分けるものである。最終的な選択だけでなく、検討した選択肢の幅を見せることである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Closing with "an alternative would be a single shared cache with no local tier, simpler to build, but it would create a network bottleneck at this scale, which is why the multi-tier approach is worth the added complexity" demonstrates the reasoning process, not just the conclusion.</span>'
+    + '<span class="jp">「代替案として、ローカル層のない単一の共有キャッシュも考えられ、構築はより単純ですが、この規模ではネットワークのボトルネックを生んでしまうため、多層方式の追加の複雑さには見合う価値があります」と締めくくることで、結論だけでなく推論の過程が示される。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Show the fork in the road you chose, not just the road you\'re on.</span><span class="jp">今いる道だけでなく、選んだ分岐点も見せる。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">What if the interviewer doesn\'t say anything and just watches?</span><span class="jp">面接官が何も言わずただ見ているだけの場合は？</span></summary>'
+    + '<div class="fu-a"><span class="en">Default to the highest-trade-off component and narrate the choice: "I\'ll go deeper into caching since that\'s where the most interesting trade-offs are, let me know if you\'d rather I focus elsewhere."</span>'
+    + '<span class="jp">最もトレードオフの多いコンポーネントをデフォルトとして選び、その選択を説明する。「最も興味深いトレードオフがあるキャッシュを深掘りします。他に焦点を当てたい部分があればお知らせください。」</span></div></details>'
+    + '<details class="followup"><summary><span class="en">How much time should the high-level phase take?</span><span class="jp">高レベルの段階にはどれくらい時間をかけるべきか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Roughly 20–25% of the total time is a reasonable target, enough to establish the map without eating into the deep-dive and trade-off phases where most of the evaluation signal actually comes from.</span>'
+    + '<span class="jp">全体時間のおよそ20〜25%が妥当な目安であり、実際の評価の大部分が生まれる深掘りとトレードオフの段階を圧迫することなく、地図を確立するのに十分な時間である。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"Let me sketch the high-level flow first, then I\'ll deep-dive into whichever part seems most useful to you, and close with the trade-offs I considered along the way."</span>'
+    + '<span class="jp">「まず高レベルな流れをスケッチさせてください。その後、あなたにとって最も有用と思われる部分を深掘りし、最後に検討したトレードオフで締めくくります。」</span></p></div>'
+    + '</div>';
+  },
+  '7-45': function(){ return ''
+    + '<div style="'+styleFor('olive')+'">'
+    + '<div class="sheet-tag mono">SHEET 3 / 4</div>'
+    + '<div class="sheet-eyebrow"><span class="en">7.4–5 · Narrating &amp; Handling Unknowns</span><span class="jp">7.4–5・説明の仕方と未知の質問</span></div>'
+    + '<h2 class="sec-headline"><span class="en">Say what you\'re thinking, especially when you\'re stuck</span><span class="jp">考えていることを言葉にする。特に詰まったときこそ</span></h2>'
+    + '<p class="sec-intro"><span class="en">A whiteboard interview is one of the few technical evaluation formats where the interviewer can\'t actually see the reasoning happening, only the final marks on the board and whatever gets said out loud, which makes narration a genuinely different skill from simply knowing the right answer. A candidate who draws in silence for two minutes and then reveals a correct design has, from the interviewer\'s side, produced no evidence of the reasoning process at all, only the outcome, and outcomes without visible reasoning are hard to distinguish from lucky guesses or memorized templates. This matters even more when a follow-up question hits unfamiliar territory, which happens to nearly everyone at some point in a real interview loop, since the instinct to go quiet or bluff through it is exactly the wrong move for a role that\'s fundamentally about communicating technical judgment to people who aren\'t going to independently verify every claim. The honest handling of a genuine unknown, done well, often reads as more senior than confidently answering something rehearsed, because it demonstrates the actual skill being hired for: reasoning in real time under uncertainty, out loud, in front of someone. This sheet covers both halves of that skill, keeping a steady narration going while drawing, and specifically what to do the moment a question lands on something not actually known.</span>'
+    + '<span class="jp">ホワイトボード面接は、面接官が実際に起きている思考プロセスを見ることができず、盤面に残る最終的な跡と、口に出された言葉だけしか見えない、数少ない技術評価形式の1つである。これにより、ナレーション（説明しながら進めること）は、単に正しい答えを知っていることとは本当に異なるスキルになる。2分間沈黙して描き続け、その後正しい設計を明かす候補者は、面接官側から見ると、推論プロセスの証拠を一切示せておらず、結果だけが見えている状態である。そして目に見える推論を伴わない結果は、幸運な当てずっぽうや暗記したテンプレートと見分けがつきにくい。これは、追加質問が未知の領域に触れたときにさらに重要になる。実際の面接ループでは、ほぼ誰もがどこかの時点でこれを経験するが、黙り込んだり、はったりで乗り切ろうとしたりする衝動は、あらゆる主張を独自に検証してくれるわけではない相手に技術的な判断を伝えることが本質的な役割において、まさに間違った選択である。本当に知らないことを正直にうまく扱うことは、暗記した内容に自信満々に答えるよりも、しばしばより上級者らしく見える。それは、まさに採用しようとしているスキル、つまり不確実性の中でその場で、声に出して、誰かの前で推論することを示しているからである。このシートは、そのスキルの両面、描きながら安定したナレーションを続けること、そして質問が本当に知らないことに触れた瞬間に何をすべきかを扱う。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> Narrating means thinking out loud while drawing and reasoning, rather than working in silence and only revealing conclusions. Handling unknowns means having a specific, honest, low-drama way to respond when a question touches something genuinely unfamiliar, rather than freezing, going silent, or bluffing.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>ナレーションとは、沈黙したまま作業して結論だけを明かすのではなく、描きながら、推論しながら、声に出して考えることである。未知への対応とは、質問が本当になじみのないことに触れたとき、固まったり、黙り込んだり、はったりをかけたりするのではなく、具体的で正直で大げさにならない対応方法を持つことである。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> The interviewer\'s evaluation is built almost entirely from what\'s said and drawn, so anything reasoned silently is invisible to them, and anything bluffed tends to unravel under the deep follow-up questions this loop is known for, leaving a worse impression than an honest gap ever would.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>面接官の評価は、話されたことと描かれたことからほぼ完全に構築される。そのため、黙って推論したことは面接官には見えず、はったりをかけたことは、このループでよく知られている深い追加質問の中で崩れやすく、正直に知らないと認めるよりもずっと悪い印象を残してしまう。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">Throughout the entire whiteboard session, and specifically the moment any question touches unfamiliar territory</span><span class="jp">ホワイトボードセッション全体を通して、特にどんな質問であれ未知の領域に触れた瞬間</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">PAUSE BRIEFLY WHEN</span><span class="jp">短く止まってよい場合</span></div><ul>'
+    + '<li><span class="en">A hard trade-off needs genuine silent thought, a few seconds of stated "let me think through this" is fine and expected</span><span class="jp">難しいトレードオフに本当に静かな思考が必要な場合、「少し考えさせてください」と一言添えた数秒の沈黙は問題なく想定内</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">The honest unknown-handling script</span><span class="jp">正直な未知対応の型</span></div>'
+    + '<svg viewBox="0 0 760 140" width="100%" height="auto" role="img" aria-label="Handling unknowns flow diagram">'
+    + '<defs><marker id="arrowO" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#4A5620"/></marker></defs>'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="700">'
+    + '<rect x="10" y="30" width="220" height="60" fill="#E8EDD4" stroke="#1B2430" stroke-width="3"/><text x="120" y="55" text-anchor="middle" fill="#4A5620">NAME THE GAP</text><text x="120" y="70" text-anchor="middle" fill="#4A5620">HONESTLY</text>'
+    + '<rect x="270" y="30" width="220" height="60" fill="#FFFFFF" stroke="#1B2430" stroke-width="3"/><text x="380" y="55" text-anchor="middle" fill="#1B2430">REASON FROM</text><text x="380" y="70" text-anchor="middle" fill="#1B2430">WHAT IS KNOWN</text>'
+    + '<rect x="530" y="30" width="220" height="60" fill="#4A5620" stroke="#1B2430" stroke-width="3"/><text x="640" y="55" text-anchor="middle" fill="#FFFFFF">OFFER TO</text><text x="640" y="70" text-anchor="middle" fill="#FFFFFF">VERIFY / LEARN</text>'
+    + '</g>'
+    + '<g stroke="#4A5620" stroke-width="2.5" fill="none" marker-end="url(#arrowO)">'
+    + '<path d="M234,60 L264,60"/><path d="M494,60 L524,60"/>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#7A8A3D;--accent-dark:#4A5620;--tint:#E8EDD4">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Narrating while drawing</span><span class="jp">描きながらのナレーション</span></h3>'
+    + '<p><span class="en">Narration doesn\'t mean describing every pixel drawn, it means voicing the reasoning behind each addition: why this component, why it connects here, what it\'s for. The difference between "this is the scheduler" (label) and reasoning through why it\'s needed is the entire value of narration.</span>'
+    + '<span class="jp">ナレーションとは、描いたすべてのピクセルを説明することではなく、各追加の背後にある理由を声に出すことである。なぜこのコンポーネントなのか、なぜここで繋がるのか、何のためのものか。「これはスケジューラーです」（ラベル）と、なぜそれが必要かを推論することの違いこそが、ナレーションの価値そのものである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Instead of silently drawing five boxes and explaining the whole thing at once, narrate each addition as it happens: "I\'ll start with source control feeding into a dependency graph, since that\'s what tells us what actually needs rebuilding," then draw it, then continue to the next piece.</span>'
+    + '<span class="jp">黙って5つの箱を描いてから一気にすべてを説明するのではなく、各追加をその場で説明する。「まずソース管理から依存関係グラフへの流れから始めます。これが実際に何を再ビルドすべきかを教えてくれるためです」、そう言ってから描き、次の要素へ進む。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Narrate the why behind each box, not just its label.</span><span class="jp">箱のラベルだけでなく、その背後にある理由を説明する。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#7A8A3D;--accent-dark:#4A5620;--tint:#E8EDD4">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">The honest "I don\'t know, here\'s how I\'d find out" script</span><span class="jp">「分かりません、こう確認します」という正直な型</span></h3>'
+    + '<p><span class="en">When a follow-up touches something genuinely unfamiliar, the strongest move is a short, direct sequence: state plainly that this isn\'t an area of direct experience, then immediately pivot to how the question would actually be approached, using reasoning from adjacent things that are understood.</span>'
+    + '<span class="jp">追加質問が本当になじみのないことに触れたとき、最も強い対応は短く率直な流れである。これは直接の経験がある領域ではないと率直に述べ、すぐに、理解している隣接分野からの推論を使って、実際にどうその問いにアプローチするかへと切り替える。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If asked about a specific tool not directly used, a strong response is: "I haven\'t worked directly with that, so I don\'t want to guess at specifics I\'m not sure of. Based on the general pattern though, I\'d expect it handles [reasoned guess], and I\'d want to verify that before committing to it in a real design."</span>'
+    + '<span class="jp">直接使ったことのない特定のツールについて聞かれた場合、強い回答はこうなる。「それを直接使った経験はないので、確信のない詳細を推測したくはありません。ただ、一般的なパターンから考えると、おそらく[根拠のある推測]のように扱われると思います。実際の設計に組み込む前に確認したいところです。」</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Name the gap once, then immediately show how you\'d reason around it.</span><span class="jp">ギャップを一度だけ名指しし、すぐにそれをどう推論して乗り越えるかを示す。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#7A8A3D;--accent-dark:#4A5620;--tint:#E8EDD4">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Buying thinking time without looking lost</span><span class="jp">迷子に見えずに考える時間を稼ぐ</span></h3>'
+    + '<p><span class="en">A few concrete, low-cost techniques exist for genuine pauses: repeating the question back in your own words, restating the relevant assumption already established, or explicitly saying "let me think through this for a second" rather than just going silent unexplained.</span>'
+    + '<span class="jp">本当に必要な間には、いくつかの具体的で低コストな技術がある。質問を自分の言葉で言い換える、すでに立てた関連する前提を再確認する、あるいは何も説明せず黙り込むのではなく「少し考えさせてください」と明示的に言う、といったものである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">"So if I\'m understanding right, you\'re asking what happens if the shared cache tier itself goes down mid-build, let me think through that for a moment" buys several seconds of visible, legitimate thinking time rather than an unexplained pause that reads as being stuck.</span>'
+    + '<span class="jp">「つまり、共有キャッシュ層自体がビルドの途中でダウンした場合どうなるか、というご質問と理解していますが、少し考えさせてください」という一言は、説明のない沈黙が詰まっているように見えるのとは違い、目に見える正当な思考時間を数秒間確保してくれる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Silence with a label ("let me think") reads as composure. Silence with no label reads as stuck.</span><span class="jp">ラベル付きの沈黙（「考えさせてください」）は落ち着きに見える。ラベルのない沈黙は詰まって見える。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#7A8A3D;--accent-dark:#4A5620;--tint:#E8EDD4">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">Reading interviewer cues</span><span class="jp">面接官のサインを読む</span></h3>'
+    + '<p><span class="en">Interviewers give real-time signals worth watching for: leaning in or taking notes usually means continue in the current direction, a redirect question usually means move on from the current thread, and a long pause after an answer often means they\'re waiting for more depth, not that the answer was wrong.</span>'
+    + '<span class="jp">面接官はリアルタイムで注目に値するサインを出している。身を乗り出す、あるいはメモを取ることは通常、今の方向を続けるべきサイン。方向転換の質問は通常、今のスレッドを切り上げるべきサイン。回答後の長い沈黙は、しばしば回答が間違っていたのではなく、より深い内容を待っているサインである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">If an interviewer asks a narrow follow-up right after a broad point, that\'s usually a signal they want to go deeper there specifically, not a hint that the broad point itself was unsatisfactory, matching the follow-up\'s scope rather than re-explaining the whole broad point is the right response.</span>'
+    + '<span class="jp">大きな論点の直後に面接官が狭い追加質問をしてきた場合、それは通常、大きな論点自体が不十分だったというヒントではなく、その部分を特に深掘りしたいというサインである。大きな論点全体を再説明するのではなく、追加質問の範囲に合わせて答えるのが正しい対応である。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">A follow-up question is usually a request for more, not a correction of what came before.</span><span class="jp">追加質問は通常、それまでの内容の訂正ではなく、もっと聞きたいという要求である。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">What if I genuinely have no idea how to reason about the unfamiliar thing at all?</span><span class="jp">未知のものについて全く推論の糸口すら見つからない場合は？</span></summary>'
+    + '<div class="fu-a"><span class="en">It\'s fine to say so plainly and pivot to a related area of genuine strength: "I don\'t have a good way to reason about that specific piece, but here\'s how I\'d think about the surrounding problem based on [related area]," total honesty paired with redirecting to real strength beats a forced guess.</span>'
+    + '<span class="jp">率直にそう述べ、本当に強みのある関連分野へ切り替えれば良い。「その特定の部分について良い推論の方法は持ち合わせていませんが、[関連分野]に基づいて、その周辺の問題をこう考えます」。完全な正直さと、本当の強みへの切り替えの組み合わせは、無理な推測に勝る。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">Doesn\'t admitting you don\'t know something hurt the interview?</span><span class="jp">知らないと認めることは面接にとってマイナスにならないか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Not nearly as much as being caught bluffing under a deep follow-up does. A candidate who can\'t answer follow-ups after guessing leaves a worse impression than one who was upfront from the start.</span>'
+    + '<span class="jp">深い追加質問の中ではったりが見破られることに比べれば、はるかにましである。推測した後の追加質問に答えられない候補者は、最初から率直だった候補者よりも悪い印象を残してしまう。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"I haven\'t worked directly with that specific piece, so let me reason through it based on what I do know, and I\'d want to verify the details before committing to it in a real design."</span>'
+    + '<span class="jp">「その特定の部分については直接の経験がないので、知っていることに基づいて推論させてください。実際の設計に組み込む前に、詳細を確認したいところです。」</span></p></div>'
+    + '</div>';
+  },
+  '8-2': function(){ return ''
+    + '<div style="'+styleFor('steel')+'">'
+    + '<div class="sheet-tag mono">SHEET 4 / 4</div>'
+    + '<div class="sheet-eyebrow"><span class="en">8.2 · Scenario Bank Overview</span><span class="jp">8.2・想定シナリオ集</span></div>'
+    + '<h2 class="sec-headline"><span class="en">The same toolkit, different clothes</span><span class="jp">同じ道具箱、違う衣装</span></h2>'
+    + '<p class="sec-intro"><span class="en">Everything built so far centers on one specific whiteboard prompt, a distributed build system, covered in enough depth to answer almost anything asked about it directly. But the actual interview loop won\'t necessarily hand over that exact prompt, and preparing only for one specific scenario risks looking rigid or over-rehearsed if a different one comes up instead. The reassuring part is that the underlying toolkit built through Part X, dependency structure, caching, scheduling, fault tolerance, capacity reasoning, isn\'t actually specific to build systems at all, it\'s a general pattern that shows up again and again across game-industry system design prompts with different surface details. A global simultaneous launch, a live-ops telemetry pipeline, and a real-time matchmaking system all look completely different on the surface, but each one has its own version of "what depends on what," "what work gets repeated and could be cached," "how is limited capacity shared fairly," and "what happens when something fails." This sheet is deliberately lighter than Part X, it\'s not meant to build the same depth on three more topics, it\'s meant to demonstrate that the depth already built transfers, and to give a repeatable method for approaching literally any unfamiliar prompt cold. Recognizing the same underlying shape under a new surface is, in itself, a strong signal of real understanding rather than memorization.</span>'
+    + '<span class="jp">ここまで構築してきたものはすべて、分散ビルドシステムという1つの特定のホワイトボードお題を中心にしており、それについて直接尋ねられたほぼ何にでも答えられるだけの深さを備えている。しかし実際の面接ループが必ずしもその全く同じお題を出してくるとは限らず、1つの特定のシナリオだけに備えることは、別のお題が出た場合に硬直的、あるいは準備しすぎに見えるリスクを伴う。安心できるのは、Part Xを通じて構築した基盤となる道具箱、依存構造、キャッシュ、スケジューリング、耐障害性、容量の推論が、実はビルドシステムに特有のものでは全くなく、表面的な詳細が異なるだけで、ゲーム業界のシステム設計のお題に繰り返し現れる一般的なパターンだという点である。世界同時ローンチ、ライブ運用のテレメトリパイプライン、リアルタイムマッチメイキングシステムは、表面上は全く異なって見えるが、それぞれに「何が何に依存しているか」「どの作業が繰り返され、キャッシュできるか」「限られたキャパシティをどう公平に共有するか」「何かが失敗したときどうなるか」という、独自の版が存在する。このシートは意図的にPart Xより軽く作られている。他の3つのテーマで同じ深さを構築することが目的ではなく、すでに構築した深さが転用できることを示し、文字通りどんな未知のお題にもその場で取り組める再現可能な方法を提供することが目的である。新しい表面の下に同じ基本構造を認識できること自体が、暗記ではなく本当の理解の強いシグナルである。</span></p>'
+    + '<div class="primer">'
+    + '<div class="primer-label"><span class="en">Start here — the basics</span><span class="jp">まずはここから ― 基礎知識</span></div>'
+    + '<p><span class="en"><strong>In plain terms:</strong> The scenario bank is a set of other common game-industry system-design prompts, sketched at a fundamentals level, alongside a general method for mapping the same core toolkit onto any new prompt encountered cold.</span>'
+    + '<span class="jp"><strong>簡単に言うと：</strong>シナリオ集とは、他によくあるゲーム業界のシステム設計のお題を基礎レベルでスケッチしたものであり、同じ中核となる道具箱を、その場で出会う新しいどんなお題にも当てはめるための一般的な方法を併せて示すものである。</span></p>'
+    + '<p><span class="en"><strong>Why it matters:</strong> Interview loops are unpredictable by design, and an answer built entirely around one memorized scenario can fall apart the moment the surface details change, even if the underlying reasoning would have transferred perfectly well.</span>'
+    + '<span class="jp"><strong>重要な理由：</strong>面接ループは設計上予測不可能であり、1つの暗記したシナリオだけを中心に組み立てられた回答は、たとえ根底にある推論が本来はうまく転用できたはずであっても、表面的な詳細が変わった瞬間に崩れてしまうことがある。</span></p>'
+    + '<div class="primer-when">'
+    + '<div class="pw-yes"><div class="pw-label"><span class="en">USE IT WHEN</span><span class="jp">使うべき場合</span></div><ul>'
+    + '<li><span class="en">Preparing for the possibility of an unfamiliar prompt, or as a final check that the Part X toolkit is genuinely understood</span><span class="jp">未知のお題に備える場合、またはPart Xの道具箱が本当に理解されているかの最終確認として</span></li>'
+    + '</ul></div>'
+    + '<div class="pw-no"><div class="pw-label"><span class="en">LESS CRITICAL WHEN</span><span class="jp">重要度が下がる場合</span></div><ul>'
+    + '<li><span class="en">The loop explicitly confirms the build-system topic in advance (rare), deep Part X prep matters more than breadth</span><span class="jp">ループが事前にビルドシステムのテーマを明示的に確認している場合（稀）、幅広さよりPart Xの深い準備の方が重要</span></li>'
+    + '</ul></div>'
+    + '</div>'
+    + '</div>'
+    + '<div class="diagram"><div class="diagram-label"><span class="en">Same toolkit, three surfaces</span><span class="jp">同じ道具箱、3つの表面</span></div>'
+    + '<svg viewBox="0 0 760 210" width="100%" height="auto" role="img" aria-label="Transfer matrix diagram">'
+    + '<g font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="700">'
+    + '<rect x="10" y="10" width="160" height="34" fill="#33495C" stroke="#1B2430" stroke-width="2.5"/><text x="90" y="31" text-anchor="middle" fill="#FFFFFF">TOOLKIT</text>'
+    + '<rect x="180" y="10" width="185" height="34" fill="#33495C" stroke="#1B2430" stroke-width="2.5"/><text x="272" y="31" text-anchor="middle" fill="#FFFFFF">BUILD SYSTEM</text>'
+    + '<rect x="375" y="10" width="185" height="34" fill="#33495C" stroke="#1B2430" stroke-width="2.5"/><text x="467" y="31" text-anchor="middle" fill="#FFFFFF">GLOBAL LAUNCH</text>'
+    + '<rect x="570" y="10" width="180" height="34" fill="#33495C" stroke="#1B2430" stroke-width="2.5"/><text x="660" y="31" text-anchor="middle" fill="#FFFFFF">MATCHMAKING</text>'
+    + '<rect x="10" y="48" width="160" height="38" fill="#DDE6EC" stroke="#1B2430" stroke-width="2"/><text x="90" y="71" text-anchor="middle" fill="#33495C">GRAPH</text>'
+    + '<rect x="180" y="48" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="272" y="65" text-anchor="middle" fill="#1B2430" font-size="8.5">file/asset</text><text x="272" y="77" text-anchor="middle" fill="#1B2430" font-size="8.5">dependencies</text>'
+    + '<rect x="375" y="48" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="467" y="65" text-anchor="middle" fill="#1B2430" font-size="8.5">readiness</text><text x="467" y="77" text-anchor="middle" fill="#1B2430" font-size="8.5">checklist per region</text>'
+    + '<rect x="570" y="48" width="180" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="660" y="65" text-anchor="middle" fill="#1B2430" font-size="8.5">skill/region/party</text><text x="660" y="77" text-anchor="middle" fill="#1B2430" font-size="8.5">match constraints</text>'
+    + '<rect x="10" y="90" width="160" height="38" fill="#DDE6EC" stroke="#1B2430" stroke-width="2"/><text x="90" y="113" text-anchor="middle" fill="#33495C">CACHE</text>'
+    + '<rect x="180" y="90" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="272" y="107" text-anchor="middle" fill="#1B2430" font-size="8.5">reuse identical</text><text x="272" y="119" text-anchor="middle" fill="#1B2430" font-size="8.5">build outputs</text>'
+    + '<rect x="375" y="90" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="467" y="107" text-anchor="middle" fill="#1B2430" font-size="8.5">pre-position builds</text><text x="467" y="119" text-anchor="middle" fill="#1B2430" font-size="8.5">near each region</text>'
+    + '<rect x="570" y="90" width="180" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="660" y="107" text-anchor="middle" fill="#1B2430" font-size="8.5">pre-aggregate</text><text x="660" y="119" text-anchor="middle" fill="#1B2430" font-size="8.5">common queries</text>'
+    + '<rect x="10" y="132" width="160" height="38" fill="#DDE6EC" stroke="#1B2430" stroke-width="2"/><text x="90" y="155" text-anchor="middle" fill="#33495C">SCHEDULE</text>'
+    + '<rect x="180" y="132" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="272" y="149" text-anchor="middle" fill="#1B2430" font-size="8.5">critical path,</text><text x="272" y="161" text-anchor="middle" fill="#1B2430" font-size="8.5">fair-share tenants</text>'
+    + '<rect x="375" y="132" width="185" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="467" y="149" text-anchor="middle" fill="#1B2430" font-size="8.5">staggered</text><text x="467" y="161" text-anchor="middle" fill="#1B2430" font-size="8.5">go-live timing</text>'
+    + '<rect x="570" y="132" width="180" height="38" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="660" y="149" text-anchor="middle" fill="#1B2430" font-size="8.5">who matches</text><text x="660" y="161" text-anchor="middle" fill="#1B2430" font-size="8.5">with whom, when</text>'
+    + '<rect x="10" y="174" width="160" height="30" fill="#DDE6EC" stroke="#1B2430" stroke-width="2"/><text x="90" y="193" text-anchor="middle" fill="#33495C">RECOVER</text>'
+    + '<rect x="180" y="174" width="185" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="272" y="193" text-anchor="middle" fill="#1B2430" font-size="8.5">retry, speculative re-exec</text>'
+    + '<rect x="375" y="174" width="185" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="467" y="193" text-anchor="middle" fill="#1B2430" font-size="8.5">per-region rollback plan</text>'
+    + '<rect x="570" y="174" width="180" height="30" fill="#FFFFFF" stroke="#1B2430" stroke-width="2"/><text x="660" y="193" text-anchor="middle" fill="#1B2430" font-size="8.5">handle mid-match drop</text>'
+    + '</g></svg></div>'
+    + '<div class="module" style="--accent:#5B7A94;--accent-dark:#33495C;--tint:#DDE6EC">'
+    + '<div class="module-num">01 / 04</div>'
+    + '<h3><span class="en">Global simultaneous launch</span><span class="jp">世界同時ローンチ</span></h3>'
+    + '<p><span class="en">The core challenge is coordinating a release across many regions and platforms at once, without any region\'s infrastructure becoming a bottleneck for the others, and with the ability to react to load in real time. The "dependency" here isn\'t file dependencies, it\'s release-readiness dependencies: nothing goes live in any region until every required component is confirmed ready everywhere.</span>'
+    + '<span class="jp">中核となる課題は、どの地域のインフラも他の地域のボトルネックにならないようにしながら、多数の地域・プラットフォームにまたがるリリースを同時に調整し、負荷にリアルタイムで対応できることである。ここでの「依存関係」はファイルの依存関係ではなく、リリース準備の依存関係である。必要なすべての要素がどこでも準備完了と確認されるまで、どの地域でも公開されない。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Applying the toolkit</span><span class="jp">道具箱の応用</span></div>'
+    + '<p><span class="en">The graph fundamental becomes a release-readiness checklist per region/platform; caching becomes pre-positioning build artifacts close to each region ahead of time rather than transferring them at launch moment; scheduling becomes staggering or coordinating go-live timing; fault tolerance becomes a rollback plan per region that doesn\'t affect regions that launched cleanly.</span>'
+    + '<span class="jp">グラフの基本要素は地域・プラットフォームごとのリリース準備チェックリストになる。キャッシュは、ローンチの瞬間に転送するのではなく、事前に各地域の近くにビルド成果物を配置しておくことになる。スケジューリングは、公開タイミングの分散や調整になる。耐障害性は、正常にローンチできた地域に影響しない、地域ごとのロールバック計画になる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Same graph-cache-schedule-recover shape, applied to regions and readiness instead of files and workers.</span><span class="jp">同じグラフ・キャッシュ・スケジュール・復旧の形を、ファイルとワーカーではなく、地域と準備状況に適用する。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#5B7A94;--accent-dark:#33495C;--tint:#DDE6EC">'
+    + '<div class="module-num">02 / 04</div>'
+    + '<h3><span class="en">Live-ops telemetry and analytics pipeline</span><span class="jp">ライブ運用のテレメトリ・分析パイプライン</span></h3>'
+    + '<p><span class="en">The core challenge is ingesting a continuous, high-volume stream of gameplay events from millions of concurrent players and turning it into something usable, dashboards, alerts, matchmaking signals, without falling behind the incoming data or losing events during failures.</span>'
+    + '<span class="jp">中核となる課題は、何百万人もの同時プレイヤーからの継続的で大量なゲームプレイイベントのストリームを取り込み、それをダッシュボード・アラート・マッチメイキング用シグナルなど使えるものに変換することであり、入ってくるデータに遅れを取らず、障害中にイベントを失わないことである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Applying the toolkit</span><span class="jp">道具箱の応用</span></div>'
+    + '<p><span class="en">Dependency structure becomes the processing pipeline stages (raw events → cleaned/validated → aggregated → queryable); caching becomes pre-aggregating common queries; scheduling becomes prioritizing latency-sensitive signals over less time-sensitive ones; fault tolerance becomes ensuring no player events get silently dropped during a processing failure, often via a durable retrying queue.</span>'
+    + '<span class="jp">依存構造は処理パイプラインの段階（生イベント→クレンジング・検証済み→集計済み→クエリ可能）になる。キャッシュは、よくあるクエリの事前集計になる。スケジューリングは、時間的制約の緩いシグナルよりレイテンシに敏感なシグナルを優先することになる。耐障害性は、処理障害中にプレイヤーイベントが静かに失われないことになり、多くの場合、再試行可能な永続キューによって実現される。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Same shape, applied to a continuous stream of events instead of a batch of build jobs.</span><span class="jp">同じ形を、ビルドジョブのバッチではなく、連続的なイベントのストリームに適用する。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#5B7A94;--accent-dark:#33495C;--tint:#DDE6EC">'
+    + '<div class="module-num">03 / 04</div>'
+    + '<h3><span class="en">Real-time matchmaking</span><span class="jp">リアルタイムマッチメイキング</span></h3>'
+    + '<p><span class="en">The core challenge is grouping players into fair, low-latency matches from a constantly changing pool of waiting players, balancing match quality against wait time, since waiting too long for a "perfect" match is often worse than an imperfect match delivered quickly.</span>'
+    + '<span class="jp">中核となる課題は、絶えず変化する待機プレイヤーのプールから、公平で低レイテンシなマッチにプレイヤーをグループ分けし、マッチの質と待ち時間のバランスを取ることである。「完璧な」マッチを長く待つことは、迅速に提供される不完全なマッチよりも悪いことが多いためである。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Applying the toolkit</span><span class="jp">道具箱の応用</span></div>'
+    + '<p><span class="en">Scheduling and fair-share is almost the entire problem here, deciding which waiting players get matched together and in what order is a direct cousin of build-job scheduling; capacity math reappears directly, since matchmaking has the same arrival-rate-vs-service-rate queueing logic; fault tolerance becomes handling a player disconnecting mid-match-formation without breaking the match for everyone else.</span>'
+    + '<span class="jp">スケジューリングと公平配分がほぼ問題の全体を占める。どの待機プレイヤーをどの順序で組み合わせるかを決めることは、ビルドジョブのスケジューリングの直系のいとこである。容量計算もそのまま再登場する。マッチメイキングはビルドファームと全く同じ到着率対処理率のキューイング論理を持つためである。耐障害性は、他の全員のマッチを壊すことなく、マッチ形成の途中でプレイヤーが切断した場合の対処になる。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">The build farm\'s scheduler and the matchmaker\'s scheduler are solving structurally the same problem with different objects.</span><span class="jp">ビルドファームのスケジューラーとマッチメイカーのスケジューラーは、構造的に同じ問題を、異なる対象で解いている。</span></span></div>'
+    + '</div>'
+    + '<div class="module" style="--accent:#5B7A94;--accent-dark:#33495C;--tint:#DDE6EC">'
+    + '<div class="module-num">04 / 04</div>'
+    + '<h3><span class="en">The transfer method for any new, unfamiliar prompt</span><span class="jp">未知の新しいお題への転用方法</span></h3>'
+    + '<p><span class="en">When an entirely new prompt lands cold, a repeatable move is to ask the same five questions regardless of domain: what depends on what (the graph question), what work is likely to repeat and could be reused (the caching question), how is limited capacity shared fairly (the scheduling question), what fails and how does it recover gracefully (the fault-tolerance question), and what\'s genuinely unique about this domain (the domain-specific question).</span>'
+    + '<span class="jp">全く新しいお題がその場で出されたとき、再現可能な動きは、領域に関わらず同じ5つの質問をすることである。何が何に依存しているか（グラフの問い）、どの作業が繰り返され再利用できそうか（キャッシュの問い）、限られたキャパシティをどう公平に共有するか（スケジューリングの問い）、何が失敗し、どう優雅に復旧するか（耐障害性の問い）、そしてこの領域に本当に特有なものは何か（領域特有の問い）である。</span></p>'
+    + '<div class="module-example"><div class="ex-label"><span class="en">Worked example</span><span class="jp">具体例</span></div>'
+    + '<p><span class="en">Even a completely unfamiliar prompt like "design a friend-list and social graph system" can be approached this way: what depends on what (a friendship needs consistency on both sides), what\'s cacheable (a friend list is read far more than written), how is capacity shared (protecting against one user spamming requests), what fails (a partial write if one side of a link succeeds and the other doesn\'t).</span>'
+    + '<span class="jp">「フレンドリストとソーシャルグラフのシステムを設計してください」のような全く未知のお題でさえ、この方法でアプローチできる。何が何に依存しているか（友人関係は双方の一貫性を必要とする）、何がキャッシュ可能か（フレンドリストは書き込みよりはるかに多く読み取られる）、キャパシティはどう共有されるか（1人のユーザーがリクエストを乱発するのを防ぐ）、何が失敗するか（リンクの片側は成功し片側は失敗した場合の部分的な書き込み）。</span></p></div>'
+    + '<div class="module-model"><span class="mm-label"><span class="en">MENTAL MODEL</span><span class="jp">思考モデル</span></span>'
+    + '<span><span class="en">Five questions, asked in the same order, turn any unfamiliar prompt into a structured starting point: graph, cache, schedule, recover, domain-specific twist.</span><span class="jp">同じ順序で問う5つの質問が、どんな未知のお題も構造化された出発点に変える。グラフ、キャッシュ、スケジュール、復旧、領域特有のひねり。</span></span></div>'
+    + '</div>'
+    + '<details class="followup"><summary><span class="en">What if the new prompt is in a domain I genuinely know nothing about, like payments or authentication?</span><span class="jp">決済や認証のような、本当に何も知らない領域のお題だったら？</span></summary>'
+    + '<div class="fu-a"><span class="en">The five-question method still applies, the "domain-specific twist" question is exactly the placeholder for whatever is unfamiliar, and it\'s fine to flag that specific piece as an honest unknown while still applying the general structure confidently to the rest.</span>'
+    + '<span class="jp">5つの質問の方法はそれでも適用できる。「領域特有のひねり」の問いは、まさになじみのないものそのもののための枠である。その特定の部分は正直に未知として明示しつつ、残りには汎用的な構造を自信を持って適用すればよい。</span></div></details>'
+    + '<details class="followup"><summary><span class="en">How much should I actually prepare on scenarios I\'m not sure will come up?</span><span class="jp">出るかどうか分からないシナリオに、実際どれだけ備えるべきか？</span></summary>'
+    + '<div class="fu-a"><span class="en">Depth on the flagship matters more than breadth across many scenarios, this sheet is meant to prove the toolkit transfers, not to become nine more sheets deep on every possible prompt, a light pass here is enough.</span>'
+    + '<span class="jp">多くのシナリオにわたる幅広さよりも、旗艦テーマの深さの方が重要である。このシートは道具箱が転用できることを証明するためのものであり、あらゆるお題についてさらに9枚分の深さを構築するためのものではない。ここでは軽く目を通す程度で十分である。</span></div></details>'
+    + '<div class="say-out-loud"><div class="mono"><span class="en">Say this out loud</span><span class="jp">面接でそのまま口に出す一言</span></div>'
+    + '<p><span class="en">"This isn\'t a domain I\'ve built a system for directly, but let me apply the same approach I\'d use for any distributed system: what depends on what, what can be cached, how is capacity shared fairly, and what happens when something fails."</span>'
+    + '<span class="jp">「これは直接システムを構築したことのある領域ではありませんが、どんな分散システムにも使う同じアプローチを適用させてください。何が何に依存しているか、何をキャッシュできるか、キャパシティをどう公平に共有するか、そして何かが失敗したときどうなるか、という点です。」</span></p></div>'
     + '</div>';
   }
 };
